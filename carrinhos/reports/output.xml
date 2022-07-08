@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220708 11:35:29.238" rpa="false" schemaversion="3">
+<suite id="s1" name="TestesCarrinhos DELETE" source="C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\carrinhos\TestesCarrinhos_DELETE.robot">
+<test id="s1-t1" name="Cenário: DELETE Excluir Carrinho 200" line="14">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>https://serverest.dev</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220708 11:35:29.370" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220708 11:35:29.370" endtime="20220708 11:35:29.370"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:29.369" endtime="20220708 11:35:29.370"/>
+</kw>
+<kw name="DELETE Endpoint &quot;/carrinhos/concluir-compra&quot; Token &quot;Válido&quot;" sourcename="DELETE Endpoint &quot;${endpoint}&quot; Token &quot;${estado}&quot;">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>${endpoint}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220708 11:35:29.760" level="INFO">DELETE Request : url=https://serverest.dev/carrinhos/concluir-compra 
+ path_url=/carrinhos/concluir-compra 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220708 11:35:29.761" level="INFO">DELETE Response : url=https://serverest.dev/carrinhos/concluir-compra 
+ status=401, reason=Unauthorized 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '7e84d8fe-1557-4d20-8b02-11ceb7c712e9', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'ff8ff7dc2af0f90d9615b979e403cfe6;o=1', 'Date': 'Fri, 08 Jul 2022 14:35:27 GMT', 'Server': 'Google Frontend', 'Content-Length': '103'} 
+ body={
+    "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
+} 
+ </msg>
+<msg timestamp="20220708 11:35:29.761" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220708 11:35:29.762" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220708 11:35:29.371" endtime="20220708 11:35:29.762"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220708 11:35:29.764" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220708 11:35:29.763" endtime="20220708 11:35:29.765"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:29.370" endtime="20220708 11:35:29.765"/>
+</kw>
+<kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<msg timestamp="20220708 11:35:29.772" level="FAIL">'401 == 200' should be true.</msg>
+<status status="FAIL" starttime="20220708 11:35:29.767" endtime="20220708 11:35:29.772"/>
+</kw>
+<status status="FAIL" starttime="20220708 11:35:29.766" endtime="20220708 11:35:29.773"/>
+</kw>
+<status status="FAIL" starttime="20220708 11:35:29.369" endtime="20220708 11:35:29.776">'401 == 200' should be true.</status>
+</test>
+<test id="s1-t2" name="Cenário: DELETE Erro no Token 401" line="20">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>https://serverest.dev</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220708 11:35:29.780" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220708 11:35:29.780" endtime="20220708 11:35:29.780"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:29.779" endtime="20220708 11:35:29.780"/>
+</kw>
+<kw name="DELETE Endpoint &quot;/carrinhos/concluir-compra&quot; Token &quot;Inválido&quot;" sourcename="DELETE Endpoint &quot;${endpoint}&quot; Token &quot;${estado}&quot;">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>${endpoint}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220708 11:35:30.170" level="INFO">DELETE Request : url=https://serverest.dev/carrinhos/concluir-compra 
+ path_url=/carrinhos/concluir-compra 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220708 11:35:30.170" level="INFO">DELETE Response : url=https://serverest.dev/carrinhos/concluir-compra 
+ status=401, reason=Unauthorized 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'bf278b68-afaf-4bee-be55-800e3b086bc0', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'bd241801188e8ea00bd7ad39b2211f37', 'Date': 'Fri, 08 Jul 2022 14:35:28 GMT', 'Server': 'Google Frontend', 'Content-Length': '103'} 
+ body={
+    "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
+} 
+ </msg>
+<msg timestamp="20220708 11:35:30.170" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220708 11:35:30.172" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220708 11:35:29.783" endtime="20220708 11:35:30.172"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220708 11:35:30.173" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220708 11:35:30.173" endtime="20220708 11:35:30.174"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:29.781" endtime="20220708 11:35:30.174"/>
+</kw>
+<kw name="Validar Status Code &quot;401&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220708 11:35:30.176" endtime="20220708 11:35:30.178"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:30.175" endtime="20220708 11:35:30.178"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:29.778" endtime="20220708 11:35:30.179"/>
+</test>
+<test id="s1-t3" name="Cenário: DELETE Excluir Carrinho e Retornar Produtos ao Estoque 200" line="26">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>https://serverest.dev</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220708 11:35:30.185" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220708 11:35:30.184" endtime="20220708 11:35:30.185"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:30.184" endtime="20220708 11:35:30.185"/>
+</kw>
+<kw name="DELETE Endpoint &quot;/carrinhos/cancelar-compra&quot; Token &quot;Válido&quot;" sourcename="DELETE Endpoint &quot;${endpoint}&quot; Token &quot;${estado}&quot;">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>${endpoint}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220708 11:35:30.580" level="INFO">DELETE Request : url=https://serverest.dev/carrinhos/cancelar-compra 
+ path_url=/carrinhos/cancelar-compra 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220708 11:35:30.580" level="INFO">DELETE Response : url=https://serverest.dev/carrinhos/cancelar-compra 
+ status=401, reason=Unauthorized 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '5fb16a02-9c7b-4ab0-b29b-4d29fbafb6a7', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'f18cedf253f9a785a0fb308a868b6790', 'Date': 'Fri, 08 Jul 2022 14:35:28 GMT', 'Server': 'Google Frontend', 'Content-Length': '103'} 
+ body={
+    "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
+} 
+ </msg>
+<msg timestamp="20220708 11:35:30.580" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220708 11:35:30.582" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220708 11:35:30.187" endtime="20220708 11:35:30.582"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220708 11:35:30.583" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220708 11:35:30.583" endtime="20220708 11:35:30.583"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:30.186" endtime="20220708 11:35:30.585"/>
+</kw>
+<kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<msg timestamp="20220708 11:35:30.593" level="FAIL">'401 == 200' should be true.</msg>
+<status status="FAIL" starttime="20220708 11:35:30.588" endtime="20220708 11:35:30.593"/>
+</kw>
+<status status="FAIL" starttime="20220708 11:35:30.587" endtime="20220708 11:35:30.593"/>
+</kw>
+<status status="FAIL" starttime="20220708 11:35:30.183" endtime="20220708 11:35:30.597">'401 == 200' should be true.</status>
+</test>
+<test id="s1-t4" name="Cenário: DELETE Erro no Token 401" line="32">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>https://serverest.dev</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220708 11:35:30.607" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220708 11:35:30.607" endtime="20220708 11:35:30.607"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:30.606" endtime="20220708 11:35:30.607"/>
+</kw>
+<kw name="DELETE Endpoint &quot;/carrinhos/cancelar-compra&quot; Token &quot;Expirado&quot;" sourcename="DELETE Endpoint &quot;${endpoint}&quot; Token &quot;${estado}&quot;">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>${endpoint}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220708 11:35:30.993" level="INFO">DELETE Request : url=https://serverest.dev/carrinhos/cancelar-compra 
+ path_url=/carrinhos/cancelar-compra 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220708 11:35:30.993" level="INFO">DELETE Response : url=https://serverest.dev/carrinhos/cancelar-compra 
+ status=401, reason=Unauthorized 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '1bec0415-ecd3-46e0-b61b-d21bff8035d0', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '23cc59fd6710946fd24916a067a28e2f', 'Date': 'Fri, 08 Jul 2022 14:35:29 GMT', 'Server': 'Google Frontend', 'Content-Length': '103'} 
+ body={
+    "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
+} 
+ </msg>
+<msg timestamp="20220708 11:35:30.993" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220708 11:35:30.998" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220708 11:35:30.609" endtime="20220708 11:35:30.998"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220708 11:35:31.001" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220708 11:35:30.999" endtime="20220708 11:35:31.001"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:30.609" endtime="20220708 11:35:31.002"/>
+</kw>
+<kw name="Validar Status Code &quot;401&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220708 11:35:31.004" endtime="20220708 11:35:31.007"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:31.003" endtime="20220708 11:35:31.007"/>
+</kw>
+<status status="PASS" starttime="20220708 11:35:30.603" endtime="20220708 11:35:31.009"/>
+</test>
+<doc>Arquivo simples para requisições HTTP em APIs</doc>
+<status status="FAIL" starttime="20220708 11:35:29.240" endtime="20220708 11:35:31.013"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="2" skip="0" id="s1" name="TestesCarrinhos DELETE">TestesCarrinhos DELETE</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220708 11:35:30.600" level="WARN">Multiple tests with name 'Cenário: DELETE Erro no Token 401' executed in suite 'TestesCarrinhos DELETE'.</msg>
+</errors>
+</robot>

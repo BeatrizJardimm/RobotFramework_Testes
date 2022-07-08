@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220708 12:32:41.797" rpa="false" schemaversion="3">
+<suite id="s1" name="testesLogin" source="C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\login\testesLogin.robot">
+<test id="s1-t1" name="Cenario: POST Realizar Login 200" line="14">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>https://serverest.dev</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220708 12:32:41.961" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220708 12:32:41.961" endtime="20220708 12:32:41.962"/>
+</kw>
+<status status="PASS" starttime="20220708 12:32:41.961" endtime="20220708 12:32:41.962"/>
+</kw>
+<kw name="POST Email &quot;beltrano@qa.com.br&quot; Senha &quot;teste&quot;" sourcename="POST Email &quot;${email}&quot; Senha &quot;${senha}&quot;">
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>data=None</arg>
+<arg>json={"email": "${email}", "password": "${senha}"}</arg>
+<arg>expected_status=anything</arg>
+<arg>msg=None</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220708 12:32:42.669" level="INFO">POST Request : url=https://serverest.dev/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '4'} 
+ body=None 
+ </msg>
+<msg timestamp="20220708 12:32:42.670" level="INFO">POST Response : url=https://serverest.dev/login 
+ status=400, reason=Bad Request 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '699569c8-97f9-4f29-b0d3-91a5dbc6e377', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'bf0fcd8b45f24ce18595618817a0c26e;o=1', 'Date': 'Fri, 08 Jul 2022 15:32:40 GMT', 'Server': 'Google Frontend', 'Content-Length': '84'} 
+ body={
+    "email": "email é obrigatório",
+    "password": "password é obrigatório"
+} 
+ </msg>
+<msg timestamp="20220708 12:32:42.670" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220708 12:32:42.671" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220708 12:32:41.963" endtime="20220708 12:32:42.672"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220708 12:32:42.674" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220708 12:32:42.672" endtime="20220708 12:32:42.674"/>
+</kw>
+<status status="PASS" starttime="20220708 12:32:41.963" endtime="20220708 12:32:42.674"/>
+</kw>
+<kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<msg timestamp="20220708 12:32:42.685" level="FAIL">'400 == 200' should be true.</msg>
+<status status="FAIL" starttime="20220708 12:32:42.677" endtime="20220708 12:32:42.685"/>
+</kw>
+<status status="FAIL" starttime="20220708 12:32:42.676" endtime="20220708 12:32:42.685"/>
+</kw>
+<status status="FAIL" starttime="20220708 12:32:41.960" endtime="20220708 12:32:42.692">'400 == 200' should be true.</status>
+</test>
+<test id="s1-t2" name="Cenario: POST Realizar Login com Email Invalido 400" line="20">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>https://serverest.dev</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220708 12:32:42.703" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220708 12:32:42.702" endtime="20220708 12:32:42.703"/>
+</kw>
+<status status="PASS" starttime="20220708 12:32:42.702" endtime="20220708 12:32:42.703"/>
+</kw>
+<kw name="POST Email &quot;Invalido&quot; Senha &quot;teste&quot;" sourcename="POST Email &quot;${email}&quot; Senha &quot;${senha}&quot;">
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>data=None</arg>
+<arg>json={"email": "${email}", "password": "${senha}"}</arg>
+<arg>expected_status=anything</arg>
+<arg>msg=None</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220708 12:32:43.193" level="INFO">POST Request : url=https://serverest.dev/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '4'} 
+ body=None 
+ </msg>
+<msg timestamp="20220708 12:32:43.193" level="INFO">POST Response : url=https://serverest.dev/login 
+ status=400, reason=Bad Request 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '45977294-4441-4b2c-bcf2-af25cd608736', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'f80323e3cd31a810168906c478ca5aad', 'Date': 'Fri, 08 Jul 2022 15:32:41 GMT', 'Server': 'Google Frontend', 'Content-Length': '84'} 
+ body={
+    "email": "email é obrigatório",
+    "password": "password é obrigatório"
+} 
+ </msg>
+<msg timestamp="20220708 12:32:43.193" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220708 12:32:43.200" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220708 12:32:42.710" endtime="20220708 12:32:43.201"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220708 12:32:43.203" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220708 12:32:43.201" endtime="20220708 12:32:43.203"/>
+</kw>
+<status status="PASS" starttime="20220708 12:32:42.709" endtime="20220708 12:32:43.204"/>
+</kw>
+<kw name="Validar Status Code &quot;400&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220708 12:32:43.206" endtime="20220708 12:32:43.212"/>
+</kw>
+<status status="PASS" starttime="20220708 12:32:43.206" endtime="20220708 12:32:43.212"/>
+</kw>
+<status status="PASS" starttime="20220708 12:32:42.699" endtime="20220708 12:32:43.214"/>
+</test>
+<test id="s1-t3" name="Cenario: POST Realizar Login com Senha Invalida 400" line="26">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>https://serverest.dev</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220708 12:32:43.223" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220708 12:32:43.223" endtime="20220708 12:32:43.223"/>
+</kw>
+<status status="PASS" starttime="20220708 12:32:43.222" endtime="20220708 12:32:43.223"/>
+</kw>
+<kw name="POST Email &quot;beltrano@qa.com.br&quot; Senha &quot;Invalida&quot;" sourcename="POST Email &quot;${email}&quot; Senha &quot;${senha}&quot;">
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>data=None</arg>
+<arg>json={"email": "${email}", "password": "${senha}"}</arg>
+<arg>expected_status=anything</arg>
+<arg>msg=None</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220708 12:32:43.710" level="INFO">POST Request : url=https://serverest.dev/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '4'} 
+ body=None 
+ </msg>
+<msg timestamp="20220708 12:32:43.710" level="INFO">POST Response : url=https://serverest.dev/login 
+ status=400, reason=Bad Request 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'fdd13cb9-269a-425e-9929-3506a537aad2', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '3a137ac99c10c4d5e87f80997a1621dc', 'Date': 'Fri, 08 Jul 2022 15:32:41 GMT', 'Server': 'Google Frontend', 'Content-Length': '84'} 
+ body={
+    "email": "email é obrigatório",
+    "password": "password é obrigatório"
+} 
+ </msg>
+<msg timestamp="20220708 12:32:43.710" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220708 12:32:43.712" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220708 12:32:43.229" endtime="20220708 12:32:43.712"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220708 12:32:43.714" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220708 12:32:43.713" endtime="20220708 12:32:43.715"/>
+</kw>
+<status status="PASS" starttime="20220708 12:32:43.227" endtime="20220708 12:32:43.715"/>
+</kw>
+<kw name="Validar Status Code &quot;400&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220708 12:32:43.717" endtime="20220708 12:32:43.723"/>
+</kw>
+<status status="PASS" starttime="20220708 12:32:43.717" endtime="20220708 12:32:43.724"/>
+</kw>
+<status status="PASS" starttime="20220708 12:32:43.220" endtime="20220708 12:32:43.727"/>
+</test>
+<doc>Arquivo simples para requisições HTTP em APIs</doc>
+<status status="FAIL" starttime="20220708 12:32:41.801" endtime="20220708 12:32:43.733"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="1" skip="0" id="s1" name="testesLogin">testesLogin</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

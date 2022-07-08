@@ -2,6 +2,13 @@
 # API ServeRest: https://serverest.dev/
 # Existem Test Cases para todos os casos, tanto de sucesso quanto de erro
 
+* Settings *
+Documentation   Arquivo simples para requisições HTTP em APIs
+Library         RequestsLibrary
+
+* Variables *
+
+
 * Test Cases *
 
 Cenário: DELETE Excluir Produto Específico 200
@@ -23,3 +30,4 @@ Cenário: DELETE Acesso Apenas ao Administrador 403
     DELETE Produto com Parametro Administrador
     Validar Status Code "403"
     Validar Mensagem: "Rota exclusiva para administradores"
+
