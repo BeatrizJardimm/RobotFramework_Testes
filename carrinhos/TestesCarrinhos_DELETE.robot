@@ -15,25 +15,25 @@ Cenário: DELETE Excluir Carrinho 200
     Criar Sessao
     DELETE Endpoint "/carrinhos/concluir-compra" Token "Válido"
     Validar Status Code "200"
-#    Validar Mensagem: "Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário"
+    Validar Mensagem: "Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário"
 
 Cenário: DELETE Erro no Token 401
     Criar Sessao
     DELETE Endpoint "/carrinhos/concluir-compra" Token "Inválido"
     Validar Status Code "401"
-#    Validar Mensagem: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
+    Validar Mensagem: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
 Cenário: DELETE Excluir Carrinho e Retornar Produtos ao Estoque 200
     Criar Sessao
     DELETE Endpoint "/carrinhos/cancelar-compra" Token "Válido"
     Validar Status Code "200"
-#    Validar Mensagem: "Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário"
+    Validar Mensagem: "Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário"
 
 Cenário: DELETE Erro no Token 401
     Criar Sessao
     DELETE Endpoint "/carrinhos/cancelar-compra" Token "Expirado"
     Validar Status Code "401"
-#    Validar Mensagem: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
+    Validar Mensagem: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
 * Keywords *
 
@@ -46,3 +46,6 @@ DELETE Endpoint "${endpoint}" Token "${estado}"
 
 Validar Status Code "${statuscode}"
     Should Be True          ${response.status_code} == ${statuscode}
+
+Validar Mensagem: "${mensagem}"
+    Should Match          ${response.json()["message"]}       ${mensagem}

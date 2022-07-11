@@ -1,126 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220708 10:39:32.105" rpa="false" schemaversion="3">
-<suite id="s1" name="TestesUsuarios DELETE" source="C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\usuarios\TestesUsuarios_DELETE.robot">
-<test id="s1-t1" name="Cenário: DELETE Excluir Usuário Existente 200" line="14">
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220711 12:06:52.232" rpa="false" schemaversion="3">
+<suite id="s1" name="TestesUsuarios PUT" source="C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\usuarios\TestesUsuarios_PUT.robot">
+<test id="s1-t1" name="Cenário: PUT Mudar Email de um Usuário para um Existente 400" line="28">
 <kw name="Criar Sessao">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>serverest</arg>
-<arg>https://serverest.dev</arg>
+<arg>http://localhost:3000</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220708 10:39:32.239" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220708 10:39:32.239" endtime="20220708 10:39:32.239"/>
+<msg timestamp="20220711 12:06:52.365" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220711 12:06:52.364" endtime="20220711 12:06:52.365"/>
 </kw>
-<status status="PASS" starttime="20220708 10:39:32.239" endtime="20220708 10:39:32.239"/>
+<status status="PASS" starttime="20220711 12:06:52.364" endtime="20220711 12:06:52.365"/>
 </kw>
-<kw name="DELETE Usuario id &quot;7MeFns1sLIuGyBHA&quot;" sourcename="DELETE Usuario id &quot;${id}&quot;">
-<kw name="DELETE On Session" library="RequestsLibrary">
+<kw name="PUT Editar id &quot;0uxuPY0cbmQhpEz1&quot; com Email Existente" sourcename="PUT Editar id &quot;${id}&quot; com Email Existente">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{payload}</var>
+<arg>nome=Frank Ocean</arg>
+<arg>email=badlands@gmail.com</arg>
+<arg>password=ivy</arg>
+<arg>administrador=true</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220711 12:06:52.366" level="INFO">&amp;{payload} = { nome=Frank Ocean | email=badlands@gmail.com | password=ivy | administrador=true }</msg>
+<status status="PASS" starttime="20220711 12:06:52.366" endtime="20220711 12:06:52.366"/>
+</kw>
+<kw name="PUT On Session" library="RequestsLibrary">
 <var>${response}</var>
 <arg>serverest</arg>
 <arg>/usuarios/${id}</arg>
+<arg>data=&amp;{payload}</arg>
+<arg>json=None</arg>
 <arg>expected_status=anything</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<msg timestamp="20220708 10:39:32.627" level="INFO">DELETE Request : url=https://serverest.dev/usuarios/7MeFns1sLIuGyBHA 
- path_url=/usuarios/7MeFns1sLIuGyBHA 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg timestamp="20220708 10:39:32.627" level="INFO">DELETE Response : url=https://serverest.dev/usuarios/7MeFns1sLIuGyBHA 
- status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '982805c0-3aad-4859-b522-69ad6a3c23a0', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'd700b067a947fb40965e5d73b222a596;o=1', 'Date': 'Fri, 08 Jul 2022 13:39:30 GMT', 'Server': 'Google Frontend', 'Content-Length': '51'} 
- body={
-    "message": "Registro excluído com sucesso"
-} 
- </msg>
-<msg timestamp="20220708 10:39:32.630" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20220708 10:39:32.631" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220708 10:39:32.241" endtime="20220708 10:39:32.631"/>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20220711 12:06:56.482" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F638E344F0&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')': /usuarios/0uxuPY0cbmQhpEz1</msg>
+<msg timestamp="20220711 12:07:00.784" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F638E34760&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')': /usuarios/0uxuPY0cbmQhpEz1</msg>
+<msg timestamp="20220711 12:07:05.268" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F638E348E0&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')': /usuarios/0uxuPY0cbmQhpEz1</msg>
+<msg timestamp="20220711 12:07:09.373" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /usuarios/0uxuPY0cbmQhpEz1 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F638E34AF0&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente'))</msg>
+<status status="FAIL" starttime="20220711 12:06:52.366" endtime="20220711 12:07:09.404"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220711 12:07:09.405" endtime="20220711 12:07:09.406"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220708 10:39:32.634" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220708 10:39:32.632" endtime="20220708 10:39:32.635"/>
+<status status="NOT RUN" starttime="20220711 12:07:09.406" endtime="20220711 12:07:09.406"/>
 </kw>
-<status status="PASS" starttime="20220708 10:39:32.241" endtime="20220708 10:39:32.636"/>
-</kw>
-<kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
-<kw name="Should Be True" library="BuiltIn">
-<arg>${response.status_code} == ${statuscode}</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220708 10:39:32.638" endtime="20220708 10:39:32.643"/>
-</kw>
-<status status="PASS" starttime="20220708 10:39:32.637" endtime="20220708 10:39:32.644"/>
-</kw>
-<status status="PASS" starttime="20220708 10:39:32.238" endtime="20220708 10:39:32.645"/>
-</test>
-<test id="s1-t2" name="Cenário: DELETE Excluir Usuário com Carrinho Cadastrado 400" line="20">
-<kw name="Criar Sessao">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>serverest</arg>
-<arg>https://serverest.dev</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220708 10:39:32.653" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220708 10:39:32.653" endtime="20220708 10:39:32.653"/>
-</kw>
-<status status="PASS" starttime="20220708 10:39:32.651" endtime="20220708 10:39:32.654"/>
-</kw>
-<kw name="DELETE Usuario id &quot;oUb7aGkMtSEPf6BZ&quot;" sourcename="DELETE Usuario id &quot;${id}&quot;">
-<kw name="DELETE On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>serverest</arg>
-<arg>/usuarios/${id}</arg>
-<arg>expected_status=anything</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<msg timestamp="20220708 10:39:33.059" level="INFO">DELETE Request : url=https://serverest.dev/usuarios/oUb7aGkMtSEPf6BZ 
- path_url=/usuarios/oUb7aGkMtSEPf6BZ 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg timestamp="20220708 10:39:33.059" level="INFO">DELETE Response : url=https://serverest.dev/usuarios/oUb7aGkMtSEPf6BZ 
- status=400, reason=Bad Request 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '9509cfaf-b954-49b3-ab13-e804ecee97f1', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'bff7d780fa216a830b515c1e256ec562', 'Date': 'Fri, 08 Jul 2022 13:39:31 GMT', 'Server': 'Google Frontend', 'Content-Length': '117'} 
- body={
-    "message": "Não é permitido excluir usuário com carrinho cadastrado",
-    "idCarrinho": "qbMqntef4iTOwWfg"
-} 
- </msg>
-<msg timestamp="20220708 10:39:33.060" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20220708 10:39:33.060" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20220708 10:39:32.656" endtime="20220708 10:39:33.061"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220708 10:39:33.063" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20220708 10:39:33.061" endtime="20220708 10:39:33.063"/>
-</kw>
-<status status="PASS" starttime="20220708 10:39:32.656" endtime="20220708 10:39:33.064"/>
+<status status="FAIL" starttime="20220711 12:06:52.366" endtime="20220711 12:07:09.407"/>
 </kw>
 <kw name="Validar Status Code &quot;400&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
-<kw name="Should Be True" library="BuiltIn">
-<arg>${response.status_code} == ${statuscode}</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220708 10:39:33.067" endtime="20220708 10:39:33.069"/>
+<status status="NOT RUN" starttime="20220711 12:07:09.409" endtime="20220711 12:07:09.409"/>
 </kw>
-<status status="PASS" starttime="20220708 10:39:33.066" endtime="20220708 10:39:33.069"/>
+<kw name="Validar Mensagem: &quot;Este email já está sendo usado&quot;" sourcename="Validar Mensagem: &quot;${mensagem}&quot;">
+<status status="NOT RUN" starttime="20220711 12:07:09.409" endtime="20220711 12:07:09.410"/>
 </kw>
-<status status="PASS" starttime="20220708 10:39:32.650" endtime="20220708 10:39:33.070"/>
+<tag>PUT400</tag>
+<status status="FAIL" starttime="20220711 12:06:52.363" endtime="20220711 12:07:09.411">ConnectionError: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /usuarios/0uxuPY0cbmQhpEz1 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F638E34AF0&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente'))</status>
 </test>
 <doc>Arquivo simples para requisições HTTP em APIs</doc>
-<status status="PASS" starttime="20220708 10:39:32.107" endtime="20220708 10:39:33.073"/>
+<status status="FAIL" starttime="20220711 12:06:52.235" endtime="20220711 12:07:09.414"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="0" fail="1" skip="0">PUT400</stat>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="TestesUsuarios DELETE">TestesUsuarios DELETE</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="TestesUsuarios PUT">TestesUsuarios PUT</stat>
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20220711 12:06:56.482" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F638E344F0&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')': /usuarios/0uxuPY0cbmQhpEz1</msg>
+<msg timestamp="20220711 12:07:00.784" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F638E34760&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')': /usuarios/0uxuPY0cbmQhpEz1</msg>
+<msg timestamp="20220711 12:07:05.268" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F638E348E0&gt;: Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')': /usuarios/0uxuPY0cbmQhpEz1</msg>
 </errors>
 </robot>

@@ -13,17 +13,27 @@ Library         RequestsLibrary
 
 # passar a id de um usuário que não tem carrinho cadastrado
 Cenário: DELETE Excluir Usuário Existente 200
+    [tags]  	DELETE200.1
     Criar Sessao
-    DELETE Usuario id "7MeFns1sLIuGyBHA" 
+    DELETE Usuario id "vd6VSgZbIJFWtLgp" 
     Validar Status Code "200"
-#    Validar Mensagem: "Registro excluído com sucesso | Nenhum registro excluído"
+    Validar Mensagem: "Registro excluído com sucesso"
+
+# passar a id de um usuário que não existe
+Cenário: DELETE Excluir Usuário Inexistente 200
+    [tags]  	DELETE200.2
+    Criar Sessao
+    DELETE Usuario id "0uxuPY0cbmQhpEz1" 
+    Validar Status Code "200"
+    Validar Mensagem: "Nenhum registro excluído"    
 
 # passar a id de um usuário que tenha carrinho cadastrado
 Cenário: DELETE Excluir Usuário com Carrinho Cadastrado 400
+    [tags]  	DELETE400
     Criar Sessao
     DELETE Usuario id "oUb7aGkMtSEPf6BZ"
     Validar Status Code "400"
-#    Validar Mensagem: "Não é permitido excluir usuário com carrinho cadastrado"
+    Validar Mensagem: "Não é permitido excluir usuário com carrinho cadastrado"
 
 * Keywords *
 Criar Sessao
@@ -35,3 +45,6 @@ DELETE Usuario id "${id}"
 
 Validar Status Code "${statuscode}"
     Should Be True          ${response.status_code} == ${statuscode}
+
+Validar Mensagem: "${mensagem}"
+    Should Match          ${response.json()["message"]}       ${mensagem}
