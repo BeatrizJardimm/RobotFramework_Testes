@@ -2,13 +2,16 @@
 # API ServeRest: https://serverest.dev/
 # Existem Test Cases para todos os casos, tanto de sucesso quanto de erro
 
+# Área para definir as configurações do arquivo
 * Settings *
 Documentation   Arquivo simples para requisições HTTP em APIs
 Library         RequestsLibrary
 
+# Área para setar as váriaveis do projeto
 * Variables *
 
 
+#Área para escrever os casos que serão testados
 * Test Cases *
 
 Cenário: POST Cadastrar Novo Usuario 201
@@ -26,9 +29,10 @@ Cenário: POST Cadastrar Novo Usuário com Email Já Cadastrado 400
     Validar Status Code "400"
     Validar Mensagem: "Este email já está sendo usado"
 
+#Área para desenvolver as keywords utilizadas nos casos de teste
 * Keywords *
 Criar Sessao
-    Create Session          serverest           https://serverest.dev
+    Create Session          serverest           http://localhost:3000
 
 POST Endpoint /usuarios
     &{payload}              Create Dictionary   nome=Lana Del Rey   email=stargirlinterlude@gmail.com   password=ultraviolence     administrador=true

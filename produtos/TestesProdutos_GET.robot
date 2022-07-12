@@ -12,25 +12,28 @@ Library         RequestsLibrary
 * Test Cases *
 
 Cenário: GET Todos os Produtos 200
+    [tags]      GET200.1
     Criar Sessao
     GET Endpoint /produtos
     Validar Status Code "200"
 
 Cenário: GET Produto Específico 200
+    [tags]      GET200.2
     Criar Sessao
     GET Endpoint /produtos id "BeeJh5lz3k6kSIzA"
     Validar Status Code "200"
-#    Validar Mensagem: "Nome - Logitech MX Vertical"
+    Validar Nome: "Logitech MX Vertical"
 
 Cenário: GET Produto Inexistente 400
+    [tags]      GET400
     Criar Sessao
     GET Endpoint /produtos id "Inexistente"
     Validar Status Code "400"
-#    Validar Mensagem: "Produto não encontrado"
+    Validar Mensagem: "Produto não encontrado"
 
 * Keywords *
 Criar Sessao
-    Create Session          serverest       https://serverest.dev
+    Create Session          serverest       http://localhost:3000
 
 GET Endpoint /produtos
     ${response}             GET On Session     serverest       /produtos
@@ -42,3 +45,9 @@ GET Endpoint /produtos id "${id}"
 
 Validar Status Code "${statuscode}"
     Should Be True          ${response.status_code} == ${statuscode}
+
+Validar Nome: "${nome}"
+    Should Match            ${response.json()["nome"]}          ${nome}
+
+Validar Mensagem: "${mensagem}"
+    Should Match             ${response.json()["message"]}       ${mensagem}

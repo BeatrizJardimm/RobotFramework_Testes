@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220712 09:16:19.660" rpa="false" schemaversion="3">
+<suite id="s1" name="TestesUsuarios DELETE" source="C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\usuarios\TestesUsuarios_DELETE.robot">
+<test id="s1-t1" name="Cenário: DELETE Excluir Usuário Existente 200" line="19">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>http://localhost:3000</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220712 09:16:19.839" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220712 09:16:19.839" endtime="20220712 09:16:19.839"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.839" endtime="20220712 09:16:19.839"/>
+</kw>
+<kw name="DELETE Usuario id &quot;0uxuPY0cbmQhpEz1&quot;" sourcename="DELETE Usuario id &quot;${id}&quot;">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/usuarios/${id}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220712 09:16:19.856" level="INFO">DELETE Request : url=http://localhost:3000/usuarios/0uxuPY0cbmQhpEz1 
+ path_url=/usuarios/0uxuPY0cbmQhpEz1 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220712 09:16:19.856" level="INFO">DELETE Response : url=http://localhost:3000/usuarios/0uxuPY0cbmQhpEz1 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '9a07bf56-4708-44af-a6e8-0f8cea44bdc1', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '51', 'Date': 'Tue, 12 Jul 2022 12:16:19 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Registro excluído com sucesso"
+} 
+ </msg>
+<msg timestamp="20220712 09:16:19.857" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 09:16:19.840" endtime="20220712 09:16:19.857"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220712 09:16:19.859" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 09:16:19.857" endtime="20220712 09:16:19.859"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.840" endtime="20220712 09:16:19.859"/>
+</kw>
+<kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220712 09:16:19.861" endtime="20220712 09:16:19.861"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.859" endtime="20220712 09:16:19.861"/>
+</kw>
+<kw name="Validar Mensagem: &quot;Registro excluído com sucesso&quot;" sourcename="Validar Mensagem: &quot;${mensagem}&quot;">
+<kw name="Should Match" library="BuiltIn">
+<arg>${response.json()["message"]}</arg>
+<arg>${mensagem}</arg>
+<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
+<status status="PASS" starttime="20220712 09:16:19.865" endtime="20220712 09:16:19.867"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.864" endtime="20220712 09:16:19.867"/>
+</kw>
+<tag>DELETE200.1</tag>
+<status status="PASS" starttime="20220712 09:16:19.838" endtime="20220712 09:16:19.868"/>
+</test>
+<test id="s1-t2" name="Cenário: DELETE Excluir Usuário Inexistente 200" line="27">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>http://localhost:3000</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220712 09:16:19.872" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220712 09:16:19.871" endtime="20220712 09:16:19.872"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.871" endtime="20220712 09:16:19.873"/>
+</kw>
+<kw name="DELETE Usuario id &quot;5je0IQ0AEwLCgBu7&quot;" sourcename="DELETE Usuario id &quot;${id}&quot;">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/usuarios/${id}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220712 09:16:19.878" level="INFO">DELETE Request : url=http://localhost:3000/usuarios/5je0IQ0AEwLCgBu7 
+ path_url=/usuarios/5je0IQ0AEwLCgBu7 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220712 09:16:19.878" level="INFO">DELETE Response : url=http://localhost:3000/usuarios/5je0IQ0AEwLCgBu7 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '496518c6-d421-4565-9269-6af47a08ee8a', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '46', 'Date': 'Tue, 12 Jul 2022 12:16:19 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Nenhum registro excluído"
+} 
+ </msg>
+<msg timestamp="20220712 09:16:19.878" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 09:16:19.874" endtime="20220712 09:16:19.878"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220712 09:16:19.878" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 09:16:19.878" endtime="20220712 09:16:19.878"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.873" endtime="20220712 09:16:19.878"/>
+</kw>
+<kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220712 09:16:19.886" endtime="20220712 09:16:19.888"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.885" endtime="20220712 09:16:19.888"/>
+</kw>
+<kw name="Validar Mensagem: &quot;Nenhum registro excluído&quot;" sourcename="Validar Mensagem: &quot;${mensagem}&quot;">
+<kw name="Should Match" library="BuiltIn">
+<arg>${response.json()["message"]}</arg>
+<arg>${mensagem}</arg>
+<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
+<status status="PASS" starttime="20220712 09:16:19.890" endtime="20220712 09:16:19.892"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.889" endtime="20220712 09:16:19.892"/>
+</kw>
+<tag>DELETE200.2</tag>
+<status status="PASS" starttime="20220712 09:16:19.870" endtime="20220712 09:16:19.893"/>
+</test>
+<test id="s1-t3" name="Cenário: DELETE Excluir Usuário com Carrinho Cadastrado 400" line="35">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>http://localhost:3000</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220712 09:16:19.898" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220712 09:16:19.898" endtime="20220712 09:16:19.898"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.897" endtime="20220712 09:16:19.898"/>
+</kw>
+<kw name="DELETE Usuario id &quot;oUb7aGkMtSEPf6BZ&quot;" sourcename="DELETE Usuario id &quot;${id}&quot;">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/usuarios/${id}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220712 09:16:19.909" level="INFO">DELETE Request : url=http://localhost:3000/usuarios/oUb7aGkMtSEPf6BZ 
+ path_url=/usuarios/oUb7aGkMtSEPf6BZ 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220712 09:16:19.909" level="INFO">DELETE Response : url=http://localhost:3000/usuarios/oUb7aGkMtSEPf6BZ 
+ status=400, reason=Bad Request 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '971af224-eddc-42e9-be54-5f2616cb16dc', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '117', 'Date': 'Tue, 12 Jul 2022 12:16:19 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Não é permitido excluir usuário com carrinho cadastrado",
+    "idCarrinho": "qbMqntef4iTOwWfg"
+} 
+ </msg>
+<msg timestamp="20220712 09:16:19.909" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220712 09:16:19.900" endtime="20220712 09:16:19.909"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220712 09:16:19.910" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220712 09:16:19.910" endtime="20220712 09:16:19.911"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.900" endtime="20220712 09:16:19.911"/>
+</kw>
+<kw name="Validar Status Code &quot;400&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220712 09:16:19.912" endtime="20220712 09:16:19.912"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.911" endtime="20220712 09:16:19.915"/>
+</kw>
+<kw name="Validar Mensagem: &quot;Não é permitido excluir usuário com carrinho cadastrado&quot;" sourcename="Validar Mensagem: &quot;${mensagem}&quot;">
+<kw name="Should Match" library="BuiltIn">
+<arg>${response.json()["message"]}</arg>
+<arg>${mensagem}</arg>
+<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
+<status status="PASS" starttime="20220712 09:16:19.917" endtime="20220712 09:16:19.918"/>
+</kw>
+<status status="PASS" starttime="20220712 09:16:19.915" endtime="20220712 09:16:19.918"/>
+</kw>
+<tag>DELETE400</tag>
+<status status="PASS" starttime="20220712 09:16:19.895" endtime="20220712 09:16:19.919"/>
+</test>
+<doc>Arquivo simples para requisições HTTP em APIs</doc>
+<status status="PASS" starttime="20220712 09:16:19.663" endtime="20220712 09:16:19.922"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">DELETE200.1</stat>
+<stat pass="1" fail="0" skip="0">DELETE200.2</stat>
+<stat pass="1" fail="0" skip="0">DELETE400</stat>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="TestesUsuarios DELETE">TestesUsuarios DELETE</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -34,7 +34,7 @@ Cenario: POST Realizar Login com Senha Invalida 401
 
 * Keywords *
 Criar Sessao
-    Create Session          serverest       https://serverest.dev
+    Create Session          serverest       http://localhost:3000
 
 POST Email "${email}" Senha "${senha}"
     &{payload}              Create Dictionary     email=${email}     password=${senha}

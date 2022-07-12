@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220708 10:54:55.264" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220712 08:49:39.613" rpa="false" schemaversion="3">
 <suite id="s1" name="TestesProdutos GET" source="C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\produtos\TestesProdutos_GET.robot">
 <test id="s1-t1" name="Cenário: GET Todos os Produtos 200" line="14">
 <kw name="Criar Sessao">
@@ -7,10 +7,10 @@
 <arg>serverest</arg>
 <arg>https://serverest.dev</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220708 10:54:55.398" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220708 10:54:55.398" endtime="20220708 10:54:55.399"/>
+<msg timestamp="20220712 08:49:39.774" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220712 08:49:39.773" endtime="20220712 08:49:39.774"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:55.398" endtime="20220708 10:54:55.399"/>
+<status status="PASS" starttime="20220712 08:49:39.773" endtime="20220712 08:49:39.774"/>
 </kw>
 <kw name="GET Endpoint /produtos">
 <kw name="GET On Session" library="RequestsLibrary">
@@ -18,79 +18,23 @@
 <arg>serverest</arg>
 <arg>/produtos</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20220708 10:54:55.941" level="INFO">GET Request : url=https://serverest.dev/produtos 
+<msg timestamp="20220712 08:49:40.240" level="INFO">GET Request : url=https://serverest.dev/produtos 
  path_url=/produtos 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20220708 10:54:55.941" level="INFO">GET Response : url=https://serverest.dev/produtos 
+<msg timestamp="20220712 08:49:40.240" level="INFO">GET Response : url=https://serverest.dev/produtos 
  status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'a7916f77-c5ed-45d0-a326-7beaf97331d1', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '355c9b3368de2c8345f0dab1bbab4b91;o=1', 'Date': 'Fri, 08 Jul 2022 13:54:54 GMT', 'Server': 'Google Frontend', 'Content-Length': '13447'} 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'a87e4ed7-723c-4605-8b3d-fbb6a8b1b6bf', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '0cb2c1815d6e2af4a92bdf88b2fd4a97', 'Date': 'Tue, 12 Jul 2022 11:49:39 GMT', 'Server': 'Google Frontend', 'Content-Length': '744'} 
  body={
-    "quantidade": 44,
+    "quantidade": 3,
     "produtos": [
         {
-            "nome": "Incredible Granite Soap",
-            "preco": 27407,
+            "nome": "Oriental Bronze Keyboard",
+            "preco": 5655,
             "descricao": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes &amp; sandals",
-            "quantidade": 40783,
-            "_id": "3ocDPM3it00jtMYM"
-        },
-        {
-            "nome": "Handcrafted Soft Soap",
-            "preco": 73012,
-            "descricao": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-            "quantidade": 22685,
-            "_id": "4AM0wdOkoqzUcC4n"
-        },
-        {
-            "nome": "Ergonomic Plastic Fish",
-            "preco": 62529,
-            "descricao": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-            "quantidade": 71338,
-            "_id": "56wWNQPLFGTVZu7C"
-        },
-        {
-            "nome": "Awesome Concrete Ball",
-            "preco": 61083,
-            "descricao": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-            "quantidade": 95463,
-            "_id": "6G8JaMX9fV19tqeN"
-        },
-        {
-            "nome": "Unbranded Bronze Fish",
-            "preco": 80989,
-            "descricao": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-            "quantidade": 88420,
-            "_id": "7WQw1ZSThMeSSq0B"
-        },
-        {
-            "nome": "Awesome Rubber Pants",
-            "preco": 93188,
-            "descricao": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A &amp; J 2016",
-            "quantidade": 65234,
-            "_id": "8rJFjwSMNXSTg3wV"
-        },
-        {
-            "nome": "Licensed Fresh Mouse",
-            "preco": 64224,
-            "descricao": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-            "quantidade": 16611,
-            "_id": "9jQGZgxg28wFzlyz"
-        },
-        {
-            "nome": "Gorgeous Plastic Hat",
-            "preco": 23854,
-            "descricao": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-            "quantidade": 45514,
-            "_id": "9l0TuDpqOWx8icZ1"
-        },
-        {
-            "nome": "Generic Wooden Bacon",
-            "preco": 10429,
-            "descricao": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-            "quantidade": 18070,
-            "_id": "B7v0ph0e2WXWonyb"
+            "quantidade": 4794,
+            "_id": "3SZ9FCrbA3JoeZGW"
         },
         {
             "nome": "Logitech MX Vertical",
@@ -100,190 +44,37 @@
             "_id": "BeeJh5lz3k6kSIzA"
         },
         {
-            "nome": "Tasty Rubber Mouse",
-            "preco": 475,
-            "descricao": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
-            "quantidade": 53215,
-            "_id": "CH3ct4ZC7RTPQWmc"
-        },
-        {
-            "nome": "Electronic Plastic Shirt",
-            "preco": 19712,
-            "descricao": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A &amp; J 2016",
-            "quantidade": 98558,
-            "_id": "DujfchWco6iS6xYH"
-        },
-        {
-            "nome": "Generic Granite Table",
-            "preco": 8788,
-            "descricao": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-            "quantidade": 20525,
-            "_id": "Ee9dqKJR9wsyCCd8"
-        },
-        {
-            "nome": "Luxurious Frozen Table",
-            "preco": 41322,
-            "descricao": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-            "quantidade": 79694,
-            "_id": "FeR1AG1y20Fkyol6"
-        },
-        {
-            "nome": "Handcrafted Metal Bike",
-            "preco": 23227,
-            "descricao": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes &amp; sandals",
-            "quantidade": 80488,
-            "_id": "FkewlMgh1VfwXADU"
-        },
-        {
-            "nome": "Tasty Wooden Car",
-            "preco": 43660,
-            "descricao": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
-            "quantidade": 7164,
-            "_id": "GTpmqNjeqhKDq41c"
-        },
-        {
             "nome": "Samsung 60 polegadas",
             "preco": 5240,
             "descricao": "TV",
             "quantidade": 49977,
             "_id": "K6leHdftCeOJj8BJ"
-        },
-        {
-            "nome": "Unbranded Frozen Keyboard",
-            "preco": 87503,
-            "descricao": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
-            "quantidade": 98357,
-            "_id": "LbfKD2fArVrJH5sT"
-        },
-        {
-            "nome": "Modern Bronze Chair",
-            "preco": 87772,
-            "descricao": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes &amp; sandals",
-            "quantidade": 57246,
-            "_id": "MHIjpFOWeilMqIrg"
-        },
-        {
-            "nome": "Unbranded Wooden Bike",
-            "preco": 635,
-            "descricao": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
-            "quantidade": 38534,
-            "_id": "PlT2mVCe99R8S3hK"
-        },
-        {
-            "nome": "Bespoke Soft Pizza",
-            "preco": 1907,
-            "descricao": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-            "quantidade": 34657,
-            "_id": "PujZeNAZOCoKhv4C"
-        },
-        {
-            "nome": "Unbranded Granite Pants",
-            "preco": 72048,
-            "descricao": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-            "quantidade": 11741,
-            "_id": "QVXUHyutEyoiiNDk"
-        },
-        {
-            "nome": "Rustic Rubber Ball",
-            "preco": 65762,
-            "descricao": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-            "quantidade": 79891,
-            "_id": "V0Z8Z8wgFjHSzNcw"
-        },
-        {
-            "nome": "Refined Metal Shirt",
-            "preco": 88276,
-            "descricao": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A &amp; J 2016",
-            "quantidade": 56010,
-            "_id": "V8c6hA3q7JRmzkQS"
-        },
-        {
-            "nome": "Sleek Rubber Soap",
-            "preco": 60785,
-            "descricao": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A &amp; J 2016",
-            "quantidade": 58516,
-            "_id": "agR7FrZES7jpnWiF"
-        },
-        {
-            "nome": "Electronic Steel Table",
-            "preco": 69380,
-            "descricao": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-            "quantidade": 27944,
-            "_id": "apRIIF12a7CiFoVu"
-        },
-        {
-            "nome": "Gorgeous Plastic Shirt",
-            "preco": 66070,
-            "descricao": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-            "quantidade": 16144,
-            "_id": "e74Mk4Ipk5DdZG46"
-        },
-        {
-            "nome": "Licensed Cotton Gloves",
-            "preco": 150,
-            "descricao": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-            "quantidade": 1,
-            "imagem": "C:\\fakepath\\miamiGuardHouse.png",
-            "_id": "fngJ303klq7H62JR"
-        },
-        {
-            "nome": "Modern Granite Chicken",
-            "preco": 56510,
-            "descricao": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-            "quantidade": 39640,
-            "_id": "fpKnN85GsqIHd1zv"
-        },
-        {
-            "nome": "Generic Steel Chicken",
-            "preco": 85114,
-            "descricao": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-            "quantidade": 77028,
-            "_id": "gfwONsXLDtVNpUVm"
-        },
-        {
-            "nome": "Refined Frozen Bike",
-            "preco": 91549,
-            "descricao": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-            "quantidade": 9641,
-            "_id": "j6DcTFOcEOBW6rtZ"
-        },
-        {
-            "nome": "Awesome Granite Cheese",
-            "preco": 58558,
-            "descricao": "The Football Is Good For Training And Recreational Purposes",
-            "quantidade": 31738,
-            "_id": "kPMZJ868RsoJtDaO"
-        },
-        {
-            "nome": "Handmade Plastic Bacon",
-            "preco": 64913,
-            "descricao": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-            "quantidade": 10880,
-            "_id": "ktopiwhpy7CpIKJq"
-        },... (set the log level to DEBUG or TRACE to see the full content) 
+        }
+    ]
+} 
  </msg>
-<msg timestamp="20220708 10:54:55.943" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+<msg timestamp="20220712 08:49:40.240" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20220708 10:54:55.944" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220708 10:54:55.400" endtime="20220708 10:54:55.945"/>
+<msg timestamp="20220712 08:49:40.243" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 08:49:39.775" endtime="20220712 08:49:40.243"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220708 10:54:55.948" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220708 10:54:55.945" endtime="20220708 10:54:55.948"/>
+<msg timestamp="20220712 08:49:40.246" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 08:49:40.244" endtime="20220712 08:49:40.247"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:55.400" endtime="20220708 10:54:55.949"/>
+<status status="PASS" starttime="20220712 08:49:39.775" endtime="20220712 08:49:40.247"/>
 </kw>
 <kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
 <kw name="Should Be True" library="BuiltIn">
 <arg>${response.status_code} == ${statuscode}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220708 10:54:55.951" endtime="20220708 10:54:55.954"/>
+<status status="PASS" starttime="20220712 08:49:40.251" endtime="20220712 08:49:40.252"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:55.950" endtime="20220708 10:54:55.954"/>
+<status status="PASS" starttime="20220712 08:49:40.249" endtime="20220712 08:49:40.252"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:55.397" endtime="20220708 10:54:55.955"/>
+<status status="PASS" starttime="20220712 08:49:39.772" endtime="20220712 08:49:40.258"/>
 </test>
 <test id="s1-t2" name="Cenário: GET Produto Específico 200" line="19">
 <kw name="Criar Sessao">
@@ -291,10 +82,10 @@
 <arg>serverest</arg>
 <arg>https://serverest.dev</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220708 10:54:55.961" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220708 10:54:55.960" endtime="20220708 10:54:55.961"/>
+<msg timestamp="20220712 08:49:40.264" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220712 08:49:40.264" endtime="20220712 08:49:40.266"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:55.960" endtime="20220708 10:54:55.961"/>
+<status status="PASS" starttime="20220712 08:49:40.264" endtime="20220712 08:49:40.266"/>
 </kw>
 <kw name="GET Endpoint /produtos id &quot;BeeJh5lz3k6kSIzA&quot;" sourcename="GET Endpoint /produtos id &quot;${id}&quot;">
 <kw name="GET On Session" library="RequestsLibrary">
@@ -303,14 +94,14 @@
 <arg>/produtos/${id}</arg>
 <arg>expected_status=anything</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20220708 10:54:56.346" level="INFO">GET Request : url=https://serverest.dev/produtos/BeeJh5lz3k6kSIzA 
+<msg timestamp="20220712 08:49:40.754" level="INFO">GET Request : url=https://serverest.dev/produtos/BeeJh5lz3k6kSIzA 
  path_url=/produtos/BeeJh5lz3k6kSIzA 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20220708 10:54:56.346" level="INFO">GET Response : url=https://serverest.dev/produtos/BeeJh5lz3k6kSIzA 
+<msg timestamp="20220712 08:49:40.755" level="INFO">GET Response : url=https://serverest.dev/produtos/BeeJh5lz3k6kSIzA 
  status=200, reason=OK 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'f6d05cb7-e68a-4136-aaab-1fb4a1082f57', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'fa4043ba16e8eb993281ddfb81db814e', 'Date': 'Fri, 08 Jul 2022 13:54:54 GMT', 'Server': 'Google Frontend', 'Content-Length': '136'} 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '5220019c-c48b-4ed4-ab63-7f739364da8d', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'd0d58d2f252fa9561cbfbb605caced0a', 'Date': 'Tue, 12 Jul 2022 11:49:40 GMT', 'Server': 'Google Frontend', 'Content-Length': '136'} 
  body={
     "nome": "Logitech MX Vertical",
     "preco": 470,
@@ -319,28 +110,37 @@
     "_id": "BeeJh5lz3k6kSIzA"
 } 
  </msg>
-<msg timestamp="20220708 10:54:56.347" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+<msg timestamp="20220712 08:49:40.755" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20220708 10:54:56.348" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220708 10:54:55.963" endtime="20220708 10:54:56.349"/>
+<msg timestamp="20220712 08:49:40.756" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 08:49:40.268" endtime="20220712 08:49:40.756"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220708 10:54:56.350" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220708 10:54:56.349" endtime="20220708 10:54:56.350"/>
+<msg timestamp="20220712 08:49:40.758" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 08:49:40.757" endtime="20220712 08:49:40.758"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:55.962" endtime="20220708 10:54:56.351"/>
+<status status="PASS" starttime="20220712 08:49:40.267" endtime="20220712 08:49:40.759"/>
 </kw>
 <kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
 <kw name="Should Be True" library="BuiltIn">
 <arg>${response.status_code} == ${statuscode}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220708 10:54:56.354" endtime="20220708 10:54:56.359"/>
+<status status="PASS" starttime="20220712 08:49:40.762" endtime="20220712 08:49:40.767"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:56.353" endtime="20220708 10:54:56.360"/>
+<status status="PASS" starttime="20220712 08:49:40.760" endtime="20220712 08:49:40.768"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:55.959" endtime="20220708 10:54:56.362"/>
+<kw name="Validar Nome: &quot;Logitech MX Vertical&quot;" sourcename="Validar Nome: &quot;${nome}&quot;">
+<kw name="Should Match" library="BuiltIn">
+<arg>${response.json()["nome"]}</arg>
+<arg>${nome}</arg>
+<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
+<status status="PASS" starttime="20220712 08:49:40.771" endtime="20220712 08:49:40.772"/>
+</kw>
+<status status="PASS" starttime="20220712 08:49:40.770" endtime="20220712 08:49:40.772"/>
+</kw>
+<status status="PASS" starttime="20220712 08:49:40.263" endtime="20220712 08:49:40.777"/>
 </test>
 <test id="s1-t3" name="Cenário: GET Produto Inexistente 400" line="25">
 <kw name="Criar Sessao">
@@ -348,10 +148,10 @@
 <arg>serverest</arg>
 <arg>https://serverest.dev</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220708 10:54:56.368" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220708 10:54:56.368" endtime="20220708 10:54:56.369"/>
+<msg timestamp="20220712 08:49:40.787" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220712 08:49:40.786" endtime="20220712 08:49:40.787"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:56.367" endtime="20220708 10:54:56.369"/>
+<status status="PASS" starttime="20220712 08:49:40.784" endtime="20220712 08:49:40.788"/>
 </kw>
 <kw name="GET Endpoint /produtos id &quot;Inexistente&quot;" sourcename="GET Endpoint /produtos id &quot;${id}&quot;">
 <kw name="GET On Session" library="RequestsLibrary">
@@ -360,43 +160,52 @@
 <arg>/produtos/${id}</arg>
 <arg>expected_status=anything</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20220708 10:54:56.781" level="INFO">GET Request : url=https://serverest.dev/produtos/Inexistente 
+<msg timestamp="20220712 08:49:41.261" level="INFO">GET Request : url=https://serverest.dev/produtos/Inexistente 
  path_url=/produtos/Inexistente 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20220708 10:54:56.781" level="INFO">GET Response : url=https://serverest.dev/produtos/Inexistente 
+<msg timestamp="20220712 08:49:41.261" level="INFO">GET Response : url=https://serverest.dev/produtos/Inexistente 
  status=400, reason=Bad Request 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '3bf71ad0-61b1-4dad-b128-e4ee27bc5330', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'd652cbc948ccf98af888fa993a88725b', 'Date': 'Fri, 08 Jul 2022 13:54:54 GMT', 'Server': 'Google Frontend', 'Content-Length': '44'} 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '86c535aa-1cf7-46ac-b206-ec838bd826d4', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'd58164dfcc06a8e52cd00dc55f7ff26b', 'Date': 'Tue, 12 Jul 2022 11:49:40 GMT', 'Server': 'Google Frontend', 'Content-Length': '44'} 
  body={
     "message": "Produto não encontrado"
 } 
  </msg>
-<msg timestamp="20220708 10:54:56.782" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+<msg timestamp="20220712 08:49:41.261" level="INFO">C:\Users\Usuario\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20220708 10:54:56.784" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20220708 10:54:56.373" endtime="20220708 10:54:56.784"/>
+<msg timestamp="20220712 08:49:41.261" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220712 08:49:40.791" endtime="20220712 08:49:41.265"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220708 10:54:56.786" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20220708 10:54:56.785" endtime="20220708 10:54:56.786"/>
+<msg timestamp="20220712 08:49:41.265" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220712 08:49:41.265" endtime="20220712 08:49:41.265"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:56.372" endtime="20220708 10:54:56.787"/>
+<status status="PASS" starttime="20220712 08:49:40.790" endtime="20220712 08:49:41.266"/>
 </kw>
 <kw name="Validar Status Code &quot;400&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
 <kw name="Should Be True" library="BuiltIn">
 <arg>${response.status_code} == ${statuscode}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220708 10:54:56.789" endtime="20220708 10:54:56.795"/>
+<status status="PASS" starttime="20220712 08:49:41.268" endtime="20220712 08:49:41.269"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:56.788" endtime="20220708 10:54:56.795"/>
+<status status="PASS" starttime="20220712 08:49:41.268" endtime="20220712 08:49:41.270"/>
 </kw>
-<status status="PASS" starttime="20220708 10:54:56.366" endtime="20220708 10:54:56.797"/>
+<kw name="Validar Mensagem: &quot;Produto não encontrado&quot;" sourcename="Validar Mensagem: &quot;${mensagem}&quot;">
+<kw name="Should Match" library="BuiltIn">
+<arg>${response.json()["message"]}</arg>
+<arg>${mensagem}</arg>
+<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
+<status status="PASS" starttime="20220712 08:49:41.271" endtime="20220712 08:49:41.272"/>
+</kw>
+<status status="PASS" starttime="20220712 08:49:41.271" endtime="20220712 08:49:41.272"/>
+</kw>
+<status status="PASS" starttime="20220712 08:49:40.783" endtime="20220712 08:49:41.272"/>
 </test>
 <doc>Arquivo simples para requisições HTTP em APIs</doc>
-<status status="PASS" starttime="20220708 10:54:55.267" endtime="20220708 10:54:56.804"/>
+<status status="PASS" starttime="20220712 08:49:39.618" endtime="20220712 08:49:41.274"/>
 </suite>
 <statistics>
 <total>

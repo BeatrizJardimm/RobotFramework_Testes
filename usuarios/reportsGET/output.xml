@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220712 09:14:28.634" rpa="false" schemaversion="3">
+<suite id="s1" name="TestesUsuarios GET" source="C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\usuarios\TestesUsuarios_GET.robot">
+<test id="s1-t1" name="Cenário: GET Todos os Usuários 200" line="18">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>http://localhost:3000</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220712 09:14:28.827" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220712 09:14:28.827" endtime="20220712 09:14:28.828"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.827" endtime="20220712 09:14:28.828"/>
+</kw>
+<kw name="GET Endpoint /usuarios">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/usuarios</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20220712 09:14:28.839" level="INFO">GET Request : url=http://localhost:3000/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220712 09:14:28.839" level="INFO">GET Response : url=http://localhost:3000/usuarios 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'bf50f37d-a1cc-4105-9f28-dda9dec6eb53', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '253', 'Date': 'Tue, 12 Jul 2022 12:14:28 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "quantidade": 1,
+    "usuarios": [
+        {
+            "nome": "Fulano da Silva",
+            "email": "fulano@qa.com",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "0uxuPY0cbmQhpEz1"
+        }
+    ]
+} 
+ </msg>
+<msg timestamp="20220712 09:14:28.840" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 09:14:28.829" endtime="20220712 09:14:28.840"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220712 09:14:28.840" endtime="20220712 09:14:28.842"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220712 09:14:28.843" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 09:14:28.843" endtime="20220712 09:14:28.843"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.829" endtime="20220712 09:14:28.843"/>
+</kw>
+<kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220712 09:14:28.844" endtime="20220712 09:14:28.845"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.844" endtime="20220712 09:14:28.846"/>
+</kw>
+<kw name="Validar Quantidade ${1}" sourcename="Validar Quantidade ${qnt}">
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${response.json()["quantidade"]}</arg>
+<arg>${qnt}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220712 09:14:28.847" endtime="20220712 09:14:28.848"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.846" endtime="20220712 09:14:28.848"/>
+</kw>
+<tag>GET200.1</tag>
+<status status="PASS" starttime="20220712 09:14:28.826" endtime="20220712 09:14:28.849"/>
+</test>
+<test id="s1-t2" name="Cenário: GET Usuário Específico 200" line="25">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>http://localhost:3000</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220712 09:14:28.853" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220712 09:14:28.853" endtime="20220712 09:14:28.853"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.851" endtime="20220712 09:14:28.853"/>
+</kw>
+<kw name="GET Endpoint /usuarios id &quot;0uxuPY0cbmQhpEz1&quot;" sourcename="GET Endpoint /usuarios id &quot;${id}&quot;">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/usuarios/${id}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20220712 09:14:28.862" level="INFO">GET Request : url=http://localhost:3000/usuarios/0uxuPY0cbmQhpEz1 
+ path_url=/usuarios/0uxuPY0cbmQhpEz1 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220712 09:14:28.863" level="INFO">GET Response : url=http://localhost:3000/usuarios/0uxuPY0cbmQhpEz1 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '1ae718a9-e417-4560-92d7-50c264b93744', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '148', 'Date': 'Tue, 12 Jul 2022 12:14:28 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "nome": "Fulano da Silva",
+    "email": "fulano@qa.com",
+    "password": "teste",
+    "administrador": "true",
+    "_id": "0uxuPY0cbmQhpEz1"
+} 
+ </msg>
+<msg timestamp="20220712 09:14:28.863" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 09:14:28.854" endtime="20220712 09:14:28.863"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220712 09:14:28.863" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220712 09:14:28.863" endtime="20220712 09:14:28.863"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.854" endtime="20220712 09:14:28.864"/>
+</kw>
+<kw name="Validar Status Code &quot;200&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220712 09:14:28.864" endtime="20220712 09:14:28.865"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.864" endtime="20220712 09:14:28.865"/>
+</kw>
+<kw name="Validar Nome: &quot;Fulano da Silva&quot;" sourcename="Validar Nome: &quot;${nome}&quot;">
+<kw name="Should Match" library="BuiltIn">
+<arg>${response.json()["nome"]}</arg>
+<arg>${nome}</arg>
+<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
+<status status="PASS" starttime="20220712 09:14:28.866" endtime="20220712 09:14:28.867"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.866" endtime="20220712 09:14:28.867"/>
+</kw>
+<tag>GET200.2</tag>
+<status status="PASS" starttime="20220712 09:14:28.851" endtime="20220712 09:14:28.868"/>
+</test>
+<test id="s1-t3" name="Cenário: GET Usuário Inexistente 400" line="32">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>http://localhost:3000</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220712 09:14:28.872" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220712 09:14:28.872" endtime="20220712 09:14:28.872"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.871" endtime="20220712 09:14:28.872"/>
+</kw>
+<kw name="GET Endpoint /usuarios id &quot;Inexistente&quot;" sourcename="GET Endpoint /usuarios id &quot;${id}&quot;">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/usuarios/${id}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20220712 09:14:28.878" level="INFO">GET Request : url=http://localhost:3000/usuarios/Inexistente 
+ path_url=/usuarios/Inexistente 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220712 09:14:28.878" level="INFO">GET Response : url=http://localhost:3000/usuarios/Inexistente 
+ status=400, reason=Bad Request 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '4515cda8-fdb1-4c29-ab86-1ee46f376da9', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '45', 'Date': 'Tue, 12 Jul 2022 12:14:28 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Usuário não encontrado"
+} 
+ </msg>
+<msg timestamp="20220712 09:14:28.878" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220712 09:14:28.872" endtime="20220712 09:14:28.878"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220712 09:14:28.878" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220712 09:14:28.878" endtime="20220712 09:14:28.878"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.872" endtime="20220712 09:14:28.878"/>
+</kw>
+<kw name="Validar Status Code &quot;400&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220712 09:14:28.881" endtime="20220712 09:14:28.882"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.881" endtime="20220712 09:14:28.882"/>
+</kw>
+<kw name="Validar Mensagem: &quot;Usuário não encontrado&quot;" sourcename="Validar Mensagem: &quot;${mensagem}&quot;">
+<kw name="Should Match" library="BuiltIn">
+<arg>${response.json()["message"]}</arg>
+<arg>${mensagem}</arg>
+<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
+<status status="PASS" starttime="20220712 09:14:28.883" endtime="20220712 09:14:28.884"/>
+</kw>
+<status status="PASS" starttime="20220712 09:14:28.883" endtime="20220712 09:14:28.884"/>
+</kw>
+<tag>GET400</tag>
+<status status="PASS" starttime="20220712 09:14:28.870" endtime="20220712 09:14:28.885"/>
+</test>
+<doc>Arquivo simples para requisições HTTP em APIs</doc>
+<status status="PASS" starttime="20220712 09:14:28.638" endtime="20220712 09:14:28.886"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">GET200.1</stat>
+<stat pass="1" fail="0" skip="0">GET200.2</stat>
+<stat pass="1" fail="0" skip="0">GET400</stat>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="TestesUsuarios GET">TestesUsuarios GET</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
