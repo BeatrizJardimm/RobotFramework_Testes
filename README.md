@@ -40,14 +40,18 @@ Agora você tem uma cópia dos exercícios em sua máquina! :)
 ## Como rodar o projeto
 
 Primeiramente, abra o Prompt de Comando de seu computador e rode o código <code>npx serverest</code> para alocar a API trabalhada nesse projeto em sua máquina local.
+<br>
 Quando você rodar esse código pela primeira vez, a API Serverest será instalada, porém você PRECISA rodar esse comando toda vez que for realizar algum teste, pois é a partir dela que a API é inicializada. Os testes não irão funcionar se esse comando não for rodado. Além disso, esse prompt deve permanecer aberto durante o tempo de execução dos testes.
+<br>
 O console deve ficar parecido com o da imagem abaixo:
 
 <img src="midia/promptServerest.jpeg">
 
 
-Depois disso, em outro Prompt de Comando, entre com o caminho para o arquivo de teste que você deseja rodar e, quando esse caminho estiver correto, para rodar o arquivo, você deve entrar com 
+Depois disso, em outro Prompt de Comando, entre com o caminho para o arquivo de teste que você deseja rodar e, quando esse caminho estiver correto, para rodar o arquivo, você deve entrar com
+<br>
 <code>robot -d ./reports nome_arquivo.robot</code>
+<br>
 Para exemplificar, abaixo temos uma imagem do console com o comando para rodar os testes das requisições GET do endpoint /usuarios
 
 <img src="midia/exemploGet.jpeg">
@@ -57,6 +61,7 @@ Além disso, caso você queira rodar apenas um caso de teste específico, sem pr
 <img src="midia/exemploTag.jpeg">
 
 Neste caso, o comando que você deve digitar em seu console é
+<br>
 <code>robot -d ./reportsGET -i GET200.1 TestesUsuarios_GET.robot</code>
 
 A partir disso, você pode realizar testes em qualquer endpoint para o tipo de requisição de sua escolha!
