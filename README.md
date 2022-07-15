@@ -30,6 +30,7 @@ Para obter uma cópia desse projeto em sua máquina local, siga os passos abaixo
 
 <code>
 $ git clone https://github.com/BeatrizJardimm/RoboTron_Beatriz_Jardim_Projeto_Final.git
+
 </code>
 
 Agora você tem uma cópia dos exercícios em sua máquina! :)
@@ -38,29 +39,31 @@ Agora você tem uma cópia dos exercícios em sua máquina! :)
 
 ## Como rodar o projeto
 
-1. Primeiramente, abra o Prompt de Comando de seu computador e rode o código <code> npx serverest </code> para alocar a API trabalhada nesse projeto em sua máquina local.
+Primeiramente, abra o Prompt de Comando de seu computador e rode o código <code>npx serverest</code> para alocar a API trabalhada nesse projeto em sua máquina local.
 Quando você rodar esse código pela primeira vez, a API Serverest será instalada, porém você PRECISA rodar esse comando toda vez que for realizar algum teste, pois é a partir dela que a API é inicializada. Os testes não irão funcionar se esse comando não for rodado. Além disso, esse prompt deve permanecer aberto durante o tempo de execução dos testes.
 O console deve ficar parecido com o da imagem abaixo:
 
 <img src="midia/promptServerest.jpeg">
 
 
-2. Depois disso, em outro Prompt de Comando, entre com o caminho para o arquivo de teste que você deseja rodar e, quando esse caminho estiver correto, para rodar o arquivo, você deve entrar com <code> robot -d ./reports nome_arquivo.robot </code>
+Depois disso, em outro Prompt de Comando, entre com o caminho para o arquivo de teste que você deseja rodar e, quando esse caminho estiver correto, para rodar o arquivo, você deve entrar com 
+<code>robot -d ./reports nome_arquivo.robot</code>
 Para exemplificar, abaixo temos uma imagem do console com o comando para rodar os testes das requisições GET do endpoint /usuarios
 
 <img src="midia/exemploGet.jpeg">
 
-Além disso, caso você queira rodar apenas um caso de teste específico, sem precisar rodar todos os Test Cases do arquivo, você pode digitar <code> robot -d ./reports -i tag nome_arquivo.robot </code> no seu console, onde "tag" deve ser substituido pela tag do Test Case que você deseja rodar. As tags de um Test Case podem ser encontradas na primeira linha deste, como no exemplo abaixo:
+Além disso, caso você queira rodar apenas um caso de teste específico, sem precisar rodar todos os Test Cases do arquivo, você pode digitar <code>robot -d ./reports -i tag nome_arquivo.robot</code> no seu console, onde "tag" deve ser substituido pela tag do Test Case que você deseja rodar. As tags de um Test Case podem ser encontradas na primeira linha deste, como no exemplo abaixo:
 
 <img src="midia/exemploTag.jpeg">
 
-Neste caso, o comando que você deve digitar em seu console é <code>robot -d ./reportsGET -i GET200.1 TestesUsuarios_GET.robot </code>
+Neste caso, o comando que você deve digitar em seu console é
+<code>robot -d ./reportsGET -i GET200.1 TestesUsuarios_GET.robot</code>
 
 A partir disso, você pode realizar testes em qualquer endpoint para o tipo de requisição de sua escolha!
 
-## Notas
+## Nota
 
-* O erro 403 ('rota exclusiva para administradores') é o mesmo para todas as rotas onde esse erro é possível, então ele está sendo testado apenas uma vez, [nesse arquivo](produtos/TestesProdutos_DELETE.robot)
+O erro 403 ('rota exclusiva para administradores') é o mesmo para todas as rotas onde esse erro é possível, então ele está sendo testado apenas uma vez, [nesse arquivo](produtos/TestesProdutos_DELETE.robot)
 
 ## Autora
 
