@@ -3,7 +3,7 @@
 # Existem Test Cases para todos os casos, tanto de sucesso quanto de erro
 
 * Settings *
-Documentation   Arquivo simples para requisições POST no Endpoint /login
+Documentation   Arquivo simples para os Test Cases de requisições POST no Endpoint /login
 Library         RequestsLibrary
 Resource        ../common.robot
 Resource        ./keywordsLogin.robot

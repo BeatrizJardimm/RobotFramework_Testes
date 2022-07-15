@@ -4,7 +4,7 @@
 
 # Área para definir as configurações do arquivo
 * Settings *
-Documentation   Arquivo simples para requisições HTTP em APIs
+Documentation   Arquivo simples para requisições POST no Endpoint /carrinhos
 Library         RequestsLibrary
 Resource        ../common.robot
 Resource        ../login/keywordsLogin.robot
@@ -38,36 +38,36 @@ Cenário: POST Erro no Token 401
 * Keywords *
 
 Criar Carrinho Estatico Valido
-    ${json}                 Importar JSON Estatico      json_carrinhos_ex.json
-    ${payload}              Set Variable                ${json["carrinho1"]}
-    Set Global Variable     ${payload}
+    ${json}                     Importar JSON Estatico      json_carrinhos_ex.json
+    ${payload}                  Set Variable                ${json["carrinho1"]}
+    Set Global Variable         ${payload}
     POST Endpoint /carrinhos
 
 Criar Outro Carrinho Estatico Valido Para o Mesmo Usuario
-    ${json}                 Importar JSON Estatico      json_carrinhos_ex.json
-    ${payload}              Set Variable                ${json["carrinho2"]}
-    Set Global Variable     ${payload}
+    ${json}                     Importar JSON Estatico      json_carrinhos_ex.json
+    ${payload}                  Set Variable                ${json["carrinho2"]}
+    Set Global Variable         ${payload}
     POST Outro Carrinho para Mesmo Usuario
 
 Criar Carrinho para Token Inválido
-    ${json}                 Importar JSON Estatico      json_carrinhos_ex.json
-    ${payload}              Set Variable                ${json["carrinho2"]}
-    Set Global Variable     ${payload}
+    ${json}                     Importar JSON Estatico      json_carrinhos_ex.json
+    ${payload}                  Set Variable                ${json["carrinho2"]}
+    Set Global Variable         ${payload}
     POST Carrinho Sem Token
 
 POST Endpoint /carrinhos
-    ${header}                   Create Dictionary   Authorization=${token_auth}
-    ${response}                 POST On Session     serverest       /carrinhos        json=${payload}   expected_status=anything    headers=${header}
+    ${header}                   Create Dictionary       Authorization=${token_auth}
+    ${response}                 POST On Session         serverest       /carrinhos        json=${payload}   expected_status=anything    headers=${header}
     Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
 POST Outro Carrinho para Mesmo Usuario
-    ${header}                   Create Dictionary   Authorization=${token_auth}
-    ${response}                 POST On Session     serverest       /carrinhos      json=${payload}      expected_status=anything    headers=${header}
+    ${header}                   Create Dictionary       Authorization=${token_auth}
+    ${response}                 POST On Session         serverest       /carrinhos      json=${payload}      expected_status=anything    headers=${header}
     Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
 POST Carrinho Sem Token
-    ${response}                 POST On Session       serverest       /carrinhos        json=${payload}      expected_status=anything
+    ${response}                 POST On Session         serverest       /carrinhos        json=${payload}      expected_status=anything
     Printar Conteudo Response   ${response}
     Set Global Variable         ${response}

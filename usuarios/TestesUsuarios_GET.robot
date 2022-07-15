@@ -17,14 +17,14 @@ Cenário: GET Todos os Usuários 200
     Criar Sessao
     GET Endpoint /usuarios
     Validar Status Code "200"
-    Validar Quantidade ${3}
+    Validar Quantidade ${4}
 
 Cenário: GET Usuário Específico 200
     [tags]      GET200.2
     Criar Sessao
-    GET Endpoint /usuarios id "0uxuPY0cbmQhpEz1"
+    GET Endpoint /usuarios id "CNR4yVgA8tQfkvqv"
     Validar Status Code "200"
-    Validar Nome: "Fulano da Silva"
+    Validar Nome: "Taylor Swift"
 
 Cenário: GET Usuário Inexistente 400
     [tags]      GET400
@@ -37,10 +37,14 @@ Cenário: GET Usuário Inexistente 400
 * Keywords *
 
 GET Endpoint /usuarios
-    ${response}             GET On Session     serverest       /usuarios
-    Printar Conteudo Response    ${response}
-    Set Global Variable     ${response}
+    ${response}                     GET On Session     serverest       /usuarios
+    Printar Conteudo Response       ${response}
+    Set Global Variable             ${response}
 
 GET Endpoint /usuarios id "${id}"
-    ${response}             GET On Session     serverest       /usuarios/${id}      expected_status=anything
-    Set Global Variable     ${response}
+    ${response}                     GET On Session     serverest       /usuarios/${id}      expected_status=anything
+    Printar Conteudo Response       ${response}
+    Set Global Variable             ${response}
+
+Validar Quantidade ${qnt}
+    Should Be Equal                 ${response.json()["quantidade"]}    ${qnt}

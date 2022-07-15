@@ -4,7 +4,7 @@
 
 # Área para definir as configurações do arquivo
 * Settings *
-Documentation   Arquivo simples para requisições HTTP em APIs
+Documentation   Arquivo simples para requisições DELETE no Endpoint /carrinhos
 Library         RequestsLibrary
 Resource        ../common.robot
 Resource        ../login/keywordsLogin.robot
@@ -20,7 +20,7 @@ Cenário: DELETE Excluir Carrinho 200
     Validar Status Code "200"
     Validar Mensagem: "Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário"
 
-Cenário: DELETE Erro no Token 401
+Cenário: DELETE Concluir Compra com Erro no Token 401
     [tags]      DELETE401.1
     Criar Sessao
     DELETE Endpoint "/carrinhos/concluir-compra" Sem Token
@@ -35,7 +35,7 @@ Cenário: DELETE Excluir Carrinho e Retornar Produtos ao Estoque 200
     Validar Status Code "200"
     Validar Mensagem: "Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário"
 
-Cenário: DELETE Erro no Token 401
+Cenário: DELETE Cancelar Compra com Erro no Token 401
     [tags]      DELETE401.2
     Criar Sessao
     DELETE Endpoint "/carrinhos/cancelar-compra" Sem Token
@@ -47,12 +47,12 @@ Cenário: DELETE Erro no Token 401
 * Keywords *
 
 DELETE Endpoint "${endpoint}"
-    ${header}               Create Dictionary   Authorization=${token_auth}
-    ${response}             DELETE On Session       serverest       ${endpoint}     expected_status=anything    headers=${header}
-    Printar Conteudo Response  ${response}
-    Set Global Variable     ${response}
+    ${header}                   Create Dictionary       Authorization=${token_auth}
+    ${response}                 DELETE On Session       serverest       ${endpoint}     expected_status=anything    headers=${header}
+    Printar Conteudo Response   ${response}
+    Set Global Variable         ${response}
 
 DELETE Endpoint "${endpoint}" Sem Token
-    ${response}             DELETE On Session     serverest       ${endpoint}      expected_status=anything
-    Printar Conteudo Response  ${response}
-    Set Global Variable     ${response}
+    ${response}                 DELETE On Session       serverest       ${endpoint}      expected_status=anything
+    Printar Conteudo Response   ${response}
+    Set Global Variable         ${response}

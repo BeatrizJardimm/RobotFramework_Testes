@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220714 21:24:37.575" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220715 09:11:08.311" rpa="false" schemaversion="3">
 <suite id="s1" name="TestesCarrinhos DELETE" source="C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\carrinhos\TestesCarrinhos_DELETE.robot">
 <test id="s1-t1" name="Cenário: DELETE Excluir Carrinho 200" line="15">
 <kw name="Criar Sessao" library="common">
@@ -7,10 +7,10 @@
 <arg>serverest</arg>
 <arg>http://localhost:3000</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220714 21:24:37.729" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220714 21:24:37.729" endtime="20220714 21:24:37.729"/>
+<msg timestamp="20220715 09:11:08.458" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220715 09:11:08.457" endtime="20220715 09:11:08.458"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.729" endtime="20220714 21:24:37.729"/>
+<status status="PASS" starttime="20220715 09:11:08.457" endtime="20220715 09:11:08.458"/>
 </kw>
 <kw name="Fazer Login e Armazenar Token" library="keywordsLogin">
 <kw name="Fazer Login com Usuário Válido de Massa Estatica" library="keywordsLogin">
@@ -21,40 +21,40 @@
 <var>${arquivo}</var>
 <arg>${EXECDIR}/${nome_arquivo}</arg>
 <doc>Returns the contents of a specified file.</doc>
-<msg timestamp="20220714 21:24:37.731" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\login\json_login_ex.json"&gt;C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\login\json_login_ex.json&lt;/a&gt;'.</msg>
-<msg timestamp="20220714 21:24:37.731" level="INFO">${arquivo} = {
-    "login_valido":{
+<msg timestamp="20220715 09:11:08.460" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\login\json_login_ex.json"&gt;C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\login\json_login_ex.json&lt;/a&gt;'.</msg>
+<msg timestamp="20220715 09:11:08.460" level="INFO">${arquivo} = {
+    "login_valido_sem_carrinho":{
         "email":"evermore@gmail.com",
         "password":"reputation"
     },
     "login_email_invalido":{
         "email":"emailInvalido@gmail.com",
-        "password":"reputati...</msg>
-<status status="PASS" starttime="20220714 21:24:37.731" endtime="20220714 21:24:37.731"/>
+        "passwo...</msg>
+<status status="PASS" starttime="20220715 09:11:08.460" endtime="20220715 09:11:08.460"/>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <var>&amp;{data}</var>
 <arg>json.loads('''${arquivo}''')</arg>
 <arg>json</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20220714 21:24:37.732" level="INFO">&amp;{data} = { login_valido={'email': 'evermore@gmail.com', 'password': 'reputation'} | login_email_invalido={'email': 'emailInvalido@gmail.com', 'password': 'reputation'} | login_senha_invalida={'email': 'evermor...</msg>
-<status status="PASS" starttime="20220714 21:24:37.731" endtime="20220714 21:24:37.732"/>
+<msg timestamp="20220715 09:11:08.460" level="INFO">&amp;{data} = { login_valido_sem_carrinho={'email': 'evermore@gmail.com', 'password': 'reputation'} | login_email_invalido={'email': 'emailInvalido@gmail.com', 'password': 'reputation'} | login_senha_invalida={'ema...</msg>
+<status status="PASS" starttime="20220715 09:11:08.460" endtime="20220715 09:11:08.460"/>
 </kw>
-<msg timestamp="20220714 21:24:37.732" level="INFO">${json} = {'login_valido': {'email': 'evermore@gmail.com', 'password': 'reputation'}, 'login_email_invalido': {'email': 'emailInvalido@gmail.com', 'password': 'reputation'}, 'login_senha_invalida': {'email': 'e...</msg>
-<status status="PASS" starttime="20220714 21:24:37.730" endtime="20220714 21:24:37.732"/>
+<msg timestamp="20220715 09:11:08.460" level="INFO">${json} = {'login_valido_sem_carrinho': {'email': 'evermore@gmail.com', 'password': 'reputation'}, 'login_email_invalido': {'email': 'emailInvalido@gmail.com', 'password': 'reputation'}, 'login_senha_invalida':...</msg>
+<status status="PASS" starttime="20220715 09:11:08.459" endtime="20220715 09:11:08.460"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${payload}</var>
-<arg>${json["login_valido"]}</arg>
+<arg>${json["login_valido_sem_carrinho"]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20220714 21:24:37.733" level="INFO">${payload} = {'email': 'evermore@gmail.com', 'password': 'reputation'}</msg>
-<status status="PASS" starttime="20220714 21:24:37.732" endtime="20220714 21:24:37.733"/>
+<msg timestamp="20220715 09:11:08.460" level="INFO">${payload} = {'email': 'evermore@gmail.com', 'password': 'reputation'}</msg>
+<status status="PASS" starttime="20220715 09:11:08.460" endtime="20220715 09:11:08.460"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${payload}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220714 21:24:37.733" level="INFO">${payload} = {'email': 'evermore@gmail.com', 'password': 'reputation'}</msg>
-<status status="PASS" starttime="20220714 21:24:37.733" endtime="20220714 21:24:37.733"/>
+<msg timestamp="20220715 09:11:08.460" level="INFO">${payload} = {'email': 'evermore@gmail.com', 'password': 'reputation'}</msg>
+<status status="PASS" starttime="20220715 09:11:08.460" endtime="20220715 09:11:08.460"/>
 </kw>
 <kw name="POST Endpoint /login" library="keywordsLogin">
 <kw name="POST On Session" library="RequestsLibrary">
@@ -64,83 +64,78 @@
 <arg>json=&amp;{payload}</arg>
 <arg>expected_status=anything</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20220714 21:24:37.742" level="INFO">POST Request : url=http://localhost:3000/login 
+<msg timestamp="20220715 09:11:08.472" level="INFO">POST Request : url=http://localhost:3000/login 
  path_url=/login 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '57', 'Content-Type': 'application/json'} 
  body=b'{"email": "evermore@gmail.com", "password": "reputation"}' 
  </msg>
-<msg timestamp="20220714 21:24:37.743" level="INFO">POST Response : url=http://localhost:3000/login 
+<msg timestamp="20220715 09:11:08.472" level="INFO">POST Response : url=http://localhost:3000/login 
  status=200, reason=OK 
- headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '3817a3ab-2420-425c-8d2e-6ddd66e9a6d6', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '279', 'Date': 'Fri, 15 Jul 2022 00:24:37 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '9b0c77c7-29b0-4fcc-902c-5256f1042069', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '279', 'Date': 'Fri, 15 Jul 2022 12:11:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={
     "message": "Login realizado com sucesso",
-    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg0NDY3NywiZXhwIjoxNjU3ODQ1Mjc3fQ.C_gU3GtJfy-og8htiPL6fFlF35-pV4ASy8gKSqn-b1M"
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg4NzA2OCwiZXhwIjoxNjU3ODg3NjY4fQ.3rZmJS-YfTqZdvLSrYP6O4TdyMsYVehN7pLFVmndpP0"
 } 
  </msg>
-<msg timestamp="20220714 21:24:37.743" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.734" endtime="20220714 21:24:37.743"/>
+<msg timestamp="20220715 09:11:08.472" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.460" endtime="20220715 09:11:08.472"/>
 </kw>
 <kw name="Printar Conteudo Response" library="common">
 <arg>${response}</arg>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Response: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220714 21:24:37.743" endtime="20220714 21:24:37.744"/>
+<status status="PASS" starttime="20220715 09:11:08.472" endtime="20220715 09:11:08.474"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.743" endtime="20220714 21:24:37.744"/>
+<status status="PASS" starttime="20220715 09:11:08.472" endtime="20220715 09:11:08.474"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220714 21:24:37.744" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.744" endtime="20220714 21:24:37.744"/>
+<msg timestamp="20220715 09:11:08.474" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.474" endtime="20220715 09:11:08.474"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.734" endtime="20220714 21:24:37.744"/>
+<status status="PASS" starttime="20220715 09:11:08.460" endtime="20220715 09:11:08.474"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.730" endtime="20220714 21:24:37.745"/>
+<status status="PASS" starttime="20220715 09:11:08.459" endtime="20220715 09:11:08.474"/>
 </kw>
 <kw name="Validar Ter Logado" library="keywordsLogin">
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>${response.json()["message"]}</arg>
 <arg>Login realizado com sucesso</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20220714 21:24:37.745" endtime="20220714 21:24:37.745"/>
+<status status="PASS" starttime="20220715 09:11:08.475" endtime="20220715 09:11:08.475"/>
 </kw>
 <kw name="Should Not Be Empty" library="BuiltIn">
 <arg>${response.json()["authorization"]}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<msg timestamp="20220714 21:24:37.746" level="INFO">Length is 206</msg>
-<status status="PASS" starttime="20220714 21:24:37.745" endtime="20220714 21:24:37.746"/>
+<msg timestamp="20220715 09:11:08.476" level="INFO">Length is 206</msg>
+<status status="PASS" starttime="20220715 09:11:08.475" endtime="20220715 09:11:08.476"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.745" endtime="20220714 21:24:37.746"/>
+<status status="PASS" starttime="20220715 09:11:08.474" endtime="20220715 09:11:08.476"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${token_auth}</var>
 <arg>${response.json()["authorization"]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20220714 21:24:37.747" level="INFO">${token_auth} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg0NDY3NywiZXhwIjoxNjU3ODQ1Mjc3fQ.C_gU3GtJfy-og8htiPL6fFlF35-pV4ASy8gKS...</msg>
-<status status="PASS" starttime="20220714 21:24:37.746" endtime="20220714 21:24:37.747"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>Token Salvo: ${token_auth}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220714 21:24:37.747" endtime="20220714 21:24:37.747"/>
+<msg timestamp="20220715 09:11:08.476" level="INFO">${token_auth} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg4NzA2OCwiZXhwIjoxNjU3ODg3NjY4fQ.3rZmJS-YfTqZdvLSrYP6O4TdyMsYVehN7pLFV...</msg>
+<status status="PASS" starttime="20220715 09:11:08.476" endtime="20220715 09:11:08.476"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${token_auth}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220714 21:24:37.748" level="INFO">${token_auth} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg0NDY3NywiZXhwIjoxNjU3ODQ1Mjc3fQ.C_gU3GtJfy-og8htiPL6fFlF35-pV4ASy8gKS...</msg>
-<status status="PASS" starttime="20220714 21:24:37.747" endtime="20220714 21:24:37.748"/>
+<msg timestamp="20220715 09:11:08.476" level="INFO">${token_auth} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg4NzA2OCwiZXhwIjoxNjU3ODg3NjY4fQ.3rZmJS-YfTqZdvLSrYP6O4TdyMsYVehN7pLFV...</msg>
+<status status="PASS" starttime="20220715 09:11:08.476" endtime="20220715 09:11:08.476"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.730" endtime="20220714 21:24:37.748"/>
+<status status="PASS" starttime="20220715 09:11:08.459" endtime="20220715 09:11:08.476"/>
 </kw>
 <kw name="DELETE Endpoint &quot;/carrinhos/concluir-compra&quot;" sourcename="DELETE Endpoint &quot;${endpoint}&quot;">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${header}</var>
 <arg>Authorization=${token_auth}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20220714 21:24:37.749" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg0NDY3NywiZXhwIjoxNjU3ODQ1Mjc3fQ.C_gU3GtJfy-og8htiP...</msg>
-<status status="PASS" starttime="20220714 21:24:37.749" endtime="20220714 21:24:37.749"/>
+<msg timestamp="20220715 09:11:08.478" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg4NzA2OCwiZXhwIjoxNjU3ODg3NjY4fQ.3rZmJS-YfTqZdvLSrY...</msg>
+<status status="PASS" starttime="20220715 09:11:08.477" endtime="20220715 09:11:08.478"/>
 </kw>
 <kw name="DELETE On Session" library="RequestsLibrary">
 <var>${response}</var>
@@ -149,69 +144,69 @@
 <arg>expected_status=anything</arg>
 <arg>headers=${header}</arg>
 <doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<msg timestamp="20220714 21:24:37.754" level="INFO">DELETE Request : url=http://localhost:3000/carrinhos/concluir-compra 
+<msg timestamp="20220715 09:11:08.482" level="INFO">DELETE Request : url=http://localhost:3000/carrinhos/concluir-compra 
  path_url=/carrinhos/concluir-compra 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg0NDY3NywiZXhwIjoxNjU3ODQ1Mjc3fQ.C_gU3GtJfy-og8htiPL6fFlF35-pV4ASy8gKSqn-b1M', 'Content-Length': '0'} 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg4NzA2OCwiZXhwIjoxNjU3ODg3NjY4fQ.3rZmJS-YfTqZdvLSrYP6O4TdyMsYVehN7pLFVmndpP0', 'Content-Length': '0'} 
  body=None 
  </msg>
-<msg timestamp="20220714 21:24:37.754" level="INFO">DELETE Response : url=http://localhost:3000/carrinhos/concluir-compra 
+<msg timestamp="20220715 09:11:08.482" level="INFO">DELETE Response : url=http://localhost:3000/carrinhos/concluir-compra 
  status=200, reason=OK 
- headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'b61bd426-c1c5-4689-a5e6-e4d1b92e1bef', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '68', 'Date': 'Fri, 15 Jul 2022 00:24:37 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '185e9ba5-e8fd-4721-bb5c-fa24f7f15b44', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '68', 'Date': 'Fri, 15 Jul 2022 12:11:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={
     "message": "Não foi encontrado carrinho para esse usuário"
 } 
  </msg>
-<msg timestamp="20220714 21:24:37.754" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.750" endtime="20220714 21:24:37.754"/>
+<msg timestamp="20220715 09:11:08.482" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.478" endtime="20220715 09:11:08.482"/>
 </kw>
 <kw name="Printar Conteudo Response" library="common">
 <arg>${response}</arg>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Response: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220714 21:24:37.754" endtime="20220714 21:24:37.755"/>
+<status status="PASS" starttime="20220715 09:11:08.482" endtime="20220715 09:11:08.483"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.754" endtime="20220714 21:24:37.755"/>
+<status status="PASS" starttime="20220715 09:11:08.482" endtime="20220715 09:11:08.483"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220714 21:24:37.755" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.755" endtime="20220714 21:24:37.756"/>
+<msg timestamp="20220715 09:11:08.483" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.483" endtime="20220715 09:11:08.483"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.748" endtime="20220714 21:24:37.756"/>
+<status status="PASS" starttime="20220715 09:11:08.477" endtime="20220715 09:11:08.483"/>
 </kw>
 <kw name="Validar Status Code &quot;200&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
 <kw name="Should Be True" library="BuiltIn">
 <arg>${response.status_code} == ${statuscode}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220714 21:24:37.756" endtime="20220714 21:24:37.757"/>
+<status status="PASS" starttime="20220715 09:11:08.484" endtime="20220715 09:11:08.485"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.756" endtime="20220714 21:24:37.757"/>
+<status status="PASS" starttime="20220715 09:11:08.484" endtime="20220715 09:11:08.485"/>
 </kw>
 <kw name="Validar Mensagem: &quot;Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário&quot;" library="common" sourcename="Validar Mensagem: &quot;${mensagem}&quot;">
 <kw name="Should Match" library="BuiltIn">
 <arg>${response.json()["message"]}</arg>
 <arg>${mensagem}</arg>
 <doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
-<msg timestamp="20220714 21:24:37.759" level="FAIL">'Não foi encontrado carrinho para esse usuário' does not match 'Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário'</msg>
-<status status="FAIL" starttime="20220714 21:24:37.758" endtime="20220714 21:24:37.759"/>
+<msg timestamp="20220715 09:11:08.487" level="FAIL">'Não foi encontrado carrinho para esse usuário' does not match 'Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário'</msg>
+<status status="FAIL" starttime="20220715 09:11:08.486" endtime="20220715 09:11:08.487"/>
 </kw>
-<status status="FAIL" starttime="20220714 21:24:37.758" endtime="20220714 21:24:37.759"/>
+<status status="FAIL" starttime="20220715 09:11:08.486" endtime="20220715 09:11:08.489"/>
 </kw>
 <tag>DELETE200.1</tag>
-<status status="FAIL" starttime="20220714 21:24:37.728" endtime="20220714 21:24:37.763">'Não foi encontrado carrinho para esse usuário' does not match 'Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário'</status>
+<status status="FAIL" starttime="20220715 09:11:08.457" endtime="20220715 09:11:08.490">'Não foi encontrado carrinho para esse usuário' does not match 'Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário'</status>
 </test>
-<test id="s1-t2" name="Cenário: DELETE Erro no Token 401" line="23">
+<test id="s1-t2" name="Cenário: DELETE Concluir Compra com Erro no Token 401" line="23">
 <kw name="Criar Sessao" library="common">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>serverest</arg>
 <arg>http://localhost:3000</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220714 21:24:37.768" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220714 21:24:37.768" endtime="20220714 21:24:37.768"/>
+<msg timestamp="20220715 09:11:08.493" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220715 09:11:08.492" endtime="20220715 09:11:08.493"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.768" endtime="20220714 21:24:37.768"/>
+<status status="PASS" starttime="20220715 09:11:08.492" endtime="20220715 09:11:08.493"/>
 </kw>
 <kw name="DELETE Endpoint &quot;/carrinhos/concluir-compra&quot; Sem Token" sourcename="DELETE Endpoint &quot;${endpoint}&quot; Sem Token">
 <kw name="DELETE On Session" library="RequestsLibrary">
@@ -220,57 +215,57 @@
 <arg>${endpoint}</arg>
 <arg>expected_status=anything</arg>
 <doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<msg timestamp="20220714 21:24:37.772" level="INFO">DELETE Request : url=http://localhost:3000/carrinhos/concluir-compra 
+<msg timestamp="20220715 09:11:08.501" level="INFO">DELETE Request : url=http://localhost:3000/carrinhos/concluir-compra 
  path_url=/carrinhos/concluir-compra 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
  body=None 
  </msg>
-<msg timestamp="20220714 21:24:37.773" level="INFO">DELETE Response : url=http://localhost:3000/carrinhos/concluir-compra 
+<msg timestamp="20220715 09:11:08.501" level="INFO">DELETE Response : url=http://localhost:3000/carrinhos/concluir-compra 
  status=401, reason=Unauthorized 
- headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '305ecc60-8c2e-4c32-8ab3-2d4558e84fed', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '103', 'Date': 'Fri, 15 Jul 2022 00:24:37 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'f75a5826-7d61-40e5-a4ea-124256ea6f9f', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '103', 'Date': 'Fri, 15 Jul 2022 12:11:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={
     "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 } 
  </msg>
-<msg timestamp="20220714 21:24:37.773" level="INFO">${response} = &lt;Response [401]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.769" endtime="20220714 21:24:37.773"/>
+<msg timestamp="20220715 09:11:08.501" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.494" endtime="20220715 09:11:08.501"/>
 </kw>
 <kw name="Printar Conteudo Response" library="common">
 <arg>${response}</arg>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Response: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220714 21:24:37.773" endtime="20220714 21:24:37.774"/>
+<status status="PASS" starttime="20220715 09:11:08.502" endtime="20220715 09:11:08.504"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.773" endtime="20220714 21:24:37.774"/>
+<status status="PASS" starttime="20220715 09:11:08.502" endtime="20220715 09:11:08.504"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220714 21:24:37.774" level="INFO">${response} = &lt;Response [401]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.774" endtime="20220714 21:24:37.774"/>
+<msg timestamp="20220715 09:11:08.505" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.504" endtime="20220715 09:11:08.505"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.769" endtime="20220714 21:24:37.774"/>
+<status status="PASS" starttime="20220715 09:11:08.494" endtime="20220715 09:11:08.505"/>
 </kw>
 <kw name="Validar Status Code &quot;401&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
 <kw name="Should Be True" library="BuiltIn">
 <arg>${response.status_code} == ${statuscode}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220714 21:24:37.775" endtime="20220714 21:24:37.775"/>
+<status status="PASS" starttime="20220715 09:11:08.507" endtime="20220715 09:11:08.508"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.775" endtime="20220714 21:24:37.775"/>
+<status status="PASS" starttime="20220715 09:11:08.506" endtime="20220715 09:11:08.508"/>
 </kw>
 <kw name="Validar Mensagem: &quot;Token de acesso ausente, inválido, expirado ou usuário do token não existe mais&quot;" library="common" sourcename="Validar Mensagem: &quot;${mensagem}&quot;">
 <kw name="Should Match" library="BuiltIn">
 <arg>${response.json()["message"]}</arg>
 <arg>${mensagem}</arg>
 <doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
-<status status="PASS" starttime="20220714 21:24:37.776" endtime="20220714 21:24:37.777"/>
+<status status="PASS" starttime="20220715 09:11:08.509" endtime="20220715 09:11:08.510"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.776" endtime="20220714 21:24:37.777"/>
+<status status="PASS" starttime="20220715 09:11:08.509" endtime="20220715 09:11:08.510"/>
 </kw>
 <tag>DELETE401.1</tag>
-<status status="PASS" starttime="20220714 21:24:37.767" endtime="20220714 21:24:37.779"/>
+<status status="PASS" starttime="20220715 09:11:08.492" endtime="20220715 09:11:08.511"/>
 </test>
 <test id="s1-t3" name="Cenário: DELETE Excluir Carrinho e Retornar Produtos ao Estoque 200" line="30">
 <kw name="Criar Sessao" library="common">
@@ -278,10 +273,10 @@
 <arg>serverest</arg>
 <arg>http://localhost:3000</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220714 21:24:37.782" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220714 21:24:37.782" endtime="20220714 21:24:37.783"/>
+<msg timestamp="20220715 09:11:08.513" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220715 09:11:08.513" endtime="20220715 09:11:08.514"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.782" endtime="20220714 21:24:37.783"/>
+<status status="PASS" starttime="20220715 09:11:08.513" endtime="20220715 09:11:08.514"/>
 </kw>
 <kw name="Fazer Login e Armazenar Token" library="keywordsLogin">
 <kw name="Fazer Login com Usuário Válido de Massa Estatica" library="keywordsLogin">
@@ -292,40 +287,40 @@
 <var>${arquivo}</var>
 <arg>${EXECDIR}/${nome_arquivo}</arg>
 <doc>Returns the contents of a specified file.</doc>
-<msg timestamp="20220714 21:24:37.784" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\login\json_login_ex.json"&gt;C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\login\json_login_ex.json&lt;/a&gt;'.</msg>
-<msg timestamp="20220714 21:24:37.784" level="INFO">${arquivo} = {
-    "login_valido":{
+<msg timestamp="20220715 09:11:08.515" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\login\json_login_ex.json"&gt;C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\login\json_login_ex.json&lt;/a&gt;'.</msg>
+<msg timestamp="20220715 09:11:08.515" level="INFO">${arquivo} = {
+    "login_valido_sem_carrinho":{
         "email":"evermore@gmail.com",
         "password":"reputation"
     },
     "login_email_invalido":{
         "email":"emailInvalido@gmail.com",
-        "password":"reputati...</msg>
-<status status="PASS" starttime="20220714 21:24:37.784" endtime="20220714 21:24:37.784"/>
+        "passwo...</msg>
+<status status="PASS" starttime="20220715 09:11:08.515" endtime="20220715 09:11:08.515"/>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <var>&amp;{data}</var>
 <arg>json.loads('''${arquivo}''')</arg>
 <arg>json</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20220714 21:24:37.784" level="INFO">&amp;{data} = { login_valido={'email': 'evermore@gmail.com', 'password': 'reputation'} | login_email_invalido={'email': 'emailInvalido@gmail.com', 'password': 'reputation'} | login_senha_invalida={'email': 'evermor...</msg>
-<status status="PASS" starttime="20220714 21:24:37.784" endtime="20220714 21:24:37.784"/>
+<msg timestamp="20220715 09:11:08.515" level="INFO">&amp;{data} = { login_valido_sem_carrinho={'email': 'evermore@gmail.com', 'password': 'reputation'} | login_email_invalido={'email': 'emailInvalido@gmail.com', 'password': 'reputation'} | login_senha_invalida={'ema...</msg>
+<status status="PASS" starttime="20220715 09:11:08.515" endtime="20220715 09:11:08.515"/>
 </kw>
-<msg timestamp="20220714 21:24:37.784" level="INFO">${json} = {'login_valido': {'email': 'evermore@gmail.com', 'password': 'reputation'}, 'login_email_invalido': {'email': 'emailInvalido@gmail.com', 'password': 'reputation'}, 'login_senha_invalida': {'email': 'e...</msg>
-<status status="PASS" starttime="20220714 21:24:37.783" endtime="20220714 21:24:37.784"/>
+<msg timestamp="20220715 09:11:08.515" level="INFO">${json} = {'login_valido_sem_carrinho': {'email': 'evermore@gmail.com', 'password': 'reputation'}, 'login_email_invalido': {'email': 'emailInvalido@gmail.com', 'password': 'reputation'}, 'login_senha_invalida':...</msg>
+<status status="PASS" starttime="20220715 09:11:08.514" endtime="20220715 09:11:08.515"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${payload}</var>
-<arg>${json["login_valido"]}</arg>
+<arg>${json["login_valido_sem_carrinho"]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20220714 21:24:37.784" level="INFO">${payload} = {'email': 'evermore@gmail.com', 'password': 'reputation'}</msg>
-<status status="PASS" starttime="20220714 21:24:37.784" endtime="20220714 21:24:37.784"/>
+<msg timestamp="20220715 09:11:08.517" level="INFO">${payload} = {'email': 'evermore@gmail.com', 'password': 'reputation'}</msg>
+<status status="PASS" starttime="20220715 09:11:08.515" endtime="20220715 09:11:08.517"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${payload}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220714 21:24:37.784" level="INFO">${payload} = {'email': 'evermore@gmail.com', 'password': 'reputation'}</msg>
-<status status="PASS" starttime="20220714 21:24:37.784" endtime="20220714 21:24:37.784"/>
+<msg timestamp="20220715 09:11:08.517" level="INFO">${payload} = {'email': 'evermore@gmail.com', 'password': 'reputation'}</msg>
+<status status="PASS" starttime="20220715 09:11:08.517" endtime="20220715 09:11:08.517"/>
 </kw>
 <kw name="POST Endpoint /login" library="keywordsLogin">
 <kw name="POST On Session" library="RequestsLibrary">
@@ -335,83 +330,78 @@
 <arg>json=&amp;{payload}</arg>
 <arg>expected_status=anything</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20220714 21:24:37.791" level="INFO">POST Request : url=http://localhost:3000/login 
+<msg timestamp="20220715 09:11:08.522" level="INFO">POST Request : url=http://localhost:3000/login 
  path_url=/login 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '57', 'Content-Type': 'application/json'} 
  body=b'{"email": "evermore@gmail.com", "password": "reputation"}' 
  </msg>
-<msg timestamp="20220714 21:24:37.791" level="INFO">POST Response : url=http://localhost:3000/login 
+<msg timestamp="20220715 09:11:08.523" level="INFO">POST Response : url=http://localhost:3000/login 
  status=200, reason=OK 
- headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'b209dbf1-2408-4efa-96f4-6ee6b0a8cd4a', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '279', 'Date': 'Fri, 15 Jul 2022 00:24:37 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '35de89b3-8058-4690-a01c-7b5d0803e70b', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '279', 'Date': 'Fri, 15 Jul 2022 12:11:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={
     "message": "Login realizado com sucesso",
-    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg0NDY3NywiZXhwIjoxNjU3ODQ1Mjc3fQ.C_gU3GtJfy-og8htiPL6fFlF35-pV4ASy8gKSqn-b1M"
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg4NzA2OCwiZXhwIjoxNjU3ODg3NjY4fQ.3rZmJS-YfTqZdvLSrYP6O4TdyMsYVehN7pLFVmndpP0"
 } 
  </msg>
-<msg timestamp="20220714 21:24:37.791" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.784" endtime="20220714 21:24:37.791"/>
+<msg timestamp="20220715 09:11:08.523" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.517" endtime="20220715 09:11:08.523"/>
 </kw>
 <kw name="Printar Conteudo Response" library="common">
 <arg>${response}</arg>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Response: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220714 21:24:37.791" endtime="20220714 21:24:37.792"/>
+<status status="PASS" starttime="20220715 09:11:08.523" endtime="20220715 09:11:08.524"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.791" endtime="20220714 21:24:37.792"/>
+<status status="PASS" starttime="20220715 09:11:08.523" endtime="20220715 09:11:08.524"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220714 21:24:37.793" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.792" endtime="20220714 21:24:37.793"/>
+<msg timestamp="20220715 09:11:08.525" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.524" endtime="20220715 09:11:08.525"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.784" endtime="20220714 21:24:37.793"/>
+<status status="PASS" starttime="20220715 09:11:08.517" endtime="20220715 09:11:08.525"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.783" endtime="20220714 21:24:37.793"/>
+<status status="PASS" starttime="20220715 09:11:08.514" endtime="20220715 09:11:08.525"/>
 </kw>
 <kw name="Validar Ter Logado" library="keywordsLogin">
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>${response.json()["message"]}</arg>
 <arg>Login realizado com sucesso</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20220714 21:24:37.794" endtime="20220714 21:24:37.794"/>
+<status status="PASS" starttime="20220715 09:11:08.525" endtime="20220715 09:11:08.526"/>
 </kw>
 <kw name="Should Not Be Empty" library="BuiltIn">
 <arg>${response.json()["authorization"]}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<msg timestamp="20220714 21:24:37.795" level="INFO">Length is 206</msg>
-<status status="PASS" starttime="20220714 21:24:37.794" endtime="20220714 21:24:37.795"/>
+<msg timestamp="20220715 09:11:08.526" level="INFO">Length is 206</msg>
+<status status="PASS" starttime="20220715 09:11:08.526" endtime="20220715 09:11:08.526"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.793" endtime="20220714 21:24:37.795"/>
+<status status="PASS" starttime="20220715 09:11:08.525" endtime="20220715 09:11:08.526"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${token_auth}</var>
 <arg>${response.json()["authorization"]}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20220714 21:24:37.795" level="INFO">${token_auth} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg0NDY3NywiZXhwIjoxNjU3ODQ1Mjc3fQ.C_gU3GtJfy-og8htiPL6fFlF35-pV4ASy8gKS...</msg>
-<status status="PASS" starttime="20220714 21:24:37.795" endtime="20220714 21:24:37.795"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>Token Salvo: ${token_auth}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220714 21:24:37.795" endtime="20220714 21:24:37.796"/>
+<msg timestamp="20220715 09:11:08.528" level="INFO">${token_auth} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg4NzA2OCwiZXhwIjoxNjU3ODg3NjY4fQ.3rZmJS-YfTqZdvLSrYP6O4TdyMsYVehN7pLFV...</msg>
+<status status="PASS" starttime="20220715 09:11:08.526" endtime="20220715 09:11:08.528"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${token_auth}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220714 21:24:37.796" level="INFO">${token_auth} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg0NDY3NywiZXhwIjoxNjU3ODQ1Mjc3fQ.C_gU3GtJfy-og8htiPL6fFlF35-pV4ASy8gKS...</msg>
-<status status="PASS" starttime="20220714 21:24:37.796" endtime="20220714 21:24:37.796"/>
+<msg timestamp="20220715 09:11:08.528" level="INFO">${token_auth} = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg4NzA2OCwiZXhwIjoxNjU3ODg3NjY4fQ.3rZmJS-YfTqZdvLSrYP6O4TdyMsYVehN7pLFV...</msg>
+<status status="PASS" starttime="20220715 09:11:08.528" endtime="20220715 09:11:08.528"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.783" endtime="20220714 21:24:37.796"/>
+<status status="PASS" starttime="20220715 09:11:08.514" endtime="20220715 09:11:08.528"/>
 </kw>
 <kw name="DELETE Endpoint &quot;/carrinhos/cancelar-compra&quot;" sourcename="DELETE Endpoint &quot;${endpoint}&quot;">
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${header}</var>
 <arg>Authorization=${token_auth}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20220714 21:24:37.797" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg0NDY3NywiZXhwIjoxNjU3ODQ1Mjc3fQ.C_gU3GtJfy-og8htiP...</msg>
-<status status="PASS" starttime="20220714 21:24:37.797" endtime="20220714 21:24:37.797"/>
+<msg timestamp="20220715 09:11:08.529" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg4NzA2OCwiZXhwIjoxNjU3ODg3NjY4fQ.3rZmJS-YfTqZdvLSrY...</msg>
+<status status="PASS" starttime="20220715 09:11:08.529" endtime="20220715 09:11:08.529"/>
 </kw>
 <kw name="DELETE On Session" library="RequestsLibrary">
 <var>${response}</var>
@@ -420,69 +410,69 @@
 <arg>expected_status=anything</arg>
 <arg>headers=${header}</arg>
 <doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<msg timestamp="20220714 21:24:37.802" level="INFO">DELETE Request : url=http://localhost:3000/carrinhos/cancelar-compra 
+<msg timestamp="20220715 09:11:08.535" level="INFO">DELETE Request : url=http://localhost:3000/carrinhos/cancelar-compra 
  path_url=/carrinhos/cancelar-compra 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg0NDY3NywiZXhwIjoxNjU3ODQ1Mjc3fQ.C_gU3GtJfy-og8htiPL6fFlF35-pV4ASy8gKSqn-b1M', 'Content-Length': '0'} 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1Nzg4NzA2OCwiZXhwIjoxNjU3ODg3NjY4fQ.3rZmJS-YfTqZdvLSrYP6O4TdyMsYVehN7pLFVmndpP0', 'Content-Length': '0'} 
  body=None 
  </msg>
-<msg timestamp="20220714 21:24:37.802" level="INFO">DELETE Response : url=http://localhost:3000/carrinhos/cancelar-compra 
+<msg timestamp="20220715 09:11:08.536" level="INFO">DELETE Response : url=http://localhost:3000/carrinhos/cancelar-compra 
  status=200, reason=OK 
- headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '377b3b5d-0094-4388-9ccf-59887d39f57e', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '68', 'Date': 'Fri, 15 Jul 2022 00:24:37 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '801e3f40-5fcc-4329-a172-a6c8b36bb80e', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '68', 'Date': 'Fri, 15 Jul 2022 12:11:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={
     "message": "Não foi encontrado carrinho para esse usuário"
 } 
  </msg>
-<msg timestamp="20220714 21:24:37.802" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.797" endtime="20220714 21:24:37.802"/>
+<msg timestamp="20220715 09:11:08.536" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.530" endtime="20220715 09:11:08.536"/>
 </kw>
 <kw name="Printar Conteudo Response" library="common">
 <arg>${response}</arg>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Response: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220714 21:24:37.802" endtime="20220714 21:24:37.803"/>
+<status status="PASS" starttime="20220715 09:11:08.536" endtime="20220715 09:11:08.537"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.802" endtime="20220714 21:24:37.803"/>
+<status status="PASS" starttime="20220715 09:11:08.536" endtime="20220715 09:11:08.537"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220714 21:24:37.803" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.803" endtime="20220714 21:24:37.803"/>
+<msg timestamp="20220715 09:11:08.538" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.537" endtime="20220715 09:11:08.538"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.797" endtime="20220714 21:24:37.803"/>
+<status status="PASS" starttime="20220715 09:11:08.529" endtime="20220715 09:11:08.538"/>
 </kw>
 <kw name="Validar Status Code &quot;200&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
 <kw name="Should Be True" library="BuiltIn">
 <arg>${response.status_code} == ${statuscode}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220714 21:24:37.804" endtime="20220714 21:24:37.804"/>
+<status status="PASS" starttime="20220715 09:11:08.540" endtime="20220715 09:11:08.542"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.804" endtime="20220714 21:24:37.804"/>
+<status status="PASS" starttime="20220715 09:11:08.539" endtime="20220715 09:11:08.542"/>
 </kw>
 <kw name="Validar Mensagem: &quot;Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário&quot;" library="common" sourcename="Validar Mensagem: &quot;${mensagem}&quot;">
 <kw name="Should Match" library="BuiltIn">
 <arg>${response.json()["message"]}</arg>
 <arg>${mensagem}</arg>
 <doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
-<msg timestamp="20220714 21:24:37.806" level="FAIL">'Não foi encontrado carrinho para esse usuário' does not match 'Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário'</msg>
-<status status="FAIL" starttime="20220714 21:24:37.805" endtime="20220714 21:24:37.806"/>
+<msg timestamp="20220715 09:11:08.544" level="FAIL">'Não foi encontrado carrinho para esse usuário' does not match 'Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário'</msg>
+<status status="FAIL" starttime="20220715 09:11:08.542" endtime="20220715 09:11:08.544"/>
 </kw>
-<status status="FAIL" starttime="20220714 21:24:37.805" endtime="20220714 21:24:37.806"/>
+<status status="FAIL" starttime="20220715 09:11:08.542" endtime="20220715 09:11:08.545"/>
 </kw>
 <tag>DELETE200.2</tag>
-<status status="FAIL" starttime="20220714 21:24:37.780" endtime="20220714 21:24:37.807">'Não foi encontrado carrinho para esse usuário' does not match 'Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário'</status>
+<status status="FAIL" starttime="20220715 09:11:08.512" endtime="20220715 09:11:08.546">'Não foi encontrado carrinho para esse usuário' does not match 'Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário'</status>
 </test>
-<test id="s1-t4" name="Cenário: DELETE Erro no Token 401" line="38">
+<test id="s1-t4" name="Cenário: DELETE Cancelar Compra com Erro no Token 401" line="38">
 <kw name="Criar Sessao" library="common">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>serverest</arg>
 <arg>http://localhost:3000</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220714 21:24:37.814" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220714 21:24:37.813" endtime="20220714 21:24:37.814"/>
+<msg timestamp="20220715 09:11:08.550" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220715 09:11:08.550" endtime="20220715 09:11:08.551"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.813" endtime="20220714 21:24:37.814"/>
+<status status="PASS" starttime="20220715 09:11:08.550" endtime="20220715 09:11:08.551"/>
 </kw>
 <kw name="DELETE Endpoint &quot;/carrinhos/cancelar-compra&quot; Sem Token" sourcename="DELETE Endpoint &quot;${endpoint}&quot; Sem Token">
 <kw name="DELETE On Session" library="RequestsLibrary">
@@ -491,60 +481,60 @@
 <arg>${endpoint}</arg>
 <arg>expected_status=anything</arg>
 <doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<msg timestamp="20220714 21:24:37.818" level="INFO">DELETE Request : url=http://localhost:3000/carrinhos/cancelar-compra 
+<msg timestamp="20220715 09:11:08.554" level="INFO">DELETE Request : url=http://localhost:3000/carrinhos/cancelar-compra 
  path_url=/carrinhos/cancelar-compra 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
  body=None 
  </msg>
-<msg timestamp="20220714 21:24:37.818" level="INFO">DELETE Response : url=http://localhost:3000/carrinhos/cancelar-compra 
+<msg timestamp="20220715 09:11:08.554" level="INFO">DELETE Response : url=http://localhost:3000/carrinhos/cancelar-compra 
  status=401, reason=Unauthorized 
- headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '05856394-879f-4cd5-9f98-367e63e5a0ea', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '103', 'Date': 'Fri, 15 Jul 2022 00:24:37 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'dc8876ef-5060-45eb-94de-3cae7d20f110', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '103', 'Date': 'Fri, 15 Jul 2022 12:11:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={
     "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 } 
  </msg>
-<msg timestamp="20220714 21:24:37.818" level="INFO">${response} = &lt;Response [401]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.815" endtime="20220714 21:24:37.818"/>
+<msg timestamp="20220715 09:11:08.555" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.551" endtime="20220715 09:11:08.555"/>
 </kw>
 <kw name="Printar Conteudo Response" library="common">
 <arg>${response}</arg>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Response: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220714 21:24:37.818" endtime="20220714 21:24:37.820"/>
+<status status="PASS" starttime="20220715 09:11:08.555" endtime="20220715 09:11:08.557"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.818" endtime="20220714 21:24:37.820"/>
+<status status="PASS" starttime="20220715 09:11:08.555" endtime="20220715 09:11:08.557"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220714 21:24:37.820" level="INFO">${response} = &lt;Response [401]&gt;</msg>
-<status status="PASS" starttime="20220714 21:24:37.820" endtime="20220714 21:24:37.820"/>
+<msg timestamp="20220715 09:11:08.557" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220715 09:11:08.557" endtime="20220715 09:11:08.557"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.815" endtime="20220714 21:24:37.820"/>
+<status status="PASS" starttime="20220715 09:11:08.551" endtime="20220715 09:11:08.557"/>
 </kw>
 <kw name="Validar Status Code &quot;401&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
 <kw name="Should Be True" library="BuiltIn">
 <arg>${response.status_code} == ${statuscode}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220714 21:24:37.821" endtime="20220714 21:24:37.821"/>
+<status status="PASS" starttime="20220715 09:11:08.559" endtime="20220715 09:11:08.560"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.821" endtime="20220714 21:24:37.821"/>
+<status status="PASS" starttime="20220715 09:11:08.559" endtime="20220715 09:11:08.560"/>
 </kw>
 <kw name="Validar Mensagem: &quot;Token de acesso ausente, inválido, expirado ou usuário do token não existe mais&quot;" library="common" sourcename="Validar Mensagem: &quot;${mensagem}&quot;">
 <kw name="Should Match" library="BuiltIn">
 <arg>${response.json()["message"]}</arg>
 <arg>${mensagem}</arg>
 <doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
-<status status="PASS" starttime="20220714 21:24:37.822" endtime="20220714 21:24:37.823"/>
+<status status="PASS" starttime="20220715 09:11:08.561" endtime="20220715 09:11:08.562"/>
 </kw>
-<status status="PASS" starttime="20220714 21:24:37.822" endtime="20220714 21:24:37.823"/>
+<status status="PASS" starttime="20220715 09:11:08.560" endtime="20220715 09:11:08.562"/>
 </kw>
 <tag>DELETE401.2</tag>
-<status status="PASS" starttime="20220714 21:24:37.812" endtime="20220714 21:24:37.825"/>
+<status status="PASS" starttime="20220715 09:11:08.549" endtime="20220715 09:11:08.562"/>
 </test>
-<doc>Arquivo simples para requisições HTTP em APIs</doc>
-<status status="FAIL" starttime="20220714 21:24:37.578" endtime="20220714 21:24:37.826"/>
+<doc>Arquivo simples para requisições DELETE no Endpoint /carrinhos</doc>
+<status status="FAIL" starttime="20220715 09:11:08.314" endtime="20220715 09:11:08.564"/>
 </suite>
 <statistics>
 <total>
@@ -561,6 +551,5 @@
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20220714 21:24:37.812" level="WARN">Multiple tests with name 'Cenário: DELETE Erro no Token 401' executed in suite 'TestesCarrinhos DELETE'.</msg>
 </errors>
 </robot>

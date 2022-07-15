@@ -31,10 +31,11 @@ Cenário: GET Produto Inexistente 400
 
 * Keywords *
 GET Endpoint /produtos
-    ${response}             GET On Session     serverest       /produtos
+    ${response}                  GET On Session     serverest       /produtos
     Printar Conteudo Response    ${response}
-    Set Global Variable     ${response}
+    Set Global Variable          ${response}
 
 GET Endpoint /produtos id "${id}"
-    ${response}             GET On Session     serverest       /produtos/${id}      expected_status=anything
-    Set Global Variable     ${response}
+    ${response}                  GET On Session     serverest       /produtos/${id}      expected_status=anything
+    Printar Conteudo Response    ${response}
+    Set Global Variable          ${response}

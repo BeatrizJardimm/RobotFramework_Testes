@@ -3,7 +3,7 @@
 # Existem Test Cases para todos os casos, tanto de sucesso quanto de erro
 
 * Settings *
-Documentation   Arquivo simples para requisições HTTP em APIs
+Documentation   Arquivo simples para requisições POST no Endpoint /produtos
 Library         RequestsLibrary
 Resource        ../common.robot
 Resource        ../login/keywordsLogin.robot
@@ -39,28 +39,30 @@ Cenário: POST Erro no Token 401
 * Keywords *
 
 Cadastra Produto Estatico Valido
-    ${json}                 Importar JSON Estatico      json_produtos_ex.json
-    ${payload}              Set Variable                ${json["produto_valido"]}
-    Set Global Variable     ${payload}
+    ${json}                     Importar JSON Estatico      json_produtos_ex.json
+    ${payload}                  Set Variable                ${json["produto_valido"]}
+    Set Global Variable         ${payload}
     POST Endpoint /produtos
 
 Cadastra Produto Estatico Invalido
-    ${json}                 Importar JSON Estatico      json_produtos_ex.json
-    ${payload}              Set Variable                ${json["produto_invalido"]}
-    Set Global Variable     ${payload}
+    ${json}                     Importar JSON Estatico      json_produtos_ex.json
+    ${payload}                  Set Variable                ${json["produto_invalido"]}
+    Set Global Variable         ${payload}
     POST Endpoint /produtos
 
 Cadastra Produto Sem Token
-    ${json}                 Importar JSON Estatico      json_produtos_ex.json
-    ${payload}              Set Variable                ${json["produto_valido"]}
-    Set Global Variable     ${payload}
+    ${json}                     Importar JSON Estatico      json_produtos_ex.json
+    ${payload}                  Set Variable                ${json["produto_valido"]}
+    Set Global Variable         ${payload}
     POST Sem Token
 
 POST Endpoint /produtos
-    &{header}               Create Dictionary   Authorization=${token_auth}
-    ${response}             POST On Session     serverest       /produtos       json=${payload}     expected_status=anything    headers=${header}
-    Set Global Variable     ${response}
+    &{header}                   Create Dictionary           Authorization=${token_auth}
+    ${response}                 POST On Session             serverest       /produtos       json=${payload}     expected_status=anything    headers=${header}
+    Printar Conteudo Response   ${response}
+    Set Global Variable         ${response}
 
 POST Sem Token
-    ${response}             POST On Session     serverest       /produtos       json=${payload}     expected_status=anything
-    Set Global Variable     ${response}
+    ${response}                 POST On Session             serverest       /produtos       json=${payload}     expected_status=anything
+    Printar Conteudo Response   ${response}
+    Set Global Variable         ${response}

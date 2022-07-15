@@ -4,13 +4,9 @@
 
 # Área para definir as configurações do arquivo
 * Settings *
-Documentation   Arquivo simples para requisições HTTP em APIs
+Documentation   Arquivo simples para requisições POST no Endpoint /usuarios
 Library         RequestsLibrary
 Resource        ../common.robot
-
-# Área para setar as váriaveis do projeto
-* Variables *
-
 
 #Área para escrever os casos que serão testados
 * Test Cases *
@@ -32,18 +28,18 @@ Cenário: POST Cadastrar Novo Usuário com Email Já Cadastrado 400
 #Área para desenvolver as keywords utilizadas nos casos de teste
 * Keywords *
 POST Endpoint /usuarios
-    ${response}             POST On Session     serverest       /usuarios       json=&{payload}     expected_status=anything
+    ${response}                 POST On Session             serverest       /usuarios       json=&{payload}     expected_status=anything
     Printar Conteudo Response   ${response}
-    Set Global Variable     ${response}
+    Set Global Variable         ${response}
 
 Criar Usuario Estatico Valido
-    ${json}                 Importar JSON Estatico      json_usuarios_ex.json
-    ${payload}              Set Variable                ${json["usuario_valido"]}
-    Set Global Variable     ${payload}
+    ${json}                     Importar JSON Estatico      json_usuarios_ex.json
+    ${payload}                  Set Variable                ${json["usuario_valido"]}
+    Set Global Variable         ${payload}
     POST Endpoint /usuarios
 
 Criar Usuario Estatico Invalido
-    ${json}                 Importar JSON Estatico      json_usuarios_ex.json
-    ${payload}              Set Variable                ${json["usuario_invalido"]}
-    Set Global Variable     ${payload}
+    ${json}                     Importar JSON Estatico      json_usuarios_ex.json
+    ${payload}                  Set Variable                ${json["usuario_invalido"]}
+    Set Global Variable         ${payload}
     POST Endpoint /usuarios

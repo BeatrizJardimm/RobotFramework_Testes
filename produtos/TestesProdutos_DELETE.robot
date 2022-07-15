@@ -3,7 +3,7 @@
 # Existem Test Cases para todos os casos, tanto de sucesso quanto de erro
 
 * Settings *
-Documentation   Arquivo simples para requisições HTTP em APIs
+Documentation   Arquivo simples para requisições DELETE no Endpoint /produtos
 Library         RequestsLibrary
 Resource        ../common.robot
 Resource        ../login/keywordsLogin.robot
@@ -28,7 +28,7 @@ Cenário: DELETE Excluir Produto que está no Carrinho 400
     Validar Status Code "400"
     Validar Mensagem: "Não é permitido excluir produto que faz parte de carrinho"
 
-#rodar com um token expirado
+#tentar excluir um produto sem token
 Cenário: DELETE Erro no Token 401
     [tags]      DELETE401
     Criar Sessao
@@ -48,12 +48,12 @@ Cenário: DELETE Acesso Apenas ao Administrador 403
 * Keywords *
 
 DELETE id "${id}"
-    ${header}               Create Dictionary   Authorization=${token_auth}
-    ${response}             DELETE On Session     serverest       /produtos/${id}      expected_status=anything    headers=${header}
-    Printar Conteudo Response  ${response}
-    Set Global Variable     ${response}
+    ${header}                   Create Dictionary     Authorization=${token_auth}
+    ${response}                 DELETE On Session     serverest       /produtos/${id}      expected_status=anything    headers=${header}
+    Printar Conteudo Response   ${response}
+    Set Global Variable         ${response}
 
 DELETE Sem Token
-    ${response}             DELETE On Session     serverest       /produtos/0uxuPY0cbmQhpEz1      expected_status=anything
-    Printar Conteudo Response  ${response}
-    Set Global Variable     ${response}
+    ${response}                 DELETE On Session     serverest       /produtos/0uxuPY0cbmQhpEz1      expected_status=anything
+    Printar Conteudo Response   ${response}
+    Set Global Variable         ${response}

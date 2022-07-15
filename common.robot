@@ -16,9 +16,6 @@ Validar Mensagem: "${mensagem}"
 
 Validar Nome: "${nome}"
     Should Match            ${response.json()["nome"]}          ${nome}
-    
-Validar Quantidade ${qnt}
-    Should Be Equal         ${response.json()["quantidade"]}    ${qnt}
 
 Printar Conteudo Response
     [Arguments]             ${response}

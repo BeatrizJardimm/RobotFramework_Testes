@@ -46,5 +46,6 @@ Cenário: DELETE Excluir Usuário com Carrinho Cadastrado 400
 * Keywords *
 
 DELETE Usuario id "${id}"
-    ${response}             DELETE On Session     serverest       /usuarios/${id}      expected_status=anything
-    Set Global Variable     ${response}
+    ${response}                 DELETE On Session     serverest       /usuarios/${id}      expected_status=anything
+    Printar Conteudo Response   ${response}
+    Set Global Variable         ${response}
