@@ -19,6 +19,8 @@ Em cada arquivos estão os Test Cases para sua respectiva requisição, entr ess
 
 Além desses arquivos principais, também temos a pasta *midia*, que contém as imagens presentes nesse documento, e os arquivos *JSON* que são compostos por objetos desenvolvidos para servirem de dados para testes que envolvem criar e editar um usuário, produto ou carrinho.
 
+Por último, o arquvio *common.robot* que está presente nesse projeto, contém as Keywords que são utilizadas em todos os Test Cases do projeto, então para não precisar escrevê-las repetidamente em todos os arquivos, elas se encontram em um arquivo a parte e são apenas chamadas nesses Test Cases.
+
 ## Como criar uma cópia desse projeto
 
 Para obter uma cópia desse projeto em sua máquina local, siga os passos abaixo:
