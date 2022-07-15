@@ -1,0 +1,21 @@
+{
+    "carrinho1":{
+        "produtos": [
+            {   "idProduto":"BeeJh5lz3k6kSIzA",
+                "quantidade":"4"
+            }
+          ]
+    },
+    "carrinho2":{
+        "produtos": [
+            {
+                "idProduto":"BeeJh5lz3k6kSIzA",
+                "quantidade":"2"
+            },
+            {
+                "idProduto":"YaeJ455lz3k6kSIzA",
+                "quantidade":"3"
+            }
+        ]
+    }
+}

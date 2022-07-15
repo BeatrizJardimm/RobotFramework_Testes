@@ -1,0 +1,32 @@
+{
+    "produto_valido":{
+    "nome": "IPhone 11 - 128GB",
+    "preco": 4160,
+    "descricao": "Celular",
+    "quantidade": 128
+  },
+  "produto_invalido":{
+    "nome": "IPhone 11 - 128GB",
+    "preco": 2080,
+    "descricao": "Celular em promoção",
+    "quantidade": 49
+  },
+  "produto_sem_nome":{
+    "nome": "",
+    "preco": 450,
+    "descricao": "Fone de Ouvido",
+    "quantidade": 203
+  },
+  "produto_editado":{
+    "nome":"Logitech MX Vertical",
+    "preco":"235",
+    "descricao":"Mouse",
+    "quantidade":"271"
+  },
+  "produto_novo":{
+    "nome":"AirPods",
+    "preco":"1500",
+    "descricao":"fone de ouvido",
+    "quantidade":"147"
+  }
+}

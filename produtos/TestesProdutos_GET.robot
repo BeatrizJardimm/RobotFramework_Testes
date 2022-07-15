@@ -3,11 +3,9 @@
 # Existem Test Cases para todos os casos, tanto de sucesso quanto de erro
 
 * Settings *
-Documentation   Arquivo simples para requisições HTTP em APIs
+Documentation   Arquivo simples para requisições GET no Endpoint /produtos
 Library         RequestsLibrary
-
-* Variables *
-
+Resource        ../common.robot
 
 * Test Cases *
 
@@ -32,22 +30,11 @@ Cenário: GET Produto Inexistente 400
     Validar Mensagem: "Produto não encontrado"
 
 * Keywords *
-Criar Sessao
-    Create Session          serverest       http://localhost:3000
-
 GET Endpoint /produtos
     ${response}             GET On Session     serverest       /produtos
+    Printar Conteudo Response    ${response}
     Set Global Variable     ${response}
 
 GET Endpoint /produtos id "${id}"
     ${response}             GET On Session     serverest       /produtos/${id}      expected_status=anything
     Set Global Variable     ${response}
-
-Validar Status Code "${statuscode}"
-    Should Be True          ${response.status_code} == ${statuscode}
-
-Validar Nome: "${nome}"
-    Should Match            ${response.json()["nome"]}          ${nome}
-
-Validar Mensagem: "${mensagem}"
-    Should Match             ${response.json()["message"]}       ${mensagem}

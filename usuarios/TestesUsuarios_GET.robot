@@ -5,12 +5,9 @@
 
 # Área para definir as configurações do arquivo
 * Settings *
-Documentation   Arquivo simples para requisições HTTP em APIs
+Documentation   Arquivo simples para requisições GET do Endpoint /usuarios
 Library         RequestsLibrary
-
-# Área para setar as váriaveis do projeto
-* Variables *
-
+Resource        ../common.robot
 
 #Área para escrever os casos que serão testados
 * Test Cases *
@@ -20,7 +17,7 @@ Cenário: GET Todos os Usuários 200
     Criar Sessao
     GET Endpoint /usuarios
     Validar Status Code "200"
-    Validar Quantidade ${1}
+    Validar Quantidade ${3}
 
 Cenário: GET Usuário Específico 200
     [tags]      GET200.2
@@ -38,26 +35,12 @@ Cenário: GET Usuário Inexistente 400
 
 #Área para desenvolver as keywords utilizadas nos casos de teste
 * Keywords *
-Criar Sessao
-    Create Session          serverest          http://localhost:3000
 
 GET Endpoint /usuarios
     ${response}             GET On Session     serverest       /usuarios
-    Log To Console          Response: ${response.content}
+    Printar Conteudo Response    ${response}
     Set Global Variable     ${response}
 
 GET Endpoint /usuarios id "${id}"
     ${response}             GET On Session     serverest       /usuarios/${id}      expected_status=anything
     Set Global Variable     ${response}
-
-Validar Status Code "${statuscode}"
-    Should Be True          ${response.status_code} == ${statuscode}
-
-Validar Quantidade ${qnt}
-    Should Be Equal         ${response.json()["quantidade"]}    ${qnt}
-
-Validar Mensagem: "${mensagem}"
-    Should Match            ${response.json()["message"]}       ${mensagem}
-
-Validar Nome: "${nome}"
-    Should Match            ${response.json()["nome"]}          ${nome}

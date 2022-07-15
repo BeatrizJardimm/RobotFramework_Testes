@@ -5,11 +5,14 @@
 
 # Área para definir as configurações do arquivo
 * Settings *
-Documentation   Arquivo simples para requisições HTTP em APIs
+Documentation   Arquivo simples para requisições DELETE no Endpoint /usuarios
 Library         RequestsLibrary
+Resource        ../common.robot
 
-# Área para setar as váriaveis do projeto
 * Variables *
+${id_user_existente}                 QMOjFaBmpRtUw4JU
+${id_user_inexistente}               5je0IQ0AEwLCgBu7
+${id_user_com_carrinho}              oUb7aGkMtSEPf6BZ
 
 
 #Área para escrever os casos que serão testados
@@ -19,7 +22,7 @@ Library         RequestsLibrary
 Cenário: DELETE Excluir Usuário Existente 200
     [tags]  	DELETE200.1
     Criar Sessao
-    DELETE Usuario id "0uxuPY0cbmQhpEz1" 
+    DELETE Usuario id "${id_user_existente}" 
     Validar Status Code "200"
     Validar Mensagem: "Registro excluído com sucesso"
 
@@ -27,7 +30,7 @@ Cenário: DELETE Excluir Usuário Existente 200
 Cenário: DELETE Excluir Usuário Inexistente 200
     [tags]  	DELETE200.2
     Criar Sessao
-    DELETE Usuario id "5je0IQ0AEwLCgBu7" 
+    DELETE Usuario id "${id_user_inexistente}"
     Validar Status Code "200"
     Validar Mensagem: "Nenhum registro excluído"    
 
@@ -35,21 +38,13 @@ Cenário: DELETE Excluir Usuário Inexistente 200
 Cenário: DELETE Excluir Usuário com Carrinho Cadastrado 400
     [tags]  	DELETE400
     Criar Sessao
-    DELETE Usuario id "oUb7aGkMtSEPf6BZ"
+    DELETE Usuario id "${id_user_com_carrinho}"
     Validar Status Code "400"
     Validar Mensagem: "Não é permitido excluir usuário com carrinho cadastrado"
 
 #Área para desenvolver as keywords utilizadas nos casos de teste
 * Keywords *
-Criar Sessao
-    Create Session          serverest       http://localhost:3000
 
 DELETE Usuario id "${id}"
     ${response}             DELETE On Session     serverest       /usuarios/${id}      expected_status=anything
     Set Global Variable     ${response}
-
-Validar Status Code "${statuscode}"
-    Should Be True          ${response.status_code} == ${statuscode}
-
-Validar Mensagem: "${mensagem}"
-    Should Match          ${response.json()["message"]}       ${mensagem}

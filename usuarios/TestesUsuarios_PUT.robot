@@ -4,8 +4,9 @@
 
 # Área para definir as configurações do arquivo
 * Settings *
-Documentation   Arquivo simples para requisições HTTP em APIs
+Documentation   Arquivo simples para requisiçõesPUT no Endpoint /usuarios
 Library         RequestsLibrary
+Resource        ../common.robot
 
 # Área para setar as váriaveis do projeto
 * Variables *
@@ -17,50 +18,57 @@ Library         RequestsLibrary
 Cenário: PUT Editar Usuario Existente 200
     [tags]      PUT200
     Criar Sessao
-    PUT Editar id "susXVV8VDdM3MOhW"
+    Editar Usuario Valido
     Validar Status Code "200"
     Validar Mensagem: "Registro alterado com sucesso"
 
 Cenário: PUT Cadastrar novo Usuario 201
     [tags]      PUT201
     Criar Sessao
-    PUT Criar Usuário
+    Criar Usuario Valido
     Validar Status Code "201"
     Validar Mensagem: "Cadastro realizado com sucesso"
 
 Cenário: PUT Mudar Email de um Usuário para um Existente 400
     [tags]      PUT400
     Criar Sessao
-    PUT Editar id "0uxuPY0cbmQhpEz1" com Email Existente
+    Editar com Email Existente
     Validar Status Code "400"
     Validar Mensagem: "Este email já está sendo usado"
 
 
 #Área para desenvolver as keywords utilizadas nos casos de teste
 * Keywords *
-Criar Sessao
-    Create Session          serverest       http://localhost:3000
+
+Editar Usuario Valido
+    ${json}                 Importar JSON Estatico      json_usuarios_ex.json
+    ${payload}              Set Variable                ${json["usuario_editado"]}
+    Set Global Variable     ${payload}
+    PUT Editar id "susXVV8VDdM3MOhW"
+
+Criar Usuario Valido
+    ${json}                 Importar JSON Estatico      json_usuarios_ex.json
+    ${payload}              Set Variable                ${json["usuario_nao_administrador"]}
+    Set Global Variable     ${payload}
+    PUT Criar Usuário
+    
+Editar com Email Existente
+    ${json}                 Importar JSON Estatico      json_usuarios_ex.json
+    ${payload}              Set Variable                ${json["usuario_invalido"]}
+    Set Global Variable     ${payload}
+    PUT Editar com Email Existente
 
 PUT Editar id "${id}"
-    &{payload}              Create Dictionary   nome=Lizzie Grant   email=stargirlinterlude@gmail.com   password=ultraviolence     administrador=true
-    ${response}             PUT On Session      serverest      /usuarios/${id}       data=&{payload}     json=None      expected_status=anything
-    Log To Console          ${response.content}
+    ${response}             PUT On Session      serverest      /usuarios/${id}       json=&{payload}    expected_status=anything
+    Printar Conteudo Response   ${response}
     Set Global Variable     ${response}
 
 PUT Criar Usuário
-    &{payload}              Create Dictionary   nome=Taylor Swift   email=evermore@gmail.com   password=reputation     administrador=true
-    ${response}             PUT On Session      serverest      /usuarios/0uxuPY0cbmQhpEz1       data=&{payload}     json=None      expected_status=anything
-    Log To Console          ${response.content}
+    ${response}             PUT On Session      serverest      /usuarios/0uxuPY0cbmQhpEz1       json=&{payload}     expected_status=anything
+    Printar Conteudo Response   ${response}
     Set Global Variable     ${response}
 
-PUT Editar id "${id}" com Email Existente
-    &{payload}              Create Dictionary   nome=Frank Ocean   email=stargirlinterlude@gmail.com   password=ivy     administrador=true
-    ${response}             PUT On Session      serverest      /usuarios/${id}       data=&{payload}     json=None      expected_status=anything
-    Log To Console          ${response.content}
-    Set Global Variable     ${response}  
-
-Validar Status Code "${statuscode}"
-    Should Be True          ${response.status_code} == ${statuscode}
-
-Validar Mensagem: "${mensagem}"
-    Should Match            ${response.json()["message"]}       ${mensagem}
+PUT Editar com Email Existente
+    ${response}             PUT On Session      serverest      /usuarios/CNR4yVgA8tQfkvqv       json=&{payload} expected_status=anything
+    Printar Conteudo Response   ${response}
+    Set Global Variable     ${response}

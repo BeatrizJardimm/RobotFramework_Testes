@@ -6,6 +6,7 @@
 * Settings *
 Documentation   Arquivo simples para requisições HTTP em APIs
 Library         RequestsLibrary
+Resource        ../common.robot
 
 # Área para setar as váriaveis do projeto
 * Variables *
@@ -17,37 +18,32 @@ Library         RequestsLibrary
 Cenário: POST Cadastrar Novo Usuario 201
     [tags]      POST200
     Criar Sessao
-#    Criar Usuario Dinâmico
-    POST Endpoint /usuarios
+    Criar Usuario Estatico Valido
     Validar Status Code "201"
     Validar Mensagem: "Cadastro realizado com sucesso"
 
 Cenário: POST Cadastrar Novo Usuário com Email Já Cadastrado 400
     [tags]      POST400
     Criar Sessao
-    POST Email já Cadastrado
+    Criar Usuario Estatico Invalido
     Validar Status Code "400"
     Validar Mensagem: "Este email já está sendo usado"
 
 #Área para desenvolver as keywords utilizadas nos casos de teste
 * Keywords *
-Criar Sessao
-    Create Session          serverest           http://localhost:3000
-
 POST Endpoint /usuarios
-    &{payload}              Create Dictionary   nome=Lana Del Rey   email=stargirlinterlude@gmail.com   password=ultraviolence     administrador=true
-    ${response}             POST On Session     serverest           /usuarios           data=&{payload}     json=None      expected_status=anything
-    Log To Console          ${response.content}
+    ${response}             POST On Session     serverest       /usuarios       json=&{payload}     expected_status=anything
+    Printar Conteudo Response   ${response}
     Set Global Variable     ${response}
 
-POST Email já Cadastrado
-    &{payload}              Create Dictionary   nome=Frank Ocean   email=stargirlinterlude@gmail.com   password=ivy     administrador=true
-    ${response}             POST On Session     serverest           /usuarios           data=&{payload}     json=None      expected_status=anything
-    Log To Console          ${response.content}
-    Set Global Variable     ${response}
+Criar Usuario Estatico Valido
+    ${json}                 Importar JSON Estatico      json_usuarios_ex.json
+    ${payload}              Set Variable                ${json["usuario_valido"]}
+    Set Global Variable     ${payload}
+    POST Endpoint /usuarios
 
-Validar Status Code "${statuscode}"
-    Should Be True          ${response.status_code} == ${statuscode}
-
-Validar Mensagem: "${mensagem}"
-    Should Match            ${response.json()["message"]}       ${mensagem}    
+Criar Usuario Estatico Invalido
+    ${json}                 Importar JSON Estatico      json_usuarios_ex.json
+    ${payload}              Set Variable                ${json["usuario_invalido"]}
+    Set Global Variable     ${payload}
+    POST Endpoint /usuarios

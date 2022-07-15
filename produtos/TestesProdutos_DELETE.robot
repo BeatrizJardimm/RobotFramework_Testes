@@ -5,38 +5,55 @@
 * Settings *
 Documentation   Arquivo simples para requisições HTTP em APIs
 Library         RequestsLibrary
-
-* Variables *
-
+Resource        ../common.robot
+Resource        ../login/keywordsLogin.robot
 
 * Test Cases *
 
+#rodar com um token válido
 Cenário: DELETE Excluir Produto Específico 200
+    [tags]      DELETE200
     Criar Sessao
-    DELETE id "/0uxuPY0cbmQhpEz1"
-    Validar Status Code 200
+    Fazer Login e Armazenar Token
+    DELETE id "0uxuPY0cbmQhpEz1"        # não existe produto com essa id
+    Validar Status Code "200"
     Validar Mensagem: "Registro excluído com sucesso | Nenhum registro excluído"
 
+#rodar com um token válido
 Cenário: DELETE Excluir Produto que está no Carrinho 400
+    [tags]      DELETE400
     Criar Sessao
-    DELETE Produto Dentro de um Carrinho
+    Fazer Login e Armazenar Token
+    DELETE id "BeeJh5lz3k6kSIzA"        # o produto que contém essa id está em um carrinho
     Validar Status Code "400"
     Validar Mensagem: "Não é permitido excluir produto que faz parte de carrinho"
 
+#rodar com um token expirado
 Cenário: DELETE Erro no Token 401
+    [tags]      DELETE401
     Criar Sessao
-    DELETE Produto com Token Expirado
+    DELETE Sem Token
     Validar Status Code "401"
     Validar Mensagem: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
+#rodar com um token válido, porém com um usuário que não seja administrador
 Cenário: DELETE Acesso Apenas ao Administrador 403
+    [tags]      DELETE403
     Criar Sessao
-    DELETE Produto com Parametro Administrador
+    Fazer Login Sem Admnistrador e Armazenar Token
+    DELETE id "0uxuPY0cbmQhpEz1"
     Validar Status Code "403"
     Validar Mensagem: "Rota exclusiva para administradores"
 
 * Keywords *
-Criar Sessao
-    Create Session          serverest       http://localhost:3000
 
+DELETE id "${id}"
+    ${header}               Create Dictionary   Authorization=${token_auth}
+    ${response}             DELETE On Session     serverest       /produtos/${id}      expected_status=anything    headers=${header}
+    Printar Conteudo Response  ${response}
+    Set Global Variable     ${response}
 
+DELETE Sem Token
+    ${response}             DELETE On Session     serverest       /produtos/0uxuPY0cbmQhpEz1      expected_status=anything
+    Printar Conteudo Response  ${response}
+    Set Global Variable     ${response}

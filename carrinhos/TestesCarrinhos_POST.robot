@@ -6,10 +6,8 @@
 * Settings *
 Documentation   Arquivo simples para requisições HTTP em APIs
 Library         RequestsLibrary
-
-# Área para setar as váriaveis do projeto
-* Variables *
-
+Resource        ../common.robot
+Resource        ../login/keywordsLogin.robot
 
 #Área para escrever os casos que serão testados
 * Test Cases *
@@ -17,16 +15,17 @@ Library         RequestsLibrary
 Cenário: POST Cadastrar Carrinho 201
     [tags]      POST201
     Criar Sessao
-    POST Endpoint "/carrinhos"
+    Fazer Login e Armazenar Token
+    Criar Carrinho Estatico Valido
     Validar Status Code "201"
     Validar Mensagem: "Cadastro realizado com sucesso"
 
 Cenário: POST Erro no Cadastro 400
     [tags]      POST400
     Criar Sessao
-    POST Outro Carrinho para Mesmo Usuario
+    Fazer Login e Armazenar Token
+    Criar Outro Carrinho Estatico Valido Para o Mesmo Usuario
     Validar Status Code "400"
-    Validar Mensagem: "Não é permitido possuir produto duplicado | Não é permitido ter mais de 1 carrinho | Produto não encontrado | Produto não possui quantidade suficiente"
 
 Cenário: POST Erro no Token 401
     [tags]      POST401
@@ -38,27 +37,37 @@ Cenário: POST Erro no Token 401
 #Área para desenvolver as keywords utilizadas nos casos de teste
 * Keywords *
 
-Criar Sessao
-    Create Session              serverest       http://localhost:3000
+Criar Carrinho Estatico Valido
+    ${json}                 Importar JSON Estatico      json_carrinhos_ex.json
+    ${payload}              Set Variable                ${json["carrinho1"]}
+    Set Global Variable     ${payload}
+    POST Endpoint /carrinhos
 
-POST Endpoint "${endpoint}"
-    &{payload}                  Create Dictionary   produtos=[{ idProduto=BeeJh5lz3k6kSIzA       quantidade=4}]
-    ${response}                 POST On Session     serverest       /${endpoint}        data=&{payload}     json=None   expected_status=anything
-    Log To Console              ${response.content}
-    Set Global Variables        ${response}
+Criar Outro Carrinho Estatico Valido Para o Mesmo Usuario
+    ${json}                 Importar JSON Estatico      json_carrinhos_ex.json
+    ${payload}              Set Variable                ${json["carrinho2"]}
+    Set Global Variable     ${payload}
+    POST Outro Carrinho para Mesmo Usuario
+
+Criar Carrinho para Token Inválido
+    ${json}                 Importar JSON Estatico      json_carrinhos_ex.json
+    ${payload}              Set Variable                ${json["carrinho2"]}
+    Set Global Variable     ${payload}
+    POST Carrinho Sem Token
+
+POST Endpoint /carrinhos
+    ${header}                   Create Dictionary   Authorization=${token_auth}
+    ${response}                 POST On Session     serverest       /carrinhos        json=${payload}   expected_status=anything    headers=${header}
+    Printar Conteudo Response   ${response}
+    Set Global Variable         ${response}
 
 POST Outro Carrinho para Mesmo Usuario
-    &{payload}                  Create Dictionary    produtos=[{ idProduto=BeeJh5lz3k6kSIzA       quantidade=2}, { idProduto=YaeJ455lz3k6kSIzA       quantidade=3}]
-    ${response}                 POST On Session     serverest       /carrinhos           data=&{payload}     json=None      expected_status=anything
+    ${header}                   Create Dictionary   Authorization=${token_auth}
+    ${response}                 POST On Session     serverest       /carrinhos      json=${payload}      expected_status=anything    headers=${header}
+    Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
 POST Carrinho Sem Token
-    &{payload}                  Create Dictionary     produtos=[{ idProduto=YaeJ455lz3k6kSIzA       quantidade=1}]
-    ${response}                 POST On Session       serverest       /carrinhos           data=&{payload}     json=None      expected_status=anything
+    ${response}                 POST On Session       serverest       /carrinhos        json=${payload}      expected_status=anything
+    Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
-
-Validar Status Code "${statuscode}"
-    Should Be True              ${response.status_code} == ${statuscode}
-
-Validar Mensagem: "${mensagem}"
-    Should Match                ${response.json()["message"]}      ${mensagem}

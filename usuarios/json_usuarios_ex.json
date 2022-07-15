@@ -1,0 +1,33 @@
+{
+    "usuario_valido":{
+        "nome":"Lana Del Rey",
+        "email":"stargirlinterlude@gmail.com",
+        "password":"ultraviolence",
+        "administrador":"true"
+    },
+    "usuario_invalido":{
+        "nome":"Frank Ocean",
+        "email":"stargirlinterlude@gmail.com",
+        "password":"ivy",
+        "administrador":"true"
+    },
+    "usuario_nao_administrador":{
+        "nome":"Childish Gambino",
+        "email":"becausetheinternet@gmail.com",
+        "password":"3005",
+        "administrador":"false"
+    },
+    "usuario_sem_email":{
+        "nome":"Childish Gambino",
+        "email":"",
+        "password":"3005",
+        "administrador":"false"
+    },
+    "usuario_editado":{
+        "nome":"Lizzie Grant",
+        "email":"stargirlinterlude@gmail.com",
+        "password":"ultraviolence",
+        "administrador":"true"
+    }
+}
+
