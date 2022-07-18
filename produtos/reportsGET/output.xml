@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220715 09:03:13.839" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220715 11:56:03.957" rpa="false" schemaversion="3">
 <suite id="s1" name="TestesProdutos GET" source="C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\produtos\TestesProdutos_GET.robot">
 <test id="s1-t1" name="Cenário: GET Todos os Produtos 200" line="12">
 <kw name="Criar Sessao" library="common">
@@ -7,10 +7,10 @@
 <arg>serverest</arg>
 <arg>http://localhost:3000</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220715 09:03:13.982" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220715 09:03:13.982" endtime="20220715 09:03:13.982"/>
+<msg timestamp="20220715 11:56:04.145" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220715 11:56:04.145" endtime="20220715 11:56:04.145"/>
 </kw>
-<status status="PASS" starttime="20220715 09:03:13.981" endtime="20220715 09:03:13.982"/>
+<status status="PASS" starttime="20220715 11:56:04.144" endtime="20220715 11:56:04.145"/>
 </kw>
 <kw name="GET Endpoint /produtos">
 <kw name="GET On Session" library="RequestsLibrary">
@@ -18,23 +18,30 @@
 <arg>serverest</arg>
 <arg>/produtos</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20220715 09:03:14.003" level="INFO">GET Request : url=http://localhost:3000/produtos 
+<msg timestamp="20220715 11:56:04.159" level="INFO">GET Request : url=http://localhost:3000/produtos 
  path_url=/produtos 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20220715 09:03:14.003" level="INFO">GET Response : url=http://localhost:3000/produtos 
+<msg timestamp="20220715 11:56:04.159" level="INFO">GET Response : url=http://localhost:3000/produtos 
  status=200, reason=OK 
- headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '8a0d9091-9484-407d-b5a9-aca7590450f7', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '820', 'Date': 'Fri, 15 Jul 2022 12:03:14 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '7a93ffd5-e26d-4fc4-accb-f918d7546342', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1205', 'Date': 'Fri, 15 Jul 2022 14:56:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={
-    "quantidade": 4,
+    "quantidade": 6,
     "produtos": [
         {
             "nome": "Logitech MX Vertical",
             "preco": 235,
             "descricao": "Mouse",
-            "quantidade": 271,
+            "quantidade": 267,
             "_id": "BeeJh5lz3k6kSIzA"
+        },
+        {
+            "nome": "IPhone 6 - 8GB",
+            "preco": 1060,
+            "descricao": "Celular",
+            "quantidade": 128,
+            "_id": "Hors2sSwSI3ocJgZ"
         },
         {
             "nome": "Samsung 60 polegadas",
@@ -51,6 +58,13 @@
             "_id": "UOKeAatL3VoWMBHd"
         },
         {
+            "nome": "IPhone 13 - 128GB",
+            "preco": 5060,
+            "descricao": "Celular",
+            "quantidade": 128,
+            "_id": "mTq57GfPjmaNjou0"
+        },
+        {
             "nome": "IPhone 11 - 128GB",
             "preco": 4160,
             "descricao": "celular",
@@ -60,195 +74,49 @@
     ]
 } 
  </msg>
-<msg timestamp="20220715 09:03:14.003" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220715 09:03:13.983" endtime="20220715 09:03:14.003"/>
+<msg timestamp="20220715 11:56:04.159" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:56:04.146" endtime="20220715 11:56:04.159"/>
 </kw>
 <kw name="Printar Conteudo Response" library="common">
 <arg>${response}</arg>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Response: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220715 09:03:14.004" endtime="20220715 09:03:14.005"/>
+<status status="PASS" starttime="20220715 11:56:04.160" endtime="20220715 11:56:04.163"/>
 </kw>
-<status status="PASS" starttime="20220715 09:03:14.003" endtime="20220715 09:03:14.005"/>
+<status status="PASS" starttime="20220715 11:56:04.160" endtime="20220715 11:56:04.163"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220715 09:03:14.005" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220715 09:03:14.005" endtime="20220715 09:03:14.005"/>
+<msg timestamp="20220715 11:56:04.163" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:56:04.163" endtime="20220715 11:56:04.163"/>
 </kw>
-<status status="PASS" starttime="20220715 09:03:13.983" endtime="20220715 09:03:14.005"/>
+<status status="PASS" starttime="20220715 11:56:04.146" endtime="20220715 11:56:04.163"/>
 </kw>
 <kw name="Validar Status Code &quot;200&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
 <kw name="Should Be True" library="BuiltIn">
 <arg>${response.status_code} == ${statuscode}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220715 09:03:14.007" endtime="20220715 09:03:14.009"/>
+<status status="PASS" starttime="20220715 11:56:04.164" endtime="20220715 11:56:04.165"/>
 </kw>
-<status status="PASS" starttime="20220715 09:03:14.007" endtime="20220715 09:03:14.009"/>
+<status status="PASS" starttime="20220715 11:56:04.164" endtime="20220715 11:56:04.165"/>
 </kw>
 <tag>GET200.1</tag>
-<status status="PASS" starttime="20220715 09:03:13.981" endtime="20220715 09:03:14.009"/>
-</test>
-<test id="s1-t2" name="Cenário: GET Produto Específico 200" line="18">
-<kw name="Criar Sessao" library="common">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>serverest</arg>
-<arg>http://localhost:3000</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220715 09:03:14.012" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220715 09:03:14.012" endtime="20220715 09:03:14.012"/>
-</kw>
-<status status="PASS" starttime="20220715 09:03:14.012" endtime="20220715 09:03:14.012"/>
-</kw>
-<kw name="GET Endpoint /produtos id &quot;BeeJh5lz3k6kSIzA&quot;" sourcename="GET Endpoint /produtos id &quot;${id}&quot;">
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>serverest</arg>
-<arg>/produtos/${id}</arg>
-<arg>expected_status=anything</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20220715 09:03:14.017" level="INFO">GET Request : url=http://localhost:3000/produtos/BeeJh5lz3k6kSIzA 
- path_url=/produtos/BeeJh5lz3k6kSIzA 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20220715 09:03:14.017" level="INFO">GET Response : url=http://localhost:3000/produtos/BeeJh5lz3k6kSIzA 
- status=200, reason=OK 
- headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'a452b04a-b0c9-4cf0-b8ec-63be39202eea', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '136', 'Date': 'Fri, 15 Jul 2022 12:03:14 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={
-    "nome": "Logitech MX Vertical",
-    "preco": 235,
-    "descricao": "Mouse",
-    "quantidade": 271,
-    "_id": "BeeJh5lz3k6kSIzA"
-} 
- </msg>
-<msg timestamp="20220715 09:03:14.017" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220715 09:03:14.013" endtime="20220715 09:03:14.017"/>
-</kw>
-<kw name="Printar Conteudo Response" library="common">
-<arg>${response}</arg>
-<kw name="Log To Console" library="BuiltIn">
-<arg>Response: ${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220715 09:03:14.018" endtime="20220715 09:03:14.019"/>
-</kw>
-<status status="PASS" starttime="20220715 09:03:14.018" endtime="20220715 09:03:14.019"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220715 09:03:14.019" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220715 09:03:14.019" endtime="20220715 09:03:14.019"/>
-</kw>
-<status status="PASS" starttime="20220715 09:03:14.013" endtime="20220715 09:03:14.020"/>
-</kw>
-<kw name="Validar Status Code &quot;200&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
-<kw name="Should Be True" library="BuiltIn">
-<arg>${response.status_code} == ${statuscode}</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220715 09:03:14.021" endtime="20220715 09:03:14.022"/>
-</kw>
-<status status="PASS" starttime="20220715 09:03:14.021" endtime="20220715 09:03:14.022"/>
-</kw>
-<kw name="Validar Nome: &quot;Logitech MX Vertical&quot;" library="common" sourcename="Validar Nome: &quot;${nome}&quot;">
-<kw name="Should Match" library="BuiltIn">
-<arg>${response.json()["nome"]}</arg>
-<arg>${nome}</arg>
-<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
-<status status="PASS" starttime="20220715 09:03:14.023" endtime="20220715 09:03:14.024"/>
-</kw>
-<status status="PASS" starttime="20220715 09:03:14.023" endtime="20220715 09:03:14.024"/>
-</kw>
-<tag>GET200.2</tag>
-<status status="PASS" starttime="20220715 09:03:14.011" endtime="20220715 09:03:14.024"/>
-</test>
-<test id="s1-t3" name="Cenário: GET Produto Inexistente 400" line="25">
-<kw name="Criar Sessao" library="common">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>serverest</arg>
-<arg>http://localhost:3000</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220715 09:03:14.027" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220715 09:03:14.027" endtime="20220715 09:03:14.027"/>
-</kw>
-<status status="PASS" starttime="20220715 09:03:14.026" endtime="20220715 09:03:14.027"/>
-</kw>
-<kw name="GET Endpoint /produtos id &quot;Inexistente&quot;" sourcename="GET Endpoint /produtos id &quot;${id}&quot;">
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>serverest</arg>
-<arg>/produtos/${id}</arg>
-<arg>expected_status=anything</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20220715 09:03:14.033" level="INFO">GET Request : url=http://localhost:3000/produtos/Inexistente 
- path_url=/produtos/Inexistente 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20220715 09:03:14.033" level="INFO">GET Response : url=http://localhost:3000/produtos/Inexistente 
- status=400, reason=Bad Request 
- headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '5661ff8f-e81b-465a-84d8-f5ba41e856f1', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '44', 'Date': 'Fri, 15 Jul 2022 12:03:14 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={
-    "message": "Produto não encontrado"
-} 
- </msg>
-<msg timestamp="20220715 09:03:14.034" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20220715 09:03:14.029" endtime="20220715 09:03:14.034"/>
-</kw>
-<kw name="Printar Conteudo Response" library="common">
-<arg>${response}</arg>
-<kw name="Log To Console" library="BuiltIn">
-<arg>Response: ${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220715 09:03:14.034" endtime="20220715 09:03:14.035"/>
-</kw>
-<status status="PASS" starttime="20220715 09:03:14.034" endtime="20220715 09:03:14.035"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${response}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220715 09:03:14.036" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20220715 09:03:14.035" endtime="20220715 09:03:14.036"/>
-</kw>
-<status status="PASS" starttime="20220715 09:03:14.028" endtime="20220715 09:03:14.036"/>
-</kw>
-<kw name="Validar Status Code &quot;400&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
-<kw name="Should Be True" library="BuiltIn">
-<arg>${response.status_code} == ${statuscode}</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20220715 09:03:14.037" endtime="20220715 09:03:14.038"/>
-</kw>
-<status status="PASS" starttime="20220715 09:03:14.036" endtime="20220715 09:03:14.038"/>
-</kw>
-<kw name="Validar Mensagem: &quot;Produto não encontrado&quot;" library="common" sourcename="Validar Mensagem: &quot;${mensagem}&quot;">
-<kw name="Should Match" library="BuiltIn">
-<arg>${response.json()["message"]}</arg>
-<arg>${mensagem}</arg>
-<doc>Fails if the given ``string`` does not match the given ``pattern``.</doc>
-<status status="PASS" starttime="20220715 09:03:14.038" endtime="20220715 09:03:14.039"/>
-</kw>
-<status status="PASS" starttime="20220715 09:03:14.038" endtime="20220715 09:03:14.039"/>
-</kw>
-<tag>GET400</tag>
-<status status="PASS" starttime="20220715 09:03:14.026" endtime="20220715 09:03:14.040"/>
+<status status="PASS" starttime="20220715 11:56:04.144" endtime="20220715 11:56:04.166"/>
 </test>
 <doc>Arquivo simples para requisições GET no Endpoint /produtos</doc>
-<status status="PASS" starttime="20220715 09:03:13.841" endtime="20220715 09:03:14.041"/>
+<status status="PASS" starttime="20220715 11:56:03.961" endtime="20220715 11:56:04.168"/>
 </suite>
 <statistics>
 <total>
-<stat pass="3" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 <stat pass="1" fail="0" skip="0">GET200.1</stat>
-<stat pass="1" fail="0" skip="0">GET200.2</stat>
-<stat pass="1" fail="0" skip="0">GET400</stat>
 </tag>
 <suite>
-<stat pass="3" fail="0" skip="0" id="s1" name="TestesProdutos GET">TestesProdutos GET</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="TestesProdutos GET">TestesProdutos GET</stat>
 </suite>
 </statistics>
 <errors>

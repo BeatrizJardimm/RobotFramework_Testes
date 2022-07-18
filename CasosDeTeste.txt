@@ -1,0 +1,70 @@
+Este projeto paseado na API Serverest abrange os seguintes casos de teste:
+
+/LOGIN
+
+CT01: Realizar login válido (200)
+CT02: Realizar login com email invalido (401)
+CT03: Realizar login com senha invalida (401)
+
+/USUARIOS
+
+** GET **
+CT04: Listar todos os usuários (200)
+CT05: Buscar e retornar um usuário específico (200)
+CT06: Buscar um usuário inexistente (400)
+
+** POST **
+CT07: Cadastrar um novo usuário (201)
+CT08: Cadastrar novo usuário com um email já cadastrado (400)
+
+** PUT **
+CT09: Editar um usuário existente (200)
+CT10: Cadastrar novo usuário (201)
+CT11: Editar o email de um usuário para outro já existente (400)
+
+** DELETE **
+CT12: Excluir um usuário existente sem carrinho cadastrado (200)
+CT13: Excluir um usuário inexistente (200)
+CT14: Excluir um usuário com carrinho cadastrado (400)
+
+/PRODUTOS
+
+** GET **
+CT15: Listar todos os produtos (200)
+CT16: Buscar e retornar um produto específico (200)
+CT17: Buscar por um produto inexistente (400)
+
+** POST **
+CT18: Cadastrar um novo produto (200)
+CT19: Cadastrar um produto existente (400)
+CT20: Cadastrar um produto sem token de acesso (401)
+
+** PUT **
+CT21: Editar um produto existente (200)
+CT22: Cadastrar um novo produto (201)
+CT23: Editar o nome de um produto para outro nome já existente (400)
+CT24: Editar um produto sem token de acesso (401)
+
+** DELETE **
+CT25: Excluir um produto (200)
+CT26: Excluir um produto que está no carrinho (400)
+CT27: Excluir um produto sem token de acesso (401)
+CT28: Excluir um produto com um usuário que não é administrador (403)
+
+/CARRINHOS
+
+** GET **
+CT29: Listar todos os carrinhos (200)
+CT30: Buscar e retornar um carrinho específico (200)
+CT31: Buscar um carrinho inexistente (400)
+
+** POST **
+CT32: Cadastrar um carrinho (201)
+CT33: Cadastrar outro carrinho para o mesmo usuário (400)
+CT34: Cadastrar um carrinho sem token de acesso (401)
+
+** DELETE **
+CT35: Concluir uma compra (200)
+CT36: Concluir uma compra sem token de acesso (401)
+CT37: Cancelar uma compra e retornar produtos ao estoque (200)
+CT38: Cancelar uma compra sem token de acesso (401)
