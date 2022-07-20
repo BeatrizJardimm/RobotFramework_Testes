@@ -23,6 +23,12 @@
         "password":"3005",
         "administrador":"false"
     },
+    "usuario_sem_senha":{
+        "nome":"Childish Gambino",
+        "email":"becausetheinternet@gmail.com",
+        "password":"",
+        "administrador":"false"
+    },
     "usuario_editado":{
         "nome":"Lizzie Grant",
         "email":"stargirlinterlude@gmail.com",

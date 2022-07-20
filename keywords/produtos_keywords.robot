@@ -26,6 +26,18 @@ Cadastra Produto Estatico Invalido
     Set Global Variable         ${payload}
     POST Endpoint /produtos
 
+Cadastra Produto Estatico sem Email
+    ${json}                     Importar JSON Estatico      json_produtos_ex.json
+    ${payload}                  Set Variable                ${json["produto_sem_nome"]}
+    Set Global Variable         ${payload}
+    POST Endpoint /produtos
+
+Cadastra Produto Estatico de Preco Invalido
+    ${json}                     Importar JSON Estatico      json_produtos_ex.json
+    ${payload}                  Set Variable                ${json["produto_preco_invalido"]}
+    Set Global Variable         ${payload}
+    POST Endpoint /produtos
+
 Cadastra Produto Sem Token
     ${json}                     Importar JSON Estatico      json_produtos_ex.json
     ${payload}                  Set Variable                ${json["produto_valido"]}
@@ -60,7 +72,7 @@ PUT Sem Token
     Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
-Edita Produto Valido
+Edita Produto Estatico Valido
     [Arguments]                 ${id}
     ${json}                     Importar JSON Estatico      json_produtos_ex.json
     ${payload}                  Set Variable                ${json["produto_editado"]}

@@ -16,8 +16,8 @@ Cenário: GET Todos os Usuários 200
     Criar Sessao
     GET Endpoint /usuarios
     Validar Status Code "200"
-    Validar Quantidade ${4}
 
+# usa dados estáticos
 Cenário: GET Usuário Específico 200
     [tags]      GET200.2
     Criar Sessao
@@ -35,30 +35,51 @@ Cenário: GET Usuário Inexistente 400
 Cenário: POST Cadastrar Novo Usuario 201
     [tags]      POST200
     Criar Sessao
-    Criar Usuario Estatico Valido
+    Criar Dados Usuario Valido
+    POST Endpoint /usuarios
     Validar Status Code "201"
     Validar Mensagem: "Cadastro realizado com sucesso"
+    DELETE Usuario id "${response.json()["_id"]}"
+    Validar Status Code "200"
 
 Cenário: POST Cadastrar Novo Usuário com Email Já Cadastrado 400
-    [tags]      POST400
+    [tags]      POST400.1
     Criar Sessao
     Criar Usuario Estatico Invalido
     Validar Status Code "400"
     Validar Mensagem: "Este email já está sendo usado"
 
+Cenário: POST Cadastrar Novo Usuário sem Email 400
+    [tags]      POST400.2
+    Criar Sessao
+    Criar Usuario Estatico sem Email
+    Validar Status Code "400"
+    Validar Response        email
+
+Cenário: POST Cadastrar Novo Usuário sem Senha 400
+    [tags]      POST400.3
+    Criar Sessao
+    Criar Usuario Estatico sem Senha
+    Validar Status Code "400"
+    Validar Response       password
+
 Cenário: PUT Editar Usuario Existente 200
     [tags]      PUT200
     Criar Sessao
-    Editar Usuario Valido
+    Editar Dados Usuario Valido     stargirlinterlude@gmail.com
+    PUT Editar id "susXVV8VDdM3MOhW"
     Validar Status Code "200"
     Validar Mensagem: "Registro alterado com sucesso"
 
 Cenário: PUT Cadastrar novo Usuario 201
     [tags]      PUT201
     Criar Sessao
-    Criar Usuario Valido
+    Criar Dados Usuario Valido
+    PUT Criar Usuário
     Validar Status Code "201"
     Validar Mensagem: "Cadastro realizado com sucesso"
+    DELETE Usuario id "${response.json()["_id"]}"
+    Validar Status Code "200"
 
 Cenário: PUT Mudar Email de um Usuário para um Existente 400
     [tags]      PUT400
@@ -68,17 +89,21 @@ Cenário: PUT Mudar Email de um Usuário para um Existente 400
     Validar Mensagem: "Este email já está sendo usado"
 
 # passar a id de um usuário que não tem carrinho cadastrado
+########## CRIAR UM USUARIO DENTRO DO TEST CASE E JA EXCLUIR ELE
 Cenário: DELETE Excluir Usuário Existente 200
     [tags]  	DELETE200.1
     Criar Sessao
-    DELETE Usuario id "${id_user_existente}" 
+    Criar Dados Usuario Valido
+    POST Endpoint /usuarios
+    Validar Status Code "201"
+    DELETE Usuario id "${response.json()["_id"]}" 
     Validar Status Code "200"
     Validar Mensagem: "Registro excluído com sucesso"
 
 Cenário: DELETE Excluir Usuário Inexistente 200
     [tags]  	DELETE200.2
     Criar Sessao
-    DELETE Usuario id "${id_user_inexistente}"
+    DELETE Usuario id "Inexistente"
     Validar Status Code "200"
     Validar Mensagem: "Nenhum registro excluído"    
 

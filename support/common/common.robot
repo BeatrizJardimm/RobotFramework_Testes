@@ -14,6 +14,10 @@ Validar Mensagem: "${mensagem}"
 Validar Nome: "${nome}"
     Should Match            ${response.json()["nome"]}          ${nome}
 
+Validar Response
+    [Arguments]         ${campo}
+    Should Match        ${response.json()["${campo}"]}              ${campo} não pode ficar em branco
+
 Printar Conteudo Response
     [Arguments]             ${response}
     Log To Console          Response: ${response.content}

@@ -29,17 +29,37 @@ Cenário: POST Cadastrar Novo Produto 201
     [tags]      POST201
     Criar Sessao
     Fazer Login e Armazenar Token
-    Cadastra Produto Estatico Valido
+    Criar Dados Produto Valido
+    POST Endpoint /produtos
     Validar Status Code "201"
     Validar Mensagem: "Cadastro realizado com sucesso"
+    DELETE id "${response.json()["_id"]}"
+    Validar Status Code "200"
+    Validar Mensagem: "Registro excluído com sucesso"
 
 Cenário: POST Cadastrar Produto Existente 400
-    [tags]      POST400
+    [tags]      POST400.1
     Criar Sessao
     Fazer Login e Armazenar Token
     Cadastra Produto Estatico Invalido
     Validar Status Code "400"
     Validar Mensagem: "Já existe produto com esse nome"
+
+Cenário: POST Cadastrar Produto sem Nome 400
+    [tags]      POST400.2
+    Criar Sessao
+    Fazer Login e Armazenar Token
+    Cadastra Produto Estatico sem Email
+    Validar Status Code "400"
+    Validar Response        nome
+
+#passando uma string como parametro de preço que deve receber um inteiro
+Cenário: POST Cadastrar Produto com preco Invalido 400
+    [tags]      POST400.3
+    Criar Sessao
+    Fazer Login e Armazenar Token
+    Cadastra Produto Estatico de Preco Invalido
+    Validar Status Code "400"
 
 Cenário: POST Erro no Token 401
     [tags]      POST401.1
@@ -52,7 +72,8 @@ Cenário: PUT Editar Produto Existente 200
     [tags]      PUT200
     Criar Sessao
     Fazer Login e Armazenar Token
-    Edita Produto Valido    BeeJh5lz3k6kSIzA 
+    Editar Dados Produto Valido     Logitech MX Vertical
+    PUT id "BeeJh5lz3k6kSIzA"
     Validar Status Code "200"
     Validar Mensagem: "Registro alterado com sucesso"
 
@@ -60,15 +81,19 @@ Cenário: PUT Cadastrar Novo Produto 201
     [tags]      PUT201
     Criar Sessao
     Fazer Login e Armazenar Token
-    Cria Produto Valido
+    Criar Dados Produto Valido
+    POST Endpoint /produtos
     Validar Status Code "201"
     Validar Mensagem: "Cadastro realizado com sucesso"
+    DELETE id "${response.json()["_id"]}"
+    Validar Status Code "200"
+    Validar Mensagem: "Registro excluído com sucesso"
 
 Cenário: PUT Editar Para Nome já Existente 400
     [tags]  	PUT400
     Criar Sessao
     Fazer Login e Armazenar Token
-    Edita Produto Valido    K6leHdftCeOJj8BJ
+    Edita Produto Estatico Valido    K6leHdftCeOJj8BJ
     Validar Status Code "400"
     Validar Mensagem: "Já existe produto com esse nome"
 
@@ -79,13 +104,24 @@ Cenário: PUT Erro no Token 401
     Validar Status Code "401"
     Validar Mensagem: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
+######## CRIAR UM USUARIO NO TEST CASE E JA EXCLUIR ELE
 Cenário: DELETE Excluir Produto Específico 200
-    [tags]      DELETE200
+    [tags]      DELETE200.1
+    Criar Sessao
+    Fazer Login e Armazenar Token
+    Criar Dados Produto Valido
+    POST Endpoint /produtos
+    DELETE id "${response.json()["_id"]}"
+    Validar Status Code "200"
+    Validar Mensagem: "Registro excluído com sucesso"
+
+Cenário: DELETE Excluir Produto Inexistente 200
+    [tags]      DELETE200.2
     Criar Sessao
     Fazer Login e Armazenar Token
     DELETE id "0uxuPY0cbmQhpEz1"        # não existe produto com essa id
     Validar Status Code "200"
-    Validar Mensagem: "Registro excluído com sucesso | Nenhum registro excluído"
+    Validar Mensagem: "Nenhum registro excluído"
 
 Cenário: DELETE Excluir Produto que está no Carrinho 400
     [tags]      DELETE400

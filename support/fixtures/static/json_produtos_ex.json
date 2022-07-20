@@ -17,6 +17,12 @@
     "descricao": "Fone de Ouvido",
     "quantidade": 203
   },
+  "produto_preco_invalido":{
+    "nome": "Logitech MX Vertical",
+    "preco": "texto",
+    "descricao": "Fone de Ouvido",
+    "quantidade": 203
+  },
   "produto_editado":{
     "nome":"Logitech MX Vertical",
     "preco":"235",

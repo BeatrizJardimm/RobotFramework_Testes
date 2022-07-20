@@ -3,6 +3,8 @@ Este projeto paseado na API Serverest abrange os seguintes casos de teste:
 /LOGIN
 
 CT01: Realizar login válido (200)
+Realizar login sem email (400)
+Realizar login sem senha (400)
 CT02: Realizar login com email invalido (401)
 CT03: Realizar login com senha invalida (401)
 
@@ -16,6 +18,8 @@ CT06: Buscar um usuário inexistente (400)
 ** POST **
 CT07: Cadastrar um novo usuário (201)
 CT08: Cadastrar novo usuário com um email já cadastrado (400)
+Cadastrar usuario sem email (400)
+Cadastrar usuario sem senha (400)
 
 ** PUT **
 CT09: Editar um usuário existente (200)
@@ -37,6 +41,8 @@ CT17: Buscar por um produto inexistente (400)
 ** POST **
 CT18: Cadastrar um novo produto (200)
 CT19: Cadastrar um produto existente (400)
+Cadastrar um produto sem nome (400)
+Cadastrar um produto com preco invalido (400)
 CT20: Cadastrar um produto sem token de acesso (401)
 
 ** PUT **

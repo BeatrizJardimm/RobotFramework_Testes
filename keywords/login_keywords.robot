@@ -27,6 +27,18 @@ Fazer Login com Senha Invalida de Massa Estatica
     Set Global Variable         ${payload}
     POST Endpoint /login
 
+Fazer Login sem Email
+    ${json}                     Importar JSON Estatico              json_login_ex.json
+    ${payload}                  Set Variable                        ${json["login_sem_email"]}
+    Set Global Variable         ${payload}
+    POST Endpoint /login
+
+Fazer Login sem Senha
+    ${json}                     Importar JSON Estatico              json_login_ex.json
+    ${payload}                  Set Variable                        ${json["login_sem_senha"]}
+    Set Global Variable         ${payload}
+    POST Endpoint /login
+
 Fazer Login com Usuário Válido Nao Administrador de Massa Estatica
     ${json}                     Importar JSON Estatico              json_login_ex.json
     ${payload}                  Set Variable                        ${json["login_nao_administrador"]}

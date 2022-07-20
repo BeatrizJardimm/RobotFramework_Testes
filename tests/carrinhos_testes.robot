@@ -32,13 +32,23 @@ Cenário: POST Cadastrar Carrinho 201
     Criar Carrinho Estatico Valido
     Validar Status Code "201"
     Validar Mensagem: "Cadastro realizado com sucesso"
+    DELETE Endpoint "/carrinhos/cancelar-compra"
+    Validar Status Code "200"
+    Validar Mensagem: "Registro excluído com sucesso. Estoque dos produtos reabastecido"
 
 Cenário: POST Erro no Cadastro 400
     [tags]      POST400
     Criar Sessao
     Fazer Login e Armazenar Token
+    Criar Carrinho Estatico Valido
+    Validar Status Code "201"
+    Validar Mensagem: "Cadastro realizado com sucesso"
     Criar Outro Carrinho Estatico Valido Para o Mesmo Usuario
     Validar Status Code "400"
+    Validar Mensagem: "Não é permitido ter mais de 1 carrinho"
+    DELETE Endpoint "/carrinhos/cancelar-compra"
+    Validar Status Code "200"
+    Validar Mensagem: "Registro excluído com sucesso. Estoque dos produtos reabastecido"
 
 Cenário: POST Erro no Token 401
     [tags]      POST401
@@ -47,13 +57,16 @@ Cenário: POST Erro no Token 401
     Validar Status Code "401"
     Validar Mensagem: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
-Cenário: DELETE Excluir Carrinho 200
+Cenário: DELETE Concluir Compra e Excluir Carrinho 200
     [tags]      DELETE200.1
     Criar Sessao
     Fazer Login e Armazenar Token
+    Criar Carrinho Estatico Valido
+    Validar Status Code "201"
+    Validar Mensagem: "Cadastro realizado com sucesso"
     DELETE Endpoint "/carrinhos/concluir-compra"
     Validar Status Code "200"
-    Validar Mensagem: "Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário"
+    Validar Mensagem: "Registro excluído com sucesso"
 
 Cenário: DELETE Concluir Compra com Erro no Token 401
     [tags]      DELETE401.1
@@ -66,9 +79,12 @@ Cenário: DELETE Excluir Carrinho e Retornar Produtos ao Estoque 200
     [tags]      DELETE200.2
     Criar Sessao
     Fazer Login e Armazenar Token
+    Criar Carrinho Estatico Valido
+    Validar Status Code "201"
+    Validar Mensagem: "Cadastro realizado com sucesso"
     DELETE Endpoint "/carrinhos/cancelar-compra"
     Validar Status Code "200"
-    Validar Mensagem: "Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário"
+    Validar Mensagem: "Registro excluído com sucesso. Estoque dos produtos reabastecido"
 
 Cenário: DELETE Cancelar Compra com Erro no Token 401
     [tags]      DELETE401.2

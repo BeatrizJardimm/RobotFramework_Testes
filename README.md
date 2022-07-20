@@ -112,9 +112,24 @@ Como já foi dito anteriormente, utilizei a IDE VSCode para desenvolver esse pro
 * Rainbow Brackets
 * Tabnine AI autocomplete
 
-## <img src="./midia/ted.jpg" alt="Ted Mosby de HIMYM" width="60" height="60" align="right"> Nota
+## <img src="./midia/ted.jpg" alt="Ted Mosby de HIMYM" width="60" height="60" align="right"> Notas e Bugs
 
-O erro 403 ('rota exclusiva para administradores') é o mesmo para todas as rotas onde esse erro é possível, então ele está sendo testado apenas uma vez, [nesse arquivo](produtos/TestesProdutos_DELETE.robot).
+* O erro 403 ('rota exclusiva para administradores') é o mesmo para todas as rotas onde esse erro é possível, então ele está sendo testado apenas uma vez, [nesse arquivo](produtos/TestesProdutos_DELETE.robot).
+
+* No status 400 da requisição POST no endpoint /carrinhos, a documentação apresenta a mensagem "Não é permitido possuir produto duplicado | Não é permitido ter mais de 1 carrinho | Produto não encontrado | Produto não possui quantidade suficiente" mostrando todas as mensagens que podem ser retornadas com essa requisição, porém estou testando apenas a criação de um segundo carrinho para o mesmo usuário, então a mensagem que espero de retorno é apenas: "Não é permitido ter mais de 1 carrinho"
+
+* Nos status 200 das requisições DELETE de todos os Endpoints, a documentação apresenta a mensagem "Registro excluído com sucesso | Nenhum registro excluído" para evidenciar as possíveis mensagens de retorno, sendo assim, desenvolvi casos de testes para a primeira situação em todos os endpoints, mas a segunda situação não está sendo testada no endpoint /carrinhos.
+
+Além disso, ao longo do processo de desenvolvimento, encontrei um bug relacionado à documentação da API. Na documentação, o Endpoint /login apresenta status de erro 400, porém, se tentarmos realizar os testes esperando esse status de retorno, vamos encontrar um erro, pois na verdade o status que está sendo retornado é 401, então, para coontornar a situação, eu adaptei o código para esperar o status 401 como retorno.
+
+Outro bug que encontrei no endpoint /login foi que o erro 400 não está documentado, porém se tentarmos realizar um login com um usuário sem email ou sem senha, esse erro é retornado acompanhado da mensagem "email/password não pode ficar em branco", então criei casos de testes para ambos os casos.
+
+Na requisição POST do endpoint /usuarios acontece a mesma coisa, então criei os testes para esses erros apesar deles não serem referenciados na documentação.
+
+Mesma coisa no POST do /produtos
+
+Na requisição DELETE de /carrinhos/cancelar-compra a documentação mostra as mensagens "Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário" como possibilidades de retorno, porém quando testamos excluir um carrinho que existe o retorno é "Registro excluído com sucesso. Estoque dos produtos reabastecido"
+
 
 ## Considerações Finais  
 

@@ -12,6 +12,20 @@ Cenario: POST Realizar Login 200
     Validar Status Code "200"
     Validar Mensagem: "Login realizado com sucesso"
 
+Cenario: POST Realizar Login sem Email 400
+    [tags]      login400.1
+    Criar Sessao
+    Fazer Login sem Email
+    Validar Status Code "400"
+    Validar Response    email
+
+Cenario: POST Realizar Login sem Senha 400
+    [tags]      login400.2
+    Criar Sessao
+    Fazer Login sem Senha
+    Validar Status Code "400"
+    Validar Response    password
+
 Cenario: POST Realizar Login com Email Invalido 401
     [tags]  	login401.1
     Criar Sessao
@@ -22,6 +36,6 @@ Cenario: POST Realizar Login com Email Invalido 401
 Cenario: POST Realizar Login com Senha Invalida 401
     [tags]  	login401.2
     Criar Sessao
-    Fazer Login com Email Invalido de Massa Estatica
+    Fazer Login com Senha Invalida de Massa Estatica
     Validar Status Code "401"
     Validar Mensagem: "Email e/ou senha inválidos"

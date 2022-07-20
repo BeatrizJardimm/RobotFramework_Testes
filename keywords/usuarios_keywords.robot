@@ -16,9 +16,6 @@ GET Endpoint /usuarios id "${id}"
     Printar Conteudo Response       ${response}
     Set Global Variable             ${response}
 
-Validar Quantidade ${qnt}
-    Should Be Equal                 ${response.json()["quantidade"]}    ${qnt}
-
 POST Endpoint /usuarios
     ${response}                 POST On Session             serverest       /usuarios       json=&{payload}     expected_status=anything
     Printar Conteudo Response   ${response}
@@ -27,6 +24,18 @@ POST Endpoint /usuarios
 Criar Usuario Estatico Valido
     ${json}                     Importar JSON Estatico      json_usuarios_ex.json
     ${payload}                  Set Variable                ${json["usuario_valido"]}
+    Set Global Variable         ${payload}
+    POST Endpoint /usuarios
+
+Criar Usuario Estatico sem Email
+    ${json}                     Importar JSON Estatico      json_usuarios_ex.json
+    ${payload}                  Set Variable                ${json["usuario_sem_email"]}
+    Set Global Variable         ${payload}
+    POST Endpoint /usuarios
+
+Criar Usuario Estatico sem Senha
+    ${json}                     Importar JSON Estatico      json_usuarios_ex.json
+    ${payload}                  Set Variable                ${json["usuario_sem_senha"]}
     Set Global Variable         ${payload}
     POST Endpoint /usuarios
 
@@ -44,7 +53,7 @@ Editar Usuario Valido
 
 Criar Usuario Valido
     ${json}                     Importar JSON Estatico      json_usuarios_ex.json
-    ${payload}                  Set Variable                ${json["usuario_nao_administrador"]}
+    ${payload}                  Set Variable                ${json["usuario_valido"]}
     Set Global Variable         ${payload}
     PUT Criar Usuário
     
@@ -65,7 +74,7 @@ PUT Criar Usuário
     Set Global Variable         ${response}
 
 PUT Editar com Email Existente
-    ${response}                 PUT On Session     serverest      /usuarios/CNR4yVgA8tQfkvqv       json=&{payload} expected_status=anything
+    ${response}                 PUT On Session     serverest      /usuarios/CNR4yVgA8tQfkvqv       json=&{payload}      expected_status=anything
     Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 

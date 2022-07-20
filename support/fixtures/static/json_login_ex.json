@@ -11,6 +11,14 @@
         "email":"evermore@gmail.com",
         "password":"ivy"
     },
+    "login_sem_senha":{
+        "email":"evermore@gmail.com",
+        "password":""
+    },
+    "login_sem_email":{
+        "email":"",
+        "password":"ivy"
+    },
     "login_nao_administrador":{
         "email":"becausetheinternet@gmail.com",
         "password":"3005"
