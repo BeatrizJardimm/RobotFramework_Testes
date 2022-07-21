@@ -1,6 +1,7 @@
 * Settings *
-Documentation       Arquivo de base para o projeto
+Documentation       Arquivo simples para requisições HTTP em APIs
 Library             RequestsLibrary
+Library             Collections
 Library             OperatingSystem
 Resource            ./common/common.robot
 Resource            ./fixtures/dynamics.robot

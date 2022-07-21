@@ -1,33 +1,30 @@
 # Área para definir as configurações do arquivo
 * Settings *
-Documentation   Arquivo para Test Cases no Endpoint /produtos
-Resource        ../keywords/produtos_keywords.robot
+Documentation       Arquivo para Test Cases no Endpoint /produtos
+Resource            ../keywords/produtos_keywords.robot
+Suite Setup         Criar Sessao
 
 * Test Cases *
 
 Cenário: GET Todos os Produtos 200
     [tags]      GET200.1
-    Criar Sessao
     GET Endpoint /produtos
     Validar Status Code "200"
 
 Cenário: GET Produto Específico 200
     [tags]      GET200.2
-    Criar Sessao
     GET Endpoint /produtos id "BeeJh5lz3k6kSIzA"
     Validar Status Code "200"
     Validar Nome: "Logitech MX Vertical"
 
 Cenário: GET Produto Inexistente 400
     [tags]      GET400
-    Criar Sessao
     GET Endpoint /produtos id "Inexistente"
     Validar Status Code "400"
     Validar Mensagem: "Produto não encontrado"
 
 Cenário: POST Cadastrar Novo Produto 201
     [tags]      POST201
-    Criar Sessao
     Fazer Login e Armazenar Token
     Criar Dados Produto Valido
     POST Endpoint /produtos
@@ -39,38 +36,38 @@ Cenário: POST Cadastrar Novo Produto 201
 
 Cenário: POST Cadastrar Produto Existente 400
     [tags]      POST400.1
-    Criar Sessao
     Fazer Login e Armazenar Token
-    Cadastra Produto Estatico Invalido
+    Pega Produto Estatico   invalido
+    POST Endpoint /produtos
     Validar Status Code "400"
     Validar Mensagem: "Já existe produto com esse nome"
 
 Cenário: POST Cadastrar Produto sem Nome 400
     [tags]      POST400.2
-    Criar Sessao
     Fazer Login e Armazenar Token
-    Cadastra Produto Estatico sem Email
+    Pega Produto Estatico   sem_nome
+    POST Endpoint /produtos
     Validar Status Code "400"
     Validar Response        nome
 
 #passando uma string como parametro de preço que deve receber um inteiro
-Cenário: POST Cadastrar Produto com preco Invalido 400
+Cenário: POST Cadastrar Produto com Preço Invalido 400
     [tags]      POST400.3
-    Criar Sessao
     Fazer Login e Armazenar Token
-    Cadastra Produto Estatico de Preco Invalido
+    Pega Produto Estatico   preco_invalido
+    POST Endpoint /produtos
     Validar Status Code "400"
 
 Cenário: POST Erro no Token 401
     [tags]      POST401.1
-    Criar Sessao
-    Cadastra Produto Sem Token
+    Pega Produto Estatico   valido
+    POST Endpoint /produtos
+    POST Sem Token
     Validar Status Code "401"
     Validar Mensagem: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
 Cenário: PUT Editar Produto Existente 200
     [tags]      PUT200
-    Criar Sessao
     Fazer Login e Armazenar Token
     Editar Dados Produto Valido     Logitech MX Vertical
     PUT id "BeeJh5lz3k6kSIzA"
@@ -79,10 +76,9 @@ Cenário: PUT Editar Produto Existente 200
 
 Cenário: PUT Cadastrar Novo Produto 201
     [tags]      PUT201
-    Criar Sessao
     Fazer Login e Armazenar Token
     Criar Dados Produto Valido
-    POST Endpoint /produtos
+    PUT Novo Produto
     Validar Status Code "201"
     Validar Mensagem: "Cadastro realizado com sucesso"
     DELETE id "${response.json()["_id"]}"
@@ -91,23 +87,20 @@ Cenário: PUT Cadastrar Novo Produto 201
 
 Cenário: PUT Editar Para Nome já Existente 400
     [tags]  	PUT400
-    Criar Sessao
     Fazer Login e Armazenar Token
-    Edita Produto Estatico Valido    K6leHdftCeOJj8BJ
+    Pega Produto Estatico   editado
+    PUT id "K6leHdftCeOJj8BJ"
     Validar Status Code "400"
     Validar Mensagem: "Já existe produto com esse nome"
 
 Cenário: PUT Erro no Token 401
     [tags]      PUT401
-    Criar Sessao
     PUT Sem Token
     Validar Status Code "401"
     Validar Mensagem: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
-######## CRIAR UM USUARIO NO TEST CASE E JA EXCLUIR ELE
 Cenário: DELETE Excluir Produto Específico 200
     [tags]      DELETE200.1
-    Criar Sessao
     Fazer Login e Armazenar Token
     Criar Dados Produto Valido
     POST Endpoint /produtos
@@ -117,15 +110,13 @@ Cenário: DELETE Excluir Produto Específico 200
 
 Cenário: DELETE Excluir Produto Inexistente 200
     [tags]      DELETE200.2
-    Criar Sessao
     Fazer Login e Armazenar Token
-    DELETE id "0uxuPY0cbmQhpEz1"        # não existe produto com essa id
+    DELETE id "Inexistente"
     Validar Status Code "200"
     Validar Mensagem: "Nenhum registro excluído"
 
 Cenário: DELETE Excluir Produto que está no Carrinho 400
     [tags]      DELETE400
-    Criar Sessao
     Fazer Login e Armazenar Token
     DELETE id "BeeJh5lz3k6kSIzA"        # o produto que contém essa id está em um carrinho
     Validar Status Code "400"
@@ -133,14 +124,12 @@ Cenário: DELETE Excluir Produto que está no Carrinho 400
 
 Cenário: DELETE Erro no Token 401
     [tags]      DELETE401
-    Criar Sessao
     DELETE Sem Token
     Validar Status Code "401"
     Validar Mensagem: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
 Cenário: DELETE Acesso Apenas ao Administrador 403
     [tags]      DELETE403
-    Criar Sessao
     Fazer Login Sem Admnistrador e Armazenar Token
     DELETE id "0uxuPY0cbmQhpEz1"
     Validar Status Code "403"

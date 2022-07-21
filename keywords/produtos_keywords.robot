@@ -4,6 +4,14 @@ Resource        ../support/base.robot
 Resource        ./login_keywords.robot
 
 * Keywords *
+
+#mesma keyword está sendo usada em vários test cases mudando apenas o argumento passado
+Pega Produto Estatico
+    [Arguments]                 ${estado}
+    ${json}                     Importar JSON Estatico      json_produtos_ex.json
+    ${payload}                  Set Variable                ${json["produto_${estado}"]}
+    Set Global Variable         ${payload}
+
 GET Endpoint /produtos
     ${response}                  GET On Session     serverest       /produtos
     Printar Conteudo Response    ${response}
@@ -13,36 +21,6 @@ GET Endpoint /produtos id "${id}"
     ${response}                  GET On Session     serverest       /produtos/${id}      expected_status=anything
     Printar Conteudo Response    ${response}
     Set Global Variable          ${response}
-
-Cadastra Produto Estatico Valido
-    ${json}                     Importar JSON Estatico      json_produtos_ex.json
-    ${payload}                  Set Variable                ${json["produto_valido"]}
-    Set Global Variable         ${payload}
-    POST Endpoint /produtos
-
-Cadastra Produto Estatico Invalido
-    ${json}                     Importar JSON Estatico      json_produtos_ex.json
-    ${payload}                  Set Variable                ${json["produto_invalido"]}
-    Set Global Variable         ${payload}
-    POST Endpoint /produtos
-
-Cadastra Produto Estatico sem Email
-    ${json}                     Importar JSON Estatico      json_produtos_ex.json
-    ${payload}                  Set Variable                ${json["produto_sem_nome"]}
-    Set Global Variable         ${payload}
-    POST Endpoint /produtos
-
-Cadastra Produto Estatico de Preco Invalido
-    ${json}                     Importar JSON Estatico      json_produtos_ex.json
-    ${payload}                  Set Variable                ${json["produto_preco_invalido"]}
-    Set Global Variable         ${payload}
-    POST Endpoint /produtos
-
-Cadastra Produto Sem Token
-    ${json}                     Importar JSON Estatico      json_produtos_ex.json
-    ${payload}                  Set Variable                ${json["produto_valido"]}
-    Set Global Variable         ${payload}
-    POST Sem Token
 
 POST Endpoint /produtos
     &{header}                   Create Dictionary           Authorization=${token_auth}
@@ -71,25 +49,6 @@ PUT Sem Token
     ${response}                 PUT On Session              serverest       /produtos/0uxuPY0cbmQhpEz1       json=${payload}    expected_status=anything
     Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
-
-Edita Produto Estatico Valido
-    [Arguments]                 ${id}
-    ${json}                     Importar JSON Estatico      json_produtos_ex.json
-    ${payload}                  Set Variable                ${json["produto_editado"]}
-    Set Global Variable         ${payload}
-    PUT id "${id}"
-
-Cria Produto Valido
-    ${json}                     Importar JSON Estatico      json_produtos_ex.json
-    ${payload}                  Set Variable                ${json["produto_novo"]}
-    Set Global Variable         ${payload}
-    PUT Novo Produto
-
-Edita Sem Token
-    ${json}                     Importar JSON Estatico      json_produtos_ex.json
-    ${payload}                  Set Variable                ${json["produto_novo"]}
-    Set Global Variable         ${payload}
-    PUT Sem Token
 
 DELETE id "${id}"
     ${header}                   Create Dictionary     Authorization=${token_auth}
