@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220722 12:30:28.352" rpa="false" schemaversion="3">
+<suite id="s1" name="Consumir Py Library" source="C:\Users\Usuario\Robotron_Beatriz_Jardim_Projeto_Final\consumir_py_library.robot">
+<test id="s1-t1" name="Cenário: Pegar a quantidade total de produtos cadastrados" line="8">
+<kw name="Quantidade Produtos" library="python_library">
+<var>${qnt}</var>
+<msg timestamp="20220722 12:30:28.485" level="INFO">${qnt} = 6</msg>
+<status status="PASS" starttime="20220722 12:30:28.473" endtime="20220722 12:30:28.485"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Quantidade: ${qnt}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220722 12:30:28.486" endtime="20220722 12:30:28.486"/>
+</kw>
+<status status="PASS" starttime="20220722 12:30:28.472" endtime="20220722 12:30:28.487"/>
+</test>
+<test id="s1-t2" name="Cenário: Mostrar os nomes de todos os usuários cadastrados" line="12">
+<kw name="Nomes Usuarios" library="python_library">
+<var>${nomes}</var>
+<msg timestamp="20220722 12:30:28.493" level="INFO">${nomes} = ['Taylor Swift', 'Lana Del Rey', 'Curtis Ford', 'Lana Del Rey', 'Childish Gambino']</msg>
+<status status="PASS" starttime="20220722 12:30:28.488" endtime="20220722 12:30:28.493"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Nomes: ${nomes}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220722 12:30:28.494" endtime="20220722 12:30:28.494"/>
+</kw>
+<status status="PASS" starttime="20220722 12:30:28.488" endtime="20220722 12:30:28.495"/>
+</test>
+<test id="s1-t3" name="Cenário: Mostrar os Produtos que não estão em nenhum carrinho" line="16">
+<kw name="Produtos Fora De Carrinhos" library="python_library">
+<var>${produtos}</var>
+<msg timestamp="20220722 12:30:28.504" level="INFO">${produtos} = ['IPhone 6 - 8GB', 'AirPods', 'IPhone 13 - 128GB', 'IPhone 11 - 128GB']</msg>
+<status status="PASS" starttime="20220722 12:30:28.496" endtime="20220722 12:30:28.504"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Produtos: ${produtos}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220722 12:30:28.504" endtime="20220722 12:30:28.505"/>
+</kw>
+<status status="PASS" starttime="20220722 12:30:28.496" endtime="20220722 12:30:28.505"/>
+</test>
+<doc>Arquivo de Testes para a Library desenvolvida em PYTHON</doc>
+<status status="PASS" starttime="20220722 12:30:28.354" endtime="20220722 12:30:28.506"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Consumir Py Library">Consumir Py Library</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
