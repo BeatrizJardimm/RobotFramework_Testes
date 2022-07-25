@@ -9,7 +9,6 @@ Criar Dados Usuario Valido
     ${email}                FakerLibrary.Email
     ${senha}                FakerLibrary.Password
     ${payload}              Create Dictionary       nome=${nome}    email=${email}  password=${senha}   administrador=true
-    Log To Console          ${payload}
     Set Global Variable     ${payload}
 
 Editar Dados Usuario Valido
@@ -17,7 +16,6 @@ Editar Dados Usuario Valido
     ${nome}                 FakerLibrary.Name
     ${senha}                FakerLibrary.Password
     ${payload}              Create Dictionary       nome=${nome}    email=${email}  password=${senha}   administrador=true
-    Log To Console          ${payload}
     Set Global Variable     ${payload}
 
 Criar Dados Produto Valido
@@ -26,7 +24,6 @@ Criar Dados Produto Valido
     ${desc}                 FakerLibrary.Text       max_nb_chars=25
     ${qnt}                  FakerLibrary.RandomInt  max=999
     ${payload}              Create Dictionary       nome=${nome}    preco=${preco}  descricao=${desc}   quantidade=${qnt}
-    Log To Console          ${payload}
     Set Global Variable     ${payload}
 
 Editar Dados Produto Valido
@@ -35,5 +32,4 @@ Editar Dados Produto Valido
     ${desc}                 FakerLibrary.Text       max_nb_chars=25
     ${qnt}                  FakerLibrary.RandomInt  max=999
     ${payload}              Create Dictionary       nome=${nome}    preco=${preco}  descricao=${desc}   quantidade=${qnt}
-    Log To Console          ${payload}
     Set Global Variable     ${payload}

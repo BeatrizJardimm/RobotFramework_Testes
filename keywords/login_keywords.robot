@@ -29,5 +29,4 @@ Validar Ter Logado
 
 POST Endpoint /login
     ${response}                 POST On Session       serverest      /login      json=&{payload}    expected_status=anything
-    Printar Conteudo Response   ${response}
     Set Global Variable         ${response}

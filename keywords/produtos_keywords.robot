@@ -12,6 +12,8 @@ Pega Produto Estatico
     ${payload}                  Set Variable                ${json["produto_${estado}"]}
     Set Global Variable         ${payload}
 
+
+# ----------------------- GET -----------------------
 GET Endpoint /produtos
     ${response}                  GET On Session     serverest       /produtos
     Printar Conteudo Response    ${response}
@@ -22,6 +24,8 @@ GET Endpoint /produtos id "${id}"
     Printar Conteudo Response    ${response}
     Set Global Variable          ${response}
 
+
+# ----------------------- POST -----------------------
 POST Endpoint /produtos
     &{header}                   Create Dictionary           Authorization=${token_auth}
     ${response}                 POST On Session             serverest       /produtos       json=${payload}     expected_status=anything    headers=${header}
@@ -33,6 +37,8 @@ POST Sem Token
     Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
+
+# ----------------------- PUT -----------------------
 PUT id "${id}"
     &{header}                   Create Dictionary          Authorization=${token_auth}
     ${response}                 PUT On Session             serverest       /produtos/${id}     json=${payload}      expected_status=anything     headers=${header}
@@ -50,6 +56,8 @@ PUT Sem Token
     Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
+
+# ----------------------- DELETE -----------------------
 DELETE id "${id}"
     ${header}                   Create Dictionary     Authorization=${token_auth}
     ${response}                 DELETE On Session     serverest       /produtos/${id}      expected_status=anything    headers=${header}

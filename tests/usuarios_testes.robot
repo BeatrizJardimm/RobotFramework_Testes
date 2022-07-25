@@ -7,6 +7,7 @@ Suite Setup         Criar Sessao
 #Área para escrever os cenários de testes
 * Test Cases *
 
+# ----------------------- GET -----------------------
 Cenário: GET Todos os Usuários 200
     [tags]      GET200.1
     GET Endpoint /usuarios
@@ -17,20 +18,22 @@ Cenário: GET Usuário Específico 200
     [tags]      GET200.2
     GET Endpoint /usuarios id "CNR4yVgA8tQfkvqv"
     Validar Status Code "200"
-    Validar Nome: "Taylor Swift"
+    Validar nome: "Taylor Swift"
 
 Cenário: GET Usuário Inexistente 400
     [tags]      GET400
     GET Endpoint /usuarios id "Inexistente"
     Validar Status Code "400"
-    Validar Mensagem: "Usuário não encontrado"
+    Validar message: "Usuário não encontrado"
 
+
+# ----------------------- POST -----------------------
 Cenário: POST Cadastrar Novo Usuario 201
     [tags]      POST200
     Criar Dados Usuario Valido
     POST Endpoint /usuarios
     Validar Status Code "201"
-    Validar Mensagem: "Cadastro realizado com sucesso"
+    Validar message: "Cadastro realizado com sucesso"
     DELETE Usuario id "${response.json()["_id"]}"
     Validar Status Code "200"
 
@@ -39,35 +42,37 @@ Cenário: POST Cadastrar Novo Usuário com Email Já Cadastrado 400
     Pega Usuario Estatico   invalido
     POST Endpoint /usuarios
     Validar Status Code "400"
-    Validar Mensagem: "Este email já está sendo usado"
+    Validar message: "Este email já está sendo usado"
 
 Cenário: POST Cadastrar Novo Usuário sem Email 400
     [tags]      POST400.2
     Pega Usuario Estatico   sem_email
     POST Endpoint /usuarios
     Validar Status Code "400"
-    Validar Response        email
+    Validar email: "email não pode ficar em branco"
 
 Cenário: POST Cadastrar Novo Usuário sem Senha 400
     [tags]      POST400.3
     Pega Usuario Estatico   sem_senha
     POST Endpoint /usuarios
     Validar Status Code "400"
-    Validar Response       password
+    Validar password: "password não pode ficar em branco"
 
+
+# ----------------------- PUT -----------------------
 Cenário: PUT Editar Usuario Existente 200
     [tags]      PUT200
     Editar Dados Usuario Valido     stargirlinterlude@gmail.com
     PUT Editar id "susXVV8VDdM3MOhW"
     Validar Status Code "200"
-    Validar Mensagem: "Registro alterado com sucesso"
+    Validar message: "Registro alterado com sucesso"
 
 Cenário: PUT Cadastrar novo Usuario 201
     [tags]      PUT201
     Criar Dados Usuario Valido
     PUT Criar Usuário
     Validar Status Code "201"
-    Validar Mensagem: "Cadastro realizado com sucesso"
+    Validar message: "Cadastro realizado com sucesso"
     DELETE Usuario id "${response.json()["_id"]}"
     Validar Status Code "200"
 
@@ -76,9 +81,10 @@ Cenário: PUT Mudar Email de um Usuário para um Existente 400
     Pega Usuario Estatico   invalido
     PUT Editar com Email Existente
     Validar Status Code "400"
-    Validar Mensagem: "Este email já está sendo usado"
+    Validar message: "Este email já está sendo usado"
 
-# passar a id de um usuário que não tem carrinho cadastrado
+
+# ----------------------- DELETE -----------------------
 Cenário: DELETE Excluir Usuário Existente 200
     [tags]  	DELETE200.1
     Criar Dados Usuario Valido
@@ -86,16 +92,16 @@ Cenário: DELETE Excluir Usuário Existente 200
     Validar Status Code "201"
     DELETE Usuario id "${response.json()["_id"]}" 
     Validar Status Code "200"
-    Validar Mensagem: "Registro excluído com sucesso"
+    Validar message: "Registro excluído com sucesso"
 
 Cenário: DELETE Excluir Usuário Inexistente 200
     [tags]  	DELETE200.2
     DELETE Usuario id "Inexistente"
     Validar Status Code "200"
-    Validar Mensagem: "Nenhum registro excluído"    
+    Validar message: "Nenhum registro excluído"    
 
 Cenário: DELETE Excluir Usuário com Carrinho Cadastrado 400
     [tags]  	DELETE400
     DELETE Usuario id "oUb7aGkMtSEPf6BZ"    #id de um user que tem carrinho cadastrado
     Validar Status Code "400"
-    Validar Mensagem: "Não é permitido excluir usuário com carrinho cadastrado"
+    Validar message: "Não é permitido excluir usuário com carrinho cadastrado"

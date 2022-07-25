@@ -8,19 +8,12 @@ Library             OperatingSystem
 Validar Status Code "${statuscode}"
     Should Be True          ${response.status_code} == ${statuscode}
 
-Validar Mensagem: "${mensagem}"
-    Should Match            ${response.json()["message"]}       ${mensagem}
-
-Validar Nome: "${nome}"
-    Should Match            ${response.json()["nome"]}          ${nome}
-
-Validar Response
-    [Arguments]         ${campo}
-    Should Match        ${response.json()["${campo}"]}              ${campo} não pode ficar em branco
+Validar ${campo}: "${mensagem}"
+    Should Match            ${response.json()["${campo}"]}       ${mensagem}
 
 Printar Conteudo Response
     [Arguments]             ${response}
-    Log To Console          Response: ${response.content}
+    Log To Console          Response: ${response.json()["message"]}
 
 Importar JSON Estatico
     [Arguments]             ${nome_arquivo}

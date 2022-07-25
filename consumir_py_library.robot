@@ -16,3 +16,7 @@ Cenário: Mostrar os nomes de todos os usuários cadastrados
 Cenário: Mostrar os Produtos que não estão em nenhum carrinho
     ${produtos}         Produtos Fora De Carrinhos
     Log To Console      Produtos: ${produtos}
+
+Cenário: Mostrar o nome do Usuário Dono de Determinado Carrinho
+    ${usuario}          Usuario Dono Carrinho       qbMqntef4iTOwWfg
+    Log To Console      Usuário: ${usuario}

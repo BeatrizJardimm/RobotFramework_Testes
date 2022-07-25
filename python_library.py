@@ -28,7 +28,6 @@ def Nomes_Usuarios():
 def Produtos_Fora_De_Carrinhos():
     req_produtos = req.get("http://localhost:3000/produtos")
     req_carrinhos = req.get("http://localhost:3000/carrinhos")
-
     produtos = req_produtos.json()
     carrinhos = req_carrinhos.json()
 
@@ -60,3 +59,30 @@ def Produtos_Fora_De_Carrinhos():
 
     # retorna a lista com os nomes do s pordutos que naõ estão em nenhum carrinho
     return lista_nomes
+
+def Usuario_Dono_Carrinho(id_carrinho):
+    req_carrinhos = req.get("http://localhost:3000/carrinhos")
+    req_usuarios = req.get("http://localhost:3000/usuarios")
+    carrinhos = req_carrinhos.json()
+    usuarios = req_usuarios.json()
+
+    qnt_carrinhos = carrinhos["quantidade"]
+    qnt_usuarios = usuarios["quantidade"]
+    count = 0
+
+    while count < qnt_carrinhos:
+        if carrinhos["carrinhos"][count]["_id"] == id_carrinho:
+            id_usuario = carrinhos["carrinhos"][count]["idUsuario"]
+            count = 0
+            break
+        else:
+            count += 1
+    
+    while count < qnt_usuarios:
+        if usuarios["usuarios"][count]["_id"] == id_usuario:
+            nome_usuario = usuarios["usuarios"][count]["nome"]
+            return nome_usuario
+        else:
+            count += 1
+    
+    return "Usuário não encontrado"

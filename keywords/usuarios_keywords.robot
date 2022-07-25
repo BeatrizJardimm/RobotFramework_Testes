@@ -12,6 +12,8 @@ Pega Usuario Estatico
     ${payload}                  Set Variable                ${json["usuario_${estado}"]}
     Set Global Variable         ${payload}
 
+
+# ----------------------- GET -----------------------
 GET Endpoint /usuarios
     ${response}                     GET On Session     serverest       /usuarios
     Printar Conteudo Response       ${response}
@@ -22,11 +24,15 @@ GET Endpoint /usuarios id "${id}"
     Printar Conteudo Response       ${response}
     Set Global Variable             ${response}
 
+
+# ----------------------- POST -----------------------
 POST Endpoint /usuarios
     ${response}                 POST On Session             serverest       /usuarios       json=&{payload}     expected_status=anything
     Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
+
+# ----------------------- PUT -----------------------
 PUT Editar id "${id}"
     ${response}                 PUT On Session     serverest      /usuarios/${id}       json=&{payload}    expected_status=anything
     Printar Conteudo Response   ${response}
@@ -42,6 +48,8 @@ PUT Editar com Email Existente
     Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
+
+# ----------------------- DELETE -----------------------
 DELETE Usuario id "${id}"
     ${response}                 DELETE On Session     serverest       /usuarios/${id}      expected_status=anything
     Printar Conteudo Response   ${response}
