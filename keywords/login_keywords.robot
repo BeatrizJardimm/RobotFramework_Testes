@@ -12,7 +12,8 @@ Fazer Login
     POST Endpoint /login
 
 Fazer Login e Armazenar Token
-    Fazer Login     valido_sem_carrinho
+    [Arguments]                 ${usuario}
+    Fazer Login                 ${usuario}
     Validar Ter Logado
     ${token_auth}               Set Variable                        ${response.json()["authorization"]}
     Set Global Variable         ${token_auth}

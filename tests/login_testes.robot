@@ -11,34 +11,29 @@ Suite Setup         Criar Sessao
 Cenario: POST Realizar Login 200
     [tags]  	login200
     Fazer Login     valido_sem_carrinho
-    Printar Conteudo Response       ${response}
-    Validar Status Code "200"
     Validar message: "Login realizado com sucesso"
+    Validar Status Code "200"
 
 Cenario: POST Realizar Login sem Email 400
     [tags]      login400.1
     Fazer Login     sem_email
-    Printar Conteudo Response       ${response}    
+    Validar email: "email não pode ficar em branco"   
     Validar Status Code "400"
-    Validar email: "email não pode ficar em branco"
 
 Cenario: POST Realizar Login sem Senha 400
     [tags]      login400.2
     Fazer Login     sem_senha
-    Printar Conteudo Response       ${response}
-    Validar Status Code "400"
     Validar password: "password não pode ficar em branco"
+    Validar Status Code "400"
 
 Cenario: POST Realizar Login com Email Invalido 401
     [tags]  	login401.1
     Fazer Login     email_invalido
-    Printar Conteudo Response       ${response}
-    Validar Status Code "401"
     Validar message: "Email e/ou senha inválidos"
+    Validar Status Code "401"
 
 Cenario: POST Realizar Login com Senha Invalida 401
     [tags]  	login401.2
     Fazer Login     senha_invalida
-    Printar Conteudo Response       ${response}
-    Validar Status Code "401"
     Validar message: "Email e/ou senha inválidos"
+    Validar Status Code "401"

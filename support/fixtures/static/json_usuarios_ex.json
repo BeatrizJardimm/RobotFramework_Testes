@@ -34,6 +34,12 @@
         "email":"stargirlinterlude@gmail.com",
         "password":"ultraviolence",
         "administrador":"true"
+    },
+    "usuario_teste_produto":{
+        "nome":"Beltrano QA",
+        "email":"testeProduto@gmail.com",
+        "password":"teste123",
+        "administrador":"true"
     }
 }
 

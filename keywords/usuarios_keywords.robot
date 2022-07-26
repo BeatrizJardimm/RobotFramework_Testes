@@ -16,41 +16,34 @@ Pega Usuario Estatico
 # ----------------------- GET -----------------------
 GET Endpoint /usuarios
     ${response}                     GET On Session     serverest       /usuarios
-    Printar Conteudo Response       ${response}
     Set Global Variable             ${response}
 
 GET Endpoint /usuarios id "${id}"
     ${response}                     GET On Session     serverest       /usuarios/${id}      expected_status=anything
-    Printar Conteudo Response       ${response}
     Set Global Variable             ${response}
 
 
 # ----------------------- POST -----------------------
 POST Endpoint /usuarios
     ${response}                 POST On Session             serverest       /usuarios       json=&{payload}     expected_status=anything
-    Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
 
 # ----------------------- PUT -----------------------
 PUT Editar id "${id}"
     ${response}                 PUT On Session     serverest      /usuarios/${id}       json=&{payload}    expected_status=anything
-    Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
 PUT Criar Usuário
     ${response}                 PUT On Session     serverest      /usuarios/0uxuPY0cbmQhpEz1       json=&{payload}     expected_status=anything
-    Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
 PUT Editar com Email Existente
     ${response}                 PUT On Session     serverest      /usuarios/CNR4yVgA8tQfkvqv       json=&{payload}      expected_status=anything
-    Printar Conteudo Response   ${response}
     Set Global Variable         ${response}
 
 
 # ----------------------- DELETE -----------------------
 DELETE Usuario id "${id}"
     ${response}                 DELETE On Session     serverest       /usuarios/${id}      expected_status=anything
-    Printar Conteudo Response   ${response}
     Set Global Variable         ${response}

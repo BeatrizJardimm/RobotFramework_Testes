@@ -22,5 +22,9 @@
     "login_nao_administrador":{
         "email":"becausetheinternet@gmail.com",
         "password":"3005"
+    },
+    "login_teste_produtos":{
+        "email": "testeProduto@gmail.com",
+        "password": "teste123"
     }
 }

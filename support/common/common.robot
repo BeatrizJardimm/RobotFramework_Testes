@@ -7,9 +7,11 @@ Library             OperatingSystem
 
 Validar Status Code "${statuscode}"
     Should Be True          ${response.status_code} == ${statuscode}
+    Log To Console          Status Code: ${response.status_code}\n
 
 Validar ${campo}: "${mensagem}"
     Should Match            ${response.json()["${campo}"]}       ${mensagem}
+    Log To Console          \n\nRetorno: ${response.json()["${campo}"]}
 
 Printar Conteudo Response
     [Arguments]             ${response}
