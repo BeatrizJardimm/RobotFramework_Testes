@@ -3,6 +3,10 @@ Documentation   Arquivo para as Keywords do Endpoint /produtos
 Resource        ../support/base.robot
 Resource        ./login_keywords.robot
 
+* Variables *
+
+${token_expirado}   Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1ODg4Mzk3MywiZXhwIjoxNjU4ODg0NTczfQ.GCSrd-ffbl2Cx2jgMa8VCMQ4EuA_qJP61DQJgS_y-Kg
+
 * Keywords *
 
 #mesma keyword está sendo usada em vários test cases mudando apenas o argumento passado
@@ -38,6 +42,11 @@ POST Token Invalido
     ${response}                 POST On Session              serverest       /produtos       json=${payload}    expected_status=anything
     Set Global Variable         ${response}
 
+POST Token Expirado
+    &{header}                   Create Dictionary            Authorization=${token_expirado}
+    ${response}                 POST On Session              serverest       /produtos       json=${payload}    expected_status=anything
+    Set Global Variable         ${response}
+
 # ----------------------- PUT -----------------------
 PUT id "${id}"
     &{header}                   Create Dictionary          Authorization=${token_auth}
@@ -58,6 +67,11 @@ PUT Token Invalido
     ${response}                 PUT On Session              serverest       /produtos/0uxuPY0cbmQhpEz1       json=${payload}    expected_status=anything
     Set Global Variable         ${response}
 
+PUT Token Expirado
+    &{header}                   Create Dictionary           Authorization=${token_expirado}
+    ${response}                 PUT On Session              serverest       /produtos/0uxuPY0cbmQhpEz1       json=${payload}    expected_status=anything
+    Set Global Variable         ${response}
+
 
 # ----------------------- DELETE -----------------------
 DELETE id "${id}"
@@ -71,5 +85,10 @@ DELETE Sem Token
 
 DELETE Token Invalido
     ${header}                   Create Dictionary     Authorization=Invalido
+    ${response}                 DELETE On Session     serverest       /produtos/0uxuPY0cbmQhpEz1      expected_status=anything    headers=${header}
+    Set Global Variable         ${response}
+
+DELETE Token Expirado
+    ${header}                   Create Dictionary     Authorization=${token_expirado}
     ${response}                 DELETE On Session     serverest       /produtos/0uxuPY0cbmQhpEz1      expected_status=anything    headers=${header}
     Set Global Variable         ${response}

@@ -12,6 +12,8 @@ Cenário: GET Todos os Usuários 200
     [tags]      GET200.1
     GET Endpoint /usuarios
     Validar Status Code "200"
+    ${usuarios}     Usuarios Sem Carrinhos
+    Log To Console      Usuários que não têm carrinho cadastrado: ${usuarios}
 
 # usa dados estáticos
 Cenário: GET Usuário Específico 200
