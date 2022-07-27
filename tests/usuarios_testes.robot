@@ -8,11 +8,11 @@ Suite Setup         Criar Sessao
 * Test Cases *
 
 # ----------------------- GET -----------------------
-Cenário: GET Todos os Usuários 200
+Cenário: GET Todos os Usuários 200                   ############### USANDO LIB PYTHON
     [tags]      GET200.1
     GET Endpoint /usuarios
     Validar Status Code "200"
-    ${usuarios}     Usuarios Sem Carrinhos
+    ${usuarios}         Usuarios Sem Carrinhos
     Log To Console      Usuários que não têm carrinho cadastrado: ${usuarios}
 
 # usa dados estáticos

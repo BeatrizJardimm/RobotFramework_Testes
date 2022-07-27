@@ -87,7 +87,7 @@ Cenário: POST Cadastrar Carrinho com Produto Duplicado 400
     Validar message: "Não é permitido possuir produto duplicado"
     Validar Status Code "400"
 
-Cenário: POST Erro no Token 401
+Cenário: POST Token Ausente 401
     [tags]      POST401
     Pega Carrinho Estatico      carrinho2
     POST Carrinho Sem Token

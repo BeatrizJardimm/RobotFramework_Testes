@@ -9,7 +9,7 @@ Suite Setup         Criar Sessao
 * Test Cases *
 
 # ----------------------- GET -----------------------
-Cenário: GET Todos os Produtos 200
+Cenário: GET Todos os Produtos 200                   ############# USANDO LIB PYTHON
     [tags]      GET200.1
     GET Endpoint /produtos
     Validar Status Code "200"

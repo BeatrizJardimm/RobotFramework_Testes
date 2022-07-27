@@ -4,25 +4,32 @@
 
 # Trilha RoboTron - Projeto Final
 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/BeatrizJardimm/RoboTron_Beatriz_Jardim_Projeto_Final/blob/develop/LICENSE)
+[![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/ServeRest/ServeRest/)
   
 </div>
 
-* Esse repositório é composto por testes desenvolvidos com o **Robot Framework**.
+* Este repositório é composto por testes desenvolvidos com o **Robot Framework** para a API **ServeRest**.
 * Os testes que compõem esse projeto foram escritos através da IDE **VS Code**.
 * A ferramenta **Git** foi usada para transformar o projeto em um repositório e depois armazená-lo no GitHub.
 
 ## <img src="./midia/lily.jpg" alt="Lily Aldrin de HIMYM" width="60" height="60" align="right"> Características do Projeto
 
-Este projeto é composto por um conjunto de testes para os requests da [API Serverest](https://serverest.dev/).
+Este projeto é composto por um conjunto de testes para os endpoints da [API ServeRest](https://serverest.dev/).
 <br>
 
-Os testes que compõem esse projeto foram organizados em pastas, cada uma contém os testes feitos para o endpoint que dá nome à pasta. Além disso, os testes estão divididos por requisições e os testes correspondentes a cada tipo de requisição (GET, POST, PUT e DELETE) são encontrados em arquivos diferentes.
-Em cada arquivos estão os Test Cases para sua respectiva requisição, entre esses Test Cases estão os cenários de Sucesso (com status 200) e de Erro (com status 400).
+Os arquivos desenvolvidos para este projeto estão organizados da seguinte forma:
 
-Além desses arquivos principais, também temos a pasta *midia*, que contém as imagens presentes nesse documento, e os arquivos *JSON* que são compostos por objetos desenvolvidos para servirem de dados para testes que envolvem criar e editar um usuário, produto ou carrinho.
+| Pasta | Descrição |
+| :---: | :---: |
+| [keywords](./keywords/) | Arquivos onde foram desenvolvidas as Keywords dos Test Cases para cada endpoint. |
+| [midia](./midia/) | Pasta que contém os arquivos de imagem utilizados no presente documento. |
+| [support](./support/) | Contém o arquivo *base.robot* que é utilizado para setar as bibliotecas e arquivos importados para o projeto inteiro. |
+| [common](./support/common/) | Pasta composta pelos arquivos com keywords e funções utilizadas por mais de um ou todos os arquivos de Test Cases. |
+| [fixtures](./support/fixtures/) | Armazena os arquivos de massa de dados, estáticas e dinâmicas. |
+| [variaveis](./support/variaveis) | Contém um arquivo apenas para setar as variáveis utilizadas ao longo do projeto. |
+| [tests](./tests/) | Aqui é onde encontramos os casos de teste do projeto (tanto positivos quanto negativos). Cada Endpoint tem seu arquivo específico. |
 
-Por último, o arquvio *common.robot* que está presente nesse projeto, contém as Keywords que são utilizadas em todos os Test Cases do projeto, então para não precisar escrevê-las repetidamente em todos os arquivos, elas se encontram em um arquivo a parte e são apenas chamadas nesses Test Cases.
+Além dos arquivos encontrados em pastas, no escopo global do projeto encontramos a licence utilizada, o arquivo que lista todos os [Casos De Teste](./CasosDeTeste.txt) e o documento que você está lendo!
 
 ## <img src="./midia/marshall.jpg" alt="Marshall de HIMYM" width="60" height="60" align="right"> Como criar uma cópia desse projeto
 
@@ -48,7 +55,7 @@ Primeiramente, você precisa ter o [Python instalado](https://www.python.org/dow
 <br>
 Depois disso, instale o [Node.js](https://nodejs.org/en/download/) na versão LTS.
 <br>
-Para verificar se ambos foram instalados corretamente, é só abrir seu console e entrar com os comandos <code> python -v </code> e <code> node -v </code>, assim você verifica qual é a versão na qual foram instalados.
+Para verificar se ambos foram instalados corretamente, é só abrir seu console e entrar com os comandos <code>python -v</code> e <code>node -v</code>, assim você verifica qual é a versão na qual foram instalados.
 <br>
 <br>
 Agora, para instalar o Robot Framework para Windows, vamos utilizar o pip install do Python, então, abra novamente seu Prompt de Comando e entre com <code>pip install robotframework</code>.
@@ -73,7 +80,7 @@ Agora, abra o Prompt de Comando de seu computador e rode o código <code>npx ser
 Quando você rodar esse código pela primeira vez, a API Serverest será instalada, porém você PRECISA rodar esse comando toda vez que for realizar algum teste, pois é a partir dele que a API é inicializada. Os testes não irão funcionar se esse comando não for rodado. Além disso, esse prompt deve permanecer aberto durante o tempo de execução dos testes.
 <br>
 <br>
-O console deve ficar parecido com o da imagem abaixo:
+Durante a execução dos testes, o console deve ficar parecido com o da imagem abaixo:
 
 <div align="center">
     <img src="midia/promptServerest.jpeg">
@@ -83,21 +90,21 @@ Depois disso, em outro Prompt de Comando, entre com o caminho para o arquivo de 
 <br>
 <code>robot -d ./reports nome_arquivo.robot</code>
 <br>
-Para exemplificar, abaixo temos uma imagem do console com o comando para rodar os testes das requisições GET do endpoint /usuarios:
+Para exemplificar, abaixo temos uma imagem do console com o comando para rodar os testes do endpoint /login:
 
 <div align="center">
-    <img src="midia/exemploGet.jpeg">
+    <img src="midia/exemploTeste.jpeg">
 </div>
 
 Além disso, caso você queira rodar apenas um caso de teste específico, sem precisar rodar todos os Test Cases do arquivo, você pode digitar <code>robot -d ./reports -i tag nome_arquivo.robot</code> no seu console, onde "tag" deve ser substituido pela tag do Test Case que você deseja rodar. As tags de um Test Case podem ser encontradas na primeira linha destes, como no exemplo abaixo:
 
 <div align="center">
-    <img src="midia/exemploTag.jpeg">
+    <img src="midia/exemploTags.jpeg">
 </div>
 
 Neste caso, o comando que você deve digitar em seu console é
 <br>
-<code>robot -d ./reportsGET -i GET200.1 TestesUsuarios_GET.robot</code>
+<code>robot -d ./reports -i LOGIN200 login_testes.robot</code>
 
 A partir disso, você pode realizar testes em qualquer endpoint para o tipo de requisição de sua escolha!
 
@@ -114,7 +121,13 @@ Como já foi dito anteriormente, utilizei a IDE VSCode para desenvolver esse pro
 
 ## <img src="./midia/ted.jpg" alt="Ted Mosby de HIMYM" width="60" height="60" align="right"> Notas e Bugs
 
-* O erro 403 ('rota exclusiva para administradores') é o mesmo para todas as rotas onde esse erro é possível, então ele está sendo testado apenas uma vez, [nesse arquivo](produtos/TestesProdutos_DELETE.robot).
+* Ao rodar os testes no console, o retorno será algo parecido com: 
+
+<div align="center">
+    <img src="midia/exemploRetorno.jpeg">
+</div>
+
+Onde a primeira e última linhas apresentam o nome do Test Case, a mensagem de retorno é aquela retornada pela API e o Status Code retornado também é enviado pela API. Caso esses retornos sejam compatíveis com o esperado pelo Test Case em questão, recebemos em verde a mensagem PASS, como é visto na imagem, caso contrário, em vez disso teremos a mensagem FAIL em vermelho.
 
 * No status 400 da requisição POST no endpoint /carrinhos, a documentação apresenta a mensagem "Não é permitido possuir produto duplicado | Não é permitido ter mais de 1 carrinho | Produto não encontrado | Produto não possui quantidade suficiente" mostrando todas as mensagens que podem ser retornadas com essa requisição, porém estou testando apenas a criação de um segundo carrinho para o mesmo usuário, então a mensagem que espero de retorno é apenas: "Não é permitido ter mais de 1 carrinho"
 

@@ -1,85 +1,111 @@
-Este projeto paseado na API Serverest abrange os seguintes casos de teste:
+Este projeto baseado na API Serverest abrange os casos de teste descritos abaixo.
 
-/LOGIN (5 testes)
+Estrutura deste documento:
 
-CT01: Realizar login válido (200)
-CT02: Realizar login sem email (400)
-CT03: Realizar login sem senha (400)
-CT04: Realizar login com email invalido (401)
-CT05: Realizar login com senha invalida (401)
+/ENDPOINT (quantidade de testes nesse endpoint) - nome_arquivo.robot
 
-/USUARIOS (13 testes)
+** TIPO DE REQUISIÇÃO **
+CT00: Etiqueta do teste                                                             (Tag do Test Case)
+
+---------------------------------------------------------------------------------------------------------------
+/LOGIN (5 testes) - login_testes.robot
+
+CT01: Realizar login válido                                                         (LOGIN200)
+CT02: Realizar login sem email                                                      (LOGIN400.1)
+CT03: Realizar login sem senha                                                      (LOGIN400.2)
+CT04: Realizar login com email invalido                                             (LOGIN401.1)
+CT05: Realizar login com senha invalida                                             (LOGIN401.2)
+
+/USUARIOS (13 testes) - usuarios_testes.robot
 
 ** GET **
-CT06: Listar todos os usuários (200)
-CT07: Buscar e retornar um usuário específico (200)
-CT08: Buscar um usuário inexistente (400)
+CT06: Listar todos os usuários                                                      (GET200)
+CT07: Buscar e retornar um usuário específico                                       (GET200.1)
+CT08: Buscar um usuário inexistente                                                 (GET400)
 
 ** POST **
-CT09: Cadastrar um novo usuário (201)
-CT010: Cadastrar novo usuário com um email já cadastrado (400)
-CT11: Cadastrar usuario sem email (400)
-CT12: Cadastrar usuario sem senha (400)
+CT09: Cadastrar um novo usuário                                                     (POST201)
+CT010: Cadastrar novo usuário com um email já cadastrado                            (POST400.1)
+CT11: Cadastrar usuario sem email                                                   (POST400.2)
+CT12: Cadastrar usuario sem senha                                                   (POST400.3)
 
 ** PUT **
-CT13: Editar um usuário existente (200)
-CT14: Cadastrar novo usuário (201)
-CT15: Editar o email de um usuário para outro já existente (400)
+CT13: Editar um usuário existente                                                   (PUT200)
+CT14: Cadastrar novo usuário                                                        (PUT201)
+CT15: Editar o email de um usuário para outro já existente                          (PUT400)
 
 ** DELETE **
-CT16: Excluir um usuário existente sem carrinho cadastrado (200)
-CT17: Excluir um usuário inexistente (200)
-CT18: Excluir um usuário com carrinho cadastrado (400)
+CT16: Excluir um usuário existente sem carrinho cadastrado                          (PUT200.0)
+CT17: Excluir um usuário inexistente                                                (PUT200.1)
+CT18: Excluir um usuário com carrinho cadastrado                                    (PUT400)
 
-/PRODUTOS (17 testes)
+/PRODUTOS (28 testes) - produtos_testes.robot
 
 ** GET **
-CT19: Listar todos os produtos (200)
-CT20: Buscar e retornar um produto específico (200)
-CT21: Buscar por um produto inexistente (400)
+CT19: Listar todos os produtos                                                      (GET200.1)
+CT20: Buscar e retornar um produto específico                                       (GET200.2)
+CT21: Buscar por um produto inexistente                                             (GET400)
 
 ** POST **
-CT22: Cadastrar um novo produto (200)
-CT23: Cadastrar um produto existente (400)
-CT24: Cadastrar um produto sem nome (400)
-CT25: Cadastrar um produto com preco invalido (400)
-CT26: Cadastrar um produto sem token de acesso (401)
-CT27: Cadastrar um produto com um usuário que não é administrador (403)
+CT22: Cadastrar um novo produto                                                     (POST200)
+CT23: Cadastrar um produto existente                                                (POST400.1)
+CT24: Cadastrar um produto sem nome                                                 (POST400.2)
+CT25: Cadastrar um produto com preco invalido                                       (POST400.3)
+CT26: Cadastrar um produto sem token de acesso                                      (POST401.1)
+CT27: Cadastrar um produto com token de acesso inválido                             (POST401.2)
+CT28: Cadastrar um produto com token de acesso de um usuário que não existe mais    (POST401.3)
+CT29: Cadastrar um produto com token de acesso expirado                             (POST401.4)
+CT30: Cadastrar um produto com um usuário que não é administrador                   (POST403)
 
 ** PUT **
-CT28: Editar um produto existente (200)
-CT29: Cadastrar um novo produto (201)
-CT30: Editar o nome de um produto para outro nome já existente (400)
-CT31: Editar um produto sem token de acesso (401)
-CT32: Editar um produto com um usuário que não é administrador (403)
+CT31: Editar um produto existente                                                   (PUT200)
+CT32: Cadastrar um novo produto                                                     (PUT201)
+CT33: Editar o nome de um produto para outro nome já existente                      (PUT400)
+CT34: Editar um produto sem token de acesso                                         (PUT401.1)
+CT35: Editar um produto com token de acesso inválido                                (PUT401.2)
+CT36: Editar um produto com token de acesso de um usuário que não existe mais       (PUT401.3)
+CT37: Editar um produto com token de acesso expirado                                (PUT401.4)
+CT38: Editar um produto com um usuário que não é administrador                      (PUT403)
 
 ** DELETE **
-CT33: Excluir um produto (200)
-CT34: Excluir um produto inexistente (200)
-CT35: Excluir um produto que está no carrinho (400)
-CT36: Excluir um produto sem token de acesso (401)
-CT37: Excluir um produto com um usuário que não é administrador (403)
+CT39: Excluir um produto                                                            (DELETE200.1)
+CT40: Excluir um produto inexistente                                                (DELETE200.2)
+CT41: Excluir um produto que está no carrinho                                       (DELETE400)
+CT42: Excluir um produto sem token de acesso                                        (DELETE401.1)
+CT43: Excluir um produto com token de acesso inválido                               (DELETE401.2)
+CT44: Excluir um produto com token de acesso de um usuário que não existe mais      (DELETE401.3)
+CT45: Excluir um produto com token de acesso expirado                               (DELETE401.4)
+CT46: Excluir um produto com um usuário que não é administrador                     (DELETE403)
 
-/CARRINHOS (16 testes)
+/CARRINHOS (25 testes) - carrinhos_testes.robot
 
 ** GET **
-CT38: Listar todos os carrinhos (200)
-CT39: Buscar e retornar um carrinho específico (200)
-CT40: Buscar um carrinho inexistente (400)
+CT47: Listar todos os carrinhos                                                     (GET200.1)
+CT48: Buscar e retornar um carrinho específico                                      (GET200.2)
+CT49: Buscar um carrinho inexistente                                                (GET400)
 
 ** POST **
-CT41: Cadastrar um carrinho (201)
-CT42: Cadastrar outro carrinho para o mesmo usuário (400)
-CT43: Cadastrar um carrinho vazio (400)
-CT44: Cadastrar um carrinho com produto inexistente (400)
-CT45: Cadastrar um carrinho com quantidade indisponível de produtos (400)
-CT46: Cadastrar um carrinho com produto duplicado (400)
-CT47: Cadastrar um carrinho sem token de acesso (401)
+CT50: Cadastrar um carrinho                                                         (POST201)
+CT51: Cadastrar outro carrinho para o mesmo usuário                                 (POST400.1)
+CT52: Cadastrar um carrinho vazio                                                   (POST400.2)
+CT53: Cadastrar um carrinho com produto inexistente                                 (POST400.3)
+CT54: Cadastrar um carrinho com quantidade indisponível de produtos                 (POST400.4)
+CT55: Cadastrar um carrinho com produto duplicado                                   (POST400.5)
+CT56: Cadastrar um carrinho sem token de acesso                                     (POST401.1)
+CT57: Cadastrar um carrinho com token de acesso inválido                            (POST401.2)
+CT58: Cadastrar um carrinho com token de acesso de um usuário que não existe mais   (POST401.3)
+CT59: Cadastrar um carrinho com token de acesso expirado                            (POST401.4)
 
 ** DELETE **
-CT48: Concluir uma compra (200)
-CT49: Concluir a compra de um usuário sem carrinho (200)
-CT50: Concluir uma compra sem token de acesso (401)
-CT51: Cancelar uma compra e retornar produtos ao estoque (200)
-CT52: Excluir o carrinho de um usuário sem carrinho (200)
-CT53: Cancelar uma compra sem token de acesso (401)
+CT60: Concluir uma compra                                                           (DELETE200.1)
+CT61: Concluir a compra de um usuário sem carrinho                                  (DELETE200.2)
+CT62: Concluir uma compra sem token de acesso                                       (DELETE401.1)
+CT63: Concluir uma compra com token de acesso inválido                              (DELETE401.2)
+CT64: Concluir uma compra com token de acesso de um usuário que não existe mais     (DELETE401.3)
+CT65: Concluir uma compra com token de acesso expirado                              (DELETE401.4)
+CT66: Cancelar uma compra e retornar produtos ao estoque                            (DELETE200.3)
+CT67: Excluir o carrinho de um usuário sem carrinho                                 (DELETE200.4)
+CT68: Cancelar uma compra sem token de acesso                                       (DELETE401.5)
+CT69: Cancelar uma compra com token de acesso inválido                              (DELETE401.6)
+CT70: Cancelar uma compra com token de acesso de um usuário que não existe mais     (DELETE401.7)
+CT71: Cancelar uma compra com token de acesso expirado                              (DELETE401.8)
