@@ -2,8 +2,6 @@
 * Settings *
 Documentation       Arquivo para Test Cases no Endpoint /produtos
 Resource            ../keywords/produtos_keywords.robot
-Resource            ../keywords/usuarios_keywords.robot
-Resource            ../keywords/login_keywords.robot
 Suite Setup         Criar Sessao
 
 * Test Cases *
@@ -99,11 +97,15 @@ Cenário: POST Token Expirado 401
 
 Cenário: POST Acesso Apenas ao Administrador 403
     [tags]      POST403
+    Pega Usuario Estatico   nao_administrador
+    POST Endpoint /usuarios
+    ${idUsuario}      Set Variable    ${response.json()["_id"]}
     Fazer Login Sem Admnistrador e Armazenar Token
     Criar Dados Produto Valido
     POST Endpoint /produtos
     Validar message: "Rota exclusiva para administradores"
     Validar Status Code "403"
+    DELETE Usuario id "${idUsuario}"
 
 
 # ----------------------- PUT -----------------------
@@ -114,6 +116,8 @@ Cenário: PUT Editar Produto Existente 200
     PUT id "BeeJh5lz3k6kSIzA"
     Validar message: "Registro alterado com sucesso"
     Validar Status Code "200"
+    Pega Produto Estatico           default
+    PUT id "BeeJh5lz3k6kSIzA"
 
 Cenário: PUT Cadastrar Novo Produto 201
     [tags]      PUT201
@@ -165,11 +169,15 @@ Cenário: PUT Token Expirado 401
 
 Cenário: PUT Acesso Apenas ao Administrador 403
     [tags]      PUT403
+    Pega Usuario Estatico   nao_administrador
+    POST Endpoint /usuarios
+    ${idUsuario}      Set Variable    ${response.json()["_id"]}
     Fazer Login Sem Admnistrador e Armazenar Token
     Editar Dados Produto Valido     Logitech MX Vertical
     PUT id "BeeJh5lz3k6kSIzA"
     Validar message: "Rota exclusiva para administradores"
     Validar Status Code "403"
+    DELETE Usuario id "${idUsuario}"
 
 
 # ----------------------- DELETE -----------------------
@@ -177,7 +185,7 @@ Cenário: DELETE Excluir Produto Específico 200
     [tags]      DELETE200.1
     Fazer Login e Armazenar Token   valido_sem_carrinho
     Criar Dados Produto Valido
-    POST Endpoint /produtos
+    POST Endpoint /produtos   
     DELETE id "${response.json()["_id"]}"
     Validar message: "Registro excluído com sucesso"
     Validar Status Code "200"
@@ -228,7 +236,11 @@ Cenário: DELETE Token Expirado 401
 
 Cenário: DELETE Acesso Apenas ao Administrador 403
     [tags]      DELETE403
+    Pega Usuario Estatico   nao_administrador
+    POST Endpoint /usuarios
+    ${idUsuario}      Set Variable    ${response.json()["_id"]}
     Fazer Login Sem Admnistrador e Armazenar Token
     DELETE id "0uxuPY0cbmQhpEz1"
     Validar message: "Rota exclusiva para administradores"
     Validar Status Code "403"
+    DELETE Usuario id "${idUsuario}"

@@ -1,7 +1,7 @@
 * Settings *
 
 Documentation       Arquivo de Testes para a Library desenvolvida em PYTHON
-Library             python_library.py
+Library             ./support/common/python_library.py
 
 * Test Cases *
 
@@ -20,3 +20,8 @@ Cenário: Mostrar os Produtos que não estão em nenhum carrinho
 Cenário: Mostrar o nome do Usuário Dono de Determinado Carrinho
     ${usuario}          Usuario Dono Carrinho       qbMqntef4iTOwWfg
     Log To Console      Usuário: ${usuario}
+
+Cenário: Validar o valor total de um carrinho
+    [tags]      TESTE
+    ${validacao}        Valida Preco Total      qbMqntef4iTOwWfg
+    Log To Console      ${validacao}

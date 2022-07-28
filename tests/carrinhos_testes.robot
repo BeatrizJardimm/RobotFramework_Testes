@@ -2,12 +2,15 @@
 * Settings *
 Documentation       Arquivo para Test Cases no Endpoint /carrinhos
 Resource            ../keywords/carrinhos_keywords.robot
-Resource            ../keywords/usuarios_keywords.robot
-Resource            ../keywords/login_keywords.robot
 Suite Setup         Criar Sessao
 
 #Área para escrever os casos que serão testados
 * Test Cases *
+
+Cenário: Validar o valor total de um carrinho         ############# USANDO LIB PYTHON
+    [tags]      TOTAL
+    GET Endpoint /carrinhos id "/qbMqntef4iTOwWfg"
+    Validar Preço Total do Carrinho
 
 # ----------------------- GET -----------------------
 Cenário: GET Todos os Carrinhos 200
@@ -18,10 +21,10 @@ Cenário: GET Todos os Carrinhos 200
 Cenário: GET Carrinho Específico 200                  ############# USANDO LIB PYTHON
     [tags]      GET200.2
     GET Endpoint /carrinhos id "/qbMqntef4iTOwWfg"
+    Log To Console      ${response.json()}
     Validar _id: "qbMqntef4iTOwWfg"
     Validar Status Code "200"
-    ${idCarrinho}        Set Variable                ${response.json()["_id"]}
-    ${usuario}           Usuario Dono Carrinho       ${idCarrinho}
+    ${usuario}           Usuario Dono Carrinho          qbMqntef4iTOwWfg
     Log To Console       Nome do usuário dono deste carrinho: ${usuario}
 
 Cenário: GET Carrinho Inexistente 400
@@ -134,6 +137,8 @@ Cenário: DELETE Concluir Compra e Excluir Carrinho 200
     Validar message: "Registro excluído com sucesso"
     Validar Status Code "200"
     Validar se Produtos Foram Retornados ao Estoque     carrinho1
+    Pega Produto Estatico                               default
+    PUT id "BeeJh5lz3k6kSIzA"
 
 Cenário: DELETE Concluir Compra de Usuário Sem Carrinho 200
     [tags]      DELETE200.2

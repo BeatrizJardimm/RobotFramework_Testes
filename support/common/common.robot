@@ -11,7 +11,7 @@ Validar Status Code "${statuscode}"
 
 Validar ${campo}: "${mensagem}"
     Should Match            ${response.json()["${campo}"]}       ${mensagem}
-    Log To Console          \n\nRetorno: ${response.json()["${campo}"]}
+    Log To Console          \n\nRetorno (${campo}): ${response.json()["${campo}"]}
 
 Printar Conteudo Response
     [Arguments]             ${response}

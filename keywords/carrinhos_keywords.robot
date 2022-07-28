@@ -1,14 +1,15 @@
 * Settings *
 Documentation   Arquivo para as Keywords do Endpoint /carrinhos
 Resource        ../support/base.robot
-Resource        ./login_keywords.robot
 
-* Variables *
-
-${token_expirado}   Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV2ZXJtb3JlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicmVwdXRhdGlvbiIsImlhdCI6MTY1ODg4Mzk3MywiZXhwIjoxNjU4ODg0NTczfQ.GCSrd-ffbl2Cx2jgMa8VCMQ4EuA_qJP61DQJgS_y-Kg
 
 #Área para desenvolver as keywords utilizadas nos casos de teste
 * Keywords *
+
+Validar Preço Total do Carrinho
+    ${validacao}        Valida Preco Total      qbMqntef4iTOwWfg
+    Log To Console      \n\nPreço total do Carrinho: ${response.json()["precoTotal"]} \n${validacao}\n
+    Should Match        ${validacao}        O preço total foi validado e está correto.
 
 Pega Carrinho Estatico
     [Arguments]                 ${carrinho}

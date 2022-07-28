@@ -1,4 +1,10 @@
 {
+    "usuario_default":{
+        "nome": "Fulano da Silva",
+        "email": "fulano@qa.com",
+        "password": "teste",
+        "administrador": "true"
+    },
     "usuario_valido":{
         "nome":"Lana Del Rey",
         "email":"stargirlinterlude@gmail.com",
@@ -6,15 +12,15 @@
         "administrador":"true"
     },
     "usuario_invalido":{
-        "nome":"Frank Ocean",
-        "email":"stargirlinterlude@gmail.com",
-        "password":"ivy",
+        "nome":"Novo Fulano da Silva",
+        "email":"fulano@qa.com",
+        "password":"testeteste",
         "administrador":"true"
     },
     "usuario_nao_administrador":{
-        "nome":"Childish Gambino",
-        "email":"becausetheinternet@gmail.com",
-        "password":"3005",
+        "nome":"Beltrano de Souza",
+        "email":"beltranoNaoAdmin@gmail.com",
+        "password":"teste321",
         "administrador":"false"
     },
     "usuario_sem_email":{

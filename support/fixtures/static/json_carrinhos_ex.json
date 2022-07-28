@@ -2,7 +2,7 @@
     "carrinho1":{
         "produtos": [
             {   "idProduto":"BeeJh5lz3k6kSIzA",
-                "quantidade":"4"
+                "quantidade":4
             }
         ]
     },
@@ -10,11 +10,11 @@
         "produtos": [
             {
                 "idProduto":"BeeJh5lz3k6kSIzA",
-                "quantidade":"2"
+                "quantidade":2
             },
             {
                 "idProduto":"YaeJ455lz3k6kSIzA",
-                "quantidade":"3"
+                "quantidade":3
             }
         ]
     },
@@ -26,26 +26,26 @@
     "carrinho4":{
         "produtos": [
             {
-                "idProduto": "Inexistente",
-                "quantidade": 1
+                "idProduto":"Inexistente",
+                "quantidade":1
             }
         ]
     },
     "carrinho5":{
         "produtos": [
-            {   "idProduto":"Hors2sSwSI3ocJgZ",
-                "quantidade":"1000"
+            {   "idProduto":"BeeJh5lz3k6kSIzA",
+                "quantidade":1000000
             }
         ]
     },
     "carrinho6":{
         "produtos": [
             {   "idProduto":"BeeJh5lz3k6kSIzA",
-                "quantidade":"100"
+                "quantidade":100
             },
             {   
                 "idProduto":"BeeJh5lz3k6kSIzA",
-                "quantidade":"50"
+                "quantidade":50
             }
         ]
     }

@@ -18,8 +18,8 @@ Cenário: GET Todos os Usuários 200                   ############### USANDO LI
 # usa dados estáticos
 Cenário: GET Usuário Específico 200
     [tags]      GET200.2
-    GET Endpoint /usuarios id "CNR4yVgA8tQfkvqv"
-    Validar nome: "Taylor Swift"
+    GET Endpoint /usuarios id "0uxuPY0cbmQhpEz1"
+    Validar nome: "Fulano da Silva"
     Validar Status Code "200"
 
 Cenário: GET Usuário Inexistente 400
@@ -63,10 +63,12 @@ Cenário: POST Cadastrar Novo Usuário sem Senha 400
 # ----------------------- PUT -----------------------
 Cenário: PUT Editar Usuario Existente 200
     [tags]      PUT200
-    Editar Dados Usuario Valido     stargirlinterlude@gmail.com
-    PUT Editar id "susXVV8VDdM3MOhW"
+    Editar Dados Usuario Valido     fulano@qa.com
+    PUT Editar id "0uxuPY0cbmQhpEz1"
     Validar message: "Registro alterado com sucesso"
     Validar Status Code "200"
+    Pega Usuario Estatico   default
+    PUT Editar id "0uxuPY0cbmQhpEz1"
 
 Cenário: PUT Cadastrar novo Usuario 201
     [tags]      PUT201

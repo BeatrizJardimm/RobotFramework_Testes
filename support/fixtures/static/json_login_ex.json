@@ -1,27 +1,27 @@
 {
     "login_valido_sem_carrinho":{
-        "email":"evermore@gmail.com",
-        "password":"reputation"
+        "email": "fulano@qa.com",
+        "password": "teste"
     },
     "login_email_invalido":{
         "email":"emailInvalido@gmail.com",
-        "password":"reputation"
+        "password":"teste"
     },
     "login_senha_invalida":{
-        "email":"evermore@gmail.com",
-        "password":"ivy"
+        "email":"fulano@qa.com",
+        "password":"invalida"
     },
     "login_sem_senha":{
-        "email":"evermore@gmail.com",
+        "email":"fulano@qa.com",
         "password":""
     },
     "login_sem_email":{
         "email":"",
-        "password":"ivy"
+        "password":"teste"
     },
     "login_nao_administrador":{
-        "email":"becausetheinternet@gmail.com",
-        "password":"3005"
+        "email":"beltranoNaoAdmin@gmail.com",
+        "password":"teste321"
     },
     "login_teste_produtos":{
         "email": "testeProduto@gmail.com",

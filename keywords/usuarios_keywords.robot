@@ -35,7 +35,7 @@ PUT Editar id "${id}"
     Set Global Variable         ${response}
 
 PUT Criar Usuário
-    ${response}                 PUT On Session     serverest      /usuarios/0uxuPY0cbmQhpEz1       json=&{payload}     expected_status=anything
+    ${response}                 PUT On Session     serverest      /usuarios/idNaoEncontrada       json=&{payload}     expected_status=anything
     Set Global Variable         ${response}
 
 PUT Editar com Email Existente
