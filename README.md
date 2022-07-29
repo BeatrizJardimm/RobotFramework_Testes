@@ -4,7 +4,7 @@
 
 # Trilha RoboTron - Projeto Final
 
-[![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/ServeRest/ServeRest/)
+[![NPM](https://img.shields.io/npm/l/react)](./LICENSE) [![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-yellow)](https://github.com/ServeRest/ServeRest/)
   
 </div>
 
@@ -48,6 +48,17 @@ $ git clone https://github.com/BeatrizJardimm/RoboTron_Beatriz_Jardim_Projeto_Fi
 Agora você tem uma cópia dos exercícios em sua máquina! :)
 
 *Eu utilizei o **VS CODE**, e a partir [desse artigo](https://asimov.academy/como-instalar-e-configurar-o-vscode/) ou [desse vídeo](https://www.youtube.com/watch?v=-RuY-rM-B4M&t=1s) você pode configurar tal IDE pra executar arquivos na linguagem Python.
+
+### Configuração do VSCode
+
+Como já foi dito anteriormente, utilizei a IDE VSCode para desenvolver esse projeto, e algumas extensões dessa IDE foram indispensáveis para a organização e o realçamento do código. Recomendo o uso destas extenções para facilitar o desenvolvimetno deste e de outros projetos, segue uma lista com todas as extensões utilizadas:
+
+* Robot Framework Intellisense
+* Python (Intellisense oficial)
+* Hyper Term Theme
+* Material Icon Theme
+* Rainbow Brackets
+* Tabnine AI autocomplete
 
 ## <img src="./midia/barney.jpg" alt="Barney Stinson de HIMYM" width="60" height="60" align="right"> Como rodar o projeto
 
@@ -96,7 +107,7 @@ Para exemplificar, abaixo temos uma imagem do console com o comando para rodar o
     <img src="midia/exemploTeste.jpeg">
 </div>
 
-Além disso, caso você queira rodar apenas um caso de teste específico, sem precisar rodar todos os Test Cases do arquivo, você pode digitar <code>robot -d ./reports -i tag nome_arquivo.robot</code> no seu console, onde "tag" deve ser substituido pela tag do Test Case que você deseja rodar. As tags de um Test Case podem ser encontradas na primeira linha destes, como no exemplo abaixo:
+Além disso, caso você queira rodar apenas um caso de teste específico, sem precisar rodar todos os Test Cases do arquivo, você pode digitar <code>robot -d ./reports -i tag nome_arquivo.robot</code> no seu console, onde "tag" deve ser substituido pela tag do Test Case que você deseja rodar. As tags de um Test Case podem ser encontradas tanto no arquivo de [Casos de Teste](./CasosDeTeste.txt) quanto na primeira linha de um Test Case, como no exemplo abaixo:
 
 <div align="center">
     <img src="midia/exemploTags.jpeg">
@@ -108,17 +119,6 @@ Neste caso, o comando que você deve digitar em seu console é
 
 A partir disso, você pode realizar testes em qualquer endpoint para o tipo de requisição de sua escolha!
 
-### Configuração do VSCode
-
-Como já foi dito anteriormente, utilizei a IDE VSCode para desenvolver esse projeto, e algumas extensões dessa IDE foram indispensáveis para a organização e o realçamento do código. Recomendo o uso destas extenções para facilitar o desenvolvimetno deste e de outros projetos, segue uma lista com todas as extensões utilizadas:
-
-* Robot Framework Intellisense
-* Python (Intellisense oficial)
-* Hyper Term Theme
-* Material Icon Theme
-* Rainbow Brackets
-* Tabnine AI autocomplete
-
 ## <img src="./midia/ted.jpg" alt="Ted Mosby de HIMYM" width="60" height="60" align="right"> Notas e Bugs
 
 * Ao rodar os testes no console, o retorno será algo parecido com: 
@@ -128,6 +128,10 @@ Como já foi dito anteriormente, utilizei a IDE VSCode para desenvolver esse pro
 </div>
 
 Onde a primeira e última linhas apresentam o nome do Test Case, a mensagem de retorno é aquela retornada pela API e o Status Code retornado também é enviado pela API. Caso esses retornos sejam compatíveis com o esperado pelo Test Case em questão, recebemos em verde a mensagem PASS, como é visto na imagem, caso contrário, em vez disso teremos a mensagem FAIL em vermelho.
+
+Para esse projeto, precisei criar dois mapas entais diferentes, um antes de inciar os testes, baseado na documentação, e outro após o dsenvolvimento dos casos de teste, pois ao longo desse desenvolvimento percebi vários bugs na API, desde alguns status codes até algumas responses que não batiam com o esperado a partir da documentação, então, xheguei à conclusão que a documentação está desatualizada, portanto desenvolvi os dois mapas mentais em questão.
+
+
 
 * No status 400 da requisição POST no endpoint /carrinhos, a documentação apresenta a mensagem "Não é permitido possuir produto duplicado | Não é permitido ter mais de 1 carrinho | Produto não encontrado | Produto não possui quantidade suficiente" mostrando todas as mensagens que podem ser retornadas com essa requisição, porém estou testando apenas a criação de um segundo carrinho para o mesmo usuário, então a mensagem que espero de retorno é apenas: "Não é permitido ter mais de 1 carrinho"
 
@@ -152,6 +156,15 @@ Com base nas informações desse documento, agora você é capaz de acessar, mod
 <div align="center">
     <img src="./midia/comemorando.gif" alt="Personagens comemorando">
 </div>
+
+Gostaria de agradecer ao Demétrio Webber, pois eu não teria conseguido concluir (nem começar) esse projeto sem as orientações e aulas dele.
+Também quero dar os devidos créditos aos meus colegas Amanda Bressam e Ney Backes que, além de desenvolverem os seus próprios projetos, me ajudaram com algumas ideias de casos de testes e refinamento de código.
+Muito obrigada a todos vocês! :)
+Além disso, também encontrei soluções para algumas ideias nas documentações das Libraries utilizadas, essas referências se encontram abaixo:
+
+* [BuiltIn Library](https://robotframework.org/robotframework/latest/libraries/BuiltIn.html)
+* [Requests Library](https://marketsquare.github.io/robotframework-requests/doc/RequestsLibrary.html)
+* [GitHub da ServeRest](https://github.com/ServeRest/ServeRest/)
 
 ## <img src="./midia/robin.jpg" alt="Robin de HIMYM" width="60" height="60" align="right"> Autora
 
