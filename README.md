@@ -23,13 +23,30 @@ Os arquivos desenvolvidos para este projeto estão organizados da seguinte forma
 | :---: | :---: |
 | [keywords](./keywords/) | Arquivos onde foram desenvolvidas as Keywords dos Test Cases para cada endpoint. |
 | [midia](./midia/) | Pasta que contém os arquivos de imagem utilizados no presente documento. |
+| [outros](./outros/) | Composta por mapas mentais e uma lista dos Test Cases desenvolvidos. |
 | [support](./support/) | Contém o arquivo *base.robot* que é utilizado para setar as bibliotecas e arquivos importados para o projeto inteiro. |
 | [common](./support/common/) | Pasta composta pelos arquivos com keywords e funções utilizadas por mais de um ou todos os arquivos de Test Cases. |
 | [fixtures](./support/fixtures/) | Armazena os arquivos de massa de dados, estáticas e dinâmicas. |
-| [variaveis](./support/variaveis) | Contém um arquivo apenas para setar as variáveis utilizadas ao longo do projeto. |
+| [variaveis](./support/variaveis/) | Contém um arquivo apenas para setar as variáveis utilizadas ao longo do projeto. |
 | [tests](./tests/) | Aqui é onde encontramos os casos de teste do projeto (tanto positivos quanto negativos). Cada Endpoint tem seu arquivo específico. |
 
-Além dos arquivos encontrados em pastas, no escopo global do projeto encontramos a licence utilizada, o arquivo que lista todos os [Casos De Teste](./CasosDeTeste.txt) e o documento que você está lendo!
+Além dos arquivos encontrados em pastas, no escopo global do projeto encontramos a licence utilizada e o documento que você está lendo!
+<br>
+
+Por último, também desenvolvi mapas mentais com base na API Serverest. O primeiro mapa foi feito a partir da [documentação](https://serverest.dev/) dessa API, e mostra todos os Status Codes e retornos documentados para cada tipo de requisição.
+
+<div align="center">
+    <img src="midia/mapaDocumentacao.jpeg">
+</div>
+
+Porém, durante o desenvolvimento dos testes, percebi alguns bugs em relação à documentação. Algumas requisições não retornam as mensagens documentadas e, em outros casos, o Status Code esperado de acordo com a documentação não é o mesmo retornado pela API. Com base nisso, após finalizar todos os casos de teste, desenvolvi outro mapa mental com base no que a API entrega: 
+
+<div align="center">
+    <img src="midia/mapaAPI.jpeg">
+</div>
+
+Os arquivos correspondentes aos mapas mentais acima podem ser encontrados na pasta [outros](./outros/) juntamente com o arquivo que lista todos os [Casos de Teste](./outros/CasosDeTeste.txt) desenvolvidos.
+
 
 ## <img src="./midia/marshall.jpg" alt="Marshall de HIMYM" width="60" height="60" align="right"> Como criar uma cópia desse projeto
 
@@ -107,7 +124,7 @@ Para exemplificar, abaixo temos uma imagem do console com o comando para rodar o
     <img src="midia/exemploTeste.jpeg">
 </div>
 
-Além disso, caso você queira rodar apenas um caso de teste específico, sem precisar rodar todos os Test Cases do arquivo, você pode digitar <code>robot -d ./reports -i tag nome_arquivo.robot</code> no seu console, onde "tag" deve ser substituido pela tag do Test Case que você deseja rodar. As tags de um Test Case podem ser encontradas tanto no arquivo de [Casos de Teste](./CasosDeTeste.txt) quanto na primeira linha de um Test Case, como no exemplo abaixo:
+Além disso, caso você queira rodar apenas um caso de teste específico, sem precisar rodar todos os Test Cases do arquivo, você pode digitar <code>robot -d ./reports -i tag nome_arquivo.robot</code> no seu console, onde "tag" deve ser substituido pela tag do Test Case que você deseja rodar. As tags de um Test Case podem ser encontradas tanto no arquivo de [Casos de Teste](./outros/CasosDeTeste.txt) quanto na primeira linha de um Test Case, como no exemplo abaixo:
 
 <div align="center">
     <img src="midia/exemploTags.jpeg">
@@ -158,8 +175,14 @@ Com base nas informações desse documento, agora você é capaz de acessar, mod
 </div>
 
 Gostaria de agradecer ao Demétrio Webber, pois eu não teria conseguido concluir (nem começar) esse projeto sem as orientações e aulas dele.
+<br>
 Também quero dar os devidos créditos aos meus colegas Amanda Bressam e Ney Backes que, além de desenvolverem os seus próprios projetos, me ajudaram com algumas ideias de casos de testes e refinamento de código.
 Muito obrigada a todos vocês! :)
+
+* [Perfil da Amanda](https://github.com/abressam)
+* [Perfil do Ney](https://github.com/neybackes)
+
+<br>
 Além disso, também encontrei soluções para algumas ideias nas documentações das Libraries utilizadas, essas referências se encontram abaixo:
 
 * [BuiltIn Library](https://robotframework.org/robotframework/latest/libraries/BuiltIn.html)
