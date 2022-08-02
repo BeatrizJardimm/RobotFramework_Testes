@@ -160,13 +160,14 @@ Ao longo do processo de desenvolvimento, encontrei alguns bugs relacionados à d
 
 ## <img src="./midia/ranjit.jpg" alt="Ranjit de HIMYM" width="60" height="60" align="right"> Reports
 
-Nessa seção, criei uma tabela para cada endpoint que lista todos os casos de teste desenvolvidos no endpoint em questão, mostrando qual é o retorno esperado desse teste (com base na documentação) e o que o teste realmente retornou. As etiquetas da coluna "Objetivo do Teste" apresentam um quadrado na cor verde para quando o retorno do teste é o mesmo que o retorno esperado e em vermelho para os casos contrários.
+Nessa seção, criei uma tabela para cada endpoint que lista todos os casos de teste desenvolvidos no endpoint em questão, mostrando qual é o retorno esperado desse teste (com base na documentação) e o que o teste realmente retornou. A coluna "Etiquetas" apresentamum quadrado na cor verde para quando o retorno do teste é o mesmo que o retorno esperado e em vermelho para os casos contrários.
 
 * /login
 
-| Objetivo do Teste | Resultado Esperado | Resultado Obtido |
-|       :---:       |        :---:       |       :---:      |
-| ![#c5f015](https://via.placeholder.com/15/c5f015/c5f015.png) POST - Sucesso no login | Status Code: 200 <br> "message": "Login realizado com sucesso" e Token de Acesso | Status Code: 200 <br> "message": "Login realizado com sucesso" e Token de Acesso |
+| Etiqueta | Objetivo do Teste | Resultado Esperado | Resultado Obtido |
+|   :---:  |       :---:       |        :---:       |       :---:      |
+| ![#c5f015](https://via.placeholder.com/15/c5f015/c5f015.png) | POST - Sucesso no login | Status Code: 200 <br> "message": "Login realizado com sucesso" e Token de Acesso | Status Code: 200 <br> "message": "Login realizado com sucesso" e Token de Acesso |
+
 | ![#f03c15](https://via.placeholder.com/15/f03c15/f03c15.png) POST - Realizar login sem email | Não Documentado | Status Code: 400 <br> "email": "email não pode ficar em branco" |
 | ![#f03c15](https://via.placeholder.com/15/f03c15/f03c15.png) POST - Realizar login sem senha | Não Documentado | Status Code: 400 <br> "password": "password não pode ficar em branco" |
 | ![#f03c15](https://via.placeholder.com/15/f03c15/f03c15.png) POST - Email Inválido | Status Code: 400 <br> "message": "Email e/ou senha inválidos" | Status Code: 401 <br> "message": "Email e/ou senha inválidos" |
