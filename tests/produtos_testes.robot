@@ -40,7 +40,7 @@ Cenário: POST Cadastrar Novo Produto 201
 Cenário: POST Cadastrar Produto Existente 400
     [tags]      POST400.1
     Fazer Login e Armazenar Token   valido_sem_carrinho
-    Pega Produto Estatico   invalido
+    Pega Produto Estatico           invalido
     POST Endpoint /produtos
     Validar message: "Já existe produto com esse nome"
     Validar Status Code "400"
@@ -48,7 +48,7 @@ Cenário: POST Cadastrar Produto Existente 400
 Cenário: POST Cadastrar Produto sem Nome 400
     [tags]      POST400.2
     Fazer Login e Armazenar Token   valido_sem_carrinho
-    Pega Produto Estatico   sem_nome
+    Pega Produto Estatico           sem_nome
     POST Endpoint /produtos
     Validar nome: "nome não pode ficar em branco"
     Validar Status Code "400"
@@ -57,7 +57,7 @@ Cenário: POST Cadastrar Produto sem Nome 400
 Cenário: POST Cadastrar Produto com Preço Invalido 400
     [tags]      POST400.3
     Fazer Login e Armazenar Token   valido_sem_carrinho
-    Pega Produto Estatico   preco_invalido
+    Pega Produto Estatico           preco_invalido
     POST Endpoint /produtos
     Validar preco: "preco deve ser um número"
     Validar Status Code "400"
@@ -78,12 +78,12 @@ Cenário: POST Token Invalido 401
 
 Cenário: POST Token de Usuario Que Não Existe Mais 401
     [tags]      POST401.3
-    Pega Usuario Estatico   teste_produto
+    Pega Usuario Estatico           teste_produto
     POST Endpoint /usuarios
-    ${idUsuario}        Set Variable      ${response.json()["_id"]}
+    ${idUsuario}                    Set Variable      ${response.json()["_id"]}
     Fazer Login e Armazenar Token   teste_produtos
     DELETE Usuario id "${idUsuario}"
-    Pega Produto Estatico   valido
+    Pega Produto Estatico           valido
     POST Endpoint /produtos
     Validar message: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
     Validar Status Code "401"
@@ -99,7 +99,7 @@ Cenário: POST Acesso Apenas ao Administrador 403
     [tags]      POST403
     Pega Usuario Estatico   nao_administrador
     POST Endpoint /usuarios
-    ${idUsuario}      Set Variable    ${response.json()["_id"]}
+    ${idUsuario}            Set Variable    ${response.json()["_id"]}
     Fazer Login Sem Admnistrador e Armazenar Token
     Criar Dados Produto Valido
     POST Endpoint /produtos
@@ -109,7 +109,7 @@ Cenário: POST Acesso Apenas ao Administrador 403
 
 
 # ----------------------- PUT -----------------------
-Cenário: PUT Editar Produto Existente 200
+Cenário: PUT Editar Produto 200
     [tags]      PUT200
     Fazer Login e Armazenar Token   valido_sem_carrinho
     Editar Dados Produto Valido     Logitech MX Vertical
@@ -131,7 +131,7 @@ Cenário: PUT Cadastrar Novo Produto 201
 Cenário: PUT Editar Para Nome já Existente 400
     [tags]  	PUT400
     Fazer Login e Armazenar Token   valido_sem_carrinho
-    Pega Produto Estatico   editado
+    Pega Produto Estatico           editado
     PUT id "K6leHdftCeOJj8BJ"
     Validar message: "Já existe produto com esse nome"
     Validar Status Code "400"
@@ -150,9 +150,9 @@ Cenário: PUT Token Invalido 401
 
 Cenário: PUT Token de Usuario Que Não Existe Mais 401
     [tags]      PUT401.3
-    Pega Usuario Estatico   teste_produto
+    Pega Usuario Estatico           teste_produto
     POST Endpoint /usuarios
-    ${idUsuario}        Set Variable      ${response.json()["_id"]}
+    ${idUsuario}                    Set Variable      ${response.json()["_id"]}
     Fazer Login e Armazenar Token   teste_produtos
     DELETE Usuario id "${idUsuario}"
     Editar Dados Produto Valido     Logitech MX Vertical
@@ -162,16 +162,16 @@ Cenário: PUT Token de Usuario Que Não Existe Mais 401
 
 Cenário: PUT Token Expirado 401
     [tags]      PUT401.4
-    Pega Produto Estatico   valido
+    Pega Produto Estatico            valido
     PUT Token Expirado
     Validar message: "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
     Validar Status Code "401"
 
 Cenário: PUT Acesso Apenas ao Administrador 403
     [tags]      PUT403
-    Pega Usuario Estatico   nao_administrador
+    Pega Usuario Estatico           nao_administrador
     POST Endpoint /usuarios
-    ${idUsuario}      Set Variable    ${response.json()["_id"]}
+    ${idUsuario}                    Set Variable    ${response.json()["_id"]}
     Fazer Login Sem Admnistrador e Armazenar Token
     Editar Dados Produto Valido     Logitech MX Vertical
     PUT id "BeeJh5lz3k6kSIzA"
@@ -218,9 +218,9 @@ Cenário: DELETE Token Inválido 401
 
 Cenário: DELETE Token de Usuario Que Não Existe Mais 401
     [tags]      DELETE401.3
-    Pega Usuario Estatico   teste_produto
+    Pega Usuario Estatico           teste_produto
     POST Endpoint /usuarios
-    ${idUsuario}        Set Variable      ${response.json()["_id"]}
+    ${idUsuario}                    Set Variable      ${response.json()["_id"]}
     Fazer Login e Armazenar Token   teste_produtos
     DELETE Usuario id "${idUsuario}"
     DELETE id "Inexistente"
@@ -238,7 +238,7 @@ Cenário: DELETE Acesso Apenas ao Administrador 403
     [tags]      DELETE403
     Pega Usuario Estatico   nao_administrador
     POST Endpoint /usuarios
-    ${idUsuario}      Set Variable    ${response.json()["_id"]}
+    ${idUsuario}            Set Variable    ${response.json()["_id"]}
     Fazer Login Sem Admnistrador e Armazenar Token
     DELETE id "0uxuPY0cbmQhpEz1"
     Validar message: "Rota exclusiva para administradores"

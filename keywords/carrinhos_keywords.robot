@@ -7,9 +7,9 @@ Resource        ../support/base.robot
 * Keywords *
 
 Validar Preço Total do Carrinho
-    ${validacao}        Valida Preco Total      qbMqntef4iTOwWfg
-    Log To Console      \n\nPreço total do Carrinho: ${response.json()["precoTotal"]} \n${validacao}\n
-    Should Match        ${validacao}        O preço total foi validado e está correto.
+    ${validacao}                Valida Preco Total      qbMqntef4iTOwWfg
+    Log To Console              \n\nPreço total do Carrinho: ${response.json()["precoTotal"]} \n${validacao}\n
+    Should Match                ${validacao}        O preço total foi validado e está correto.
 
 Pega Carrinho Estatico
     [Arguments]                 ${carrinho}
@@ -43,11 +43,12 @@ Validar se Produtos Foram Retornados ao Estoque
 # ----------------------- GET -----------------------
 GET Endpoint /carrinhos
     ${response}                 GET On Session          serverest       /carrinhos
+    Log To Console              ${response.content}
     Set Global Variable         ${response}
-    Log To Console              ${response.json()}
 
 GET Endpoint /carrinhos id "${id}"
     ${response}                 GET On Session          serverest       /carrinhos/${id}      expected_status=anything
+    Log To Console              ${response.content}
     Set Global Variable         ${response}
 
 

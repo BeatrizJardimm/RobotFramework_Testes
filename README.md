@@ -134,36 +134,125 @@ Neste caso, o comando que você deve digitar em seu console é
 <br>
 <code>robot -d ./reports -i LOGIN200 login_testes.robot</code>
 
-A partir disso, você pode realizar testes em qualquer endpoint para o tipo de requisição de sua escolha!
-
-## <img src="./midia/ted.jpg" alt="Ted Mosby de HIMYM" width="60" height="60" align="right"> Notas e Bugs
-
-* Ao rodar os testes no console, o retorno será algo parecido com: 
+Ao rodar os testes no console, o retorno será algo parecido com: 
 
 <div align="center">
     <img src="midia/exemploRetorno.jpeg">
 </div>
 
 Onde a primeira e última linhas apresentam o nome do Test Case, a mensagem de retorno é aquela retornada pela API e o Status Code retornado também é enviado pela API. Caso esses retornos sejam compatíveis com o esperado pelo Test Case em questão, recebemos em verde a mensagem PASS, como é visto na imagem, caso contrário, em vez disso teremos a mensagem FAIL em vermelho.
+<br>
 
-Para esse projeto, precisei criar dois mapas entais diferentes, um antes de inciar os testes, baseado na documentação, e outro após o dsenvolvimento dos casos de teste, pois ao longo desse desenvolvimento percebi vários bugs na API, desde alguns status codes até algumas responses que não batiam com o esperado a partir da documentação, então, xheguei à conclusão que a documentação está desatualizada, portanto desenvolvi os dois mapas mentais em questão.
+A partir disso, você pode realizar testes em qualquer endpoint para o tipo de requisição de sua escolha!
+
+## <img src="./midia/ted.jpg" alt="Ted Mosby de HIMYM" width="60" height="60" align="right"> Bugs
+
+Ao longo do processo de desenvolvimento, encontrei alguns bugs relacionados à documentação da API:
+
+* Na documentação, o Endpoint /login apresenta status de erro 400, porém, se tentarmos realizar os testes esperando esse status de retorno, vamos encontrar um erro, pois na verdade o status que está sendo retornado é 401, então, para contornar a situação, eu adaptei o código para esperar o status 401 como retorno.
+
+* Outro bug que encontrei no endpoint /login foi que o erro 400 não está documentado, porém se tentarmos realizar um login com um usuário sem email ou sem senha, esse erro é retornado acompanhado da mensagem "email/password não pode ficar em branco", então criei casos de testes para ambos os casos.
+
+* Além disso, na requisição POST do endpoint /usuarios e de /produtos acontece a mesma coisa, então criei os testes para esses erros apesar deles não serem referenciados na documentação.
+
+* Por último, na requisição DELETE de /carrinhos/cancelar-compra a documentação mostra as mensagens "Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário" como possibilidades de retorno, porém quando testamos excluir um carrinho que existe o retorno é "Registro excluído com sucesso. Estoque dos produtos reabastecido"
 
 
+## <img src="./midia/ranjit.jpg" alt="Ranjit de HIMYM" width="60" height="60" align="right"> Reports
 
-* No status 400 da requisição POST no endpoint /carrinhos, a documentação apresenta a mensagem "Não é permitido possuir produto duplicado | Não é permitido ter mais de 1 carrinho | Produto não encontrado | Produto não possui quantidade suficiente" mostrando todas as mensagens que podem ser retornadas com essa requisição, porém estou testando apenas a criação de um segundo carrinho para o mesmo usuário, então a mensagem que espero de retorno é apenas: "Não é permitido ter mais de 1 carrinho"
+Nessa seção, criei uma tabela para cada endpoint que lista todos os casos de teste desenvolvidos no endpoint em questão, mostrando qual é o retorno esperado desse teste (com base na documentação) e o que o teste realmente retornou. As etiquetas da coluna "Objetivo do Teste" estão na cor verde para quando o retorno do teste é o mesmo que o retorno esperado e em vermelho para os casos contrários.
 
-* Nos status 200 das requisições DELETE de todos os Endpoints, a documentação apresenta a mensagem "Registro excluído com sucesso | Nenhum registro excluído" para evidenciar as possíveis mensagens de retorno, sendo assim, desenvolvi casos de testes para a primeira situação em todos os endpoints, mas a segunda situação não está sendo testada no endpoint /carrinhos.
+* /login
 
-Além disso, ao longo do processo de desenvolvimento, encontrei um bug relacionado à documentação da API. Na documentação, o Endpoint /login apresenta status de erro 400, porém, se tentarmos realizar os testes esperando esse status de retorno, vamos encontrar um erro, pois na verdade o status que está sendo retornado é 401, então, para coontornar a situação, eu adaptei o código para esperar o status 401 como retorno.
+| Objetivo do Teste | Resultado Esperado | Resultado Obtido |
+|       :---:       |        :---:       |       :---:      |
+| <p style="color:green;"> POST - Sucesso no login </p>  | Status Code: 200 <br> "message": "Login realizado com sucesso" e Token de Acesso | Status Code: 200 <br> "message": "Login realizado com sucesso" e Token de Acesso |
+| <p style="color:red;">POST - Realizar login sem email | Não Documentado | Status Code: 400 <br> "email": "email não pode ficar em branco" |
+| <p style="color:red;">POST - Realizar login sem senha | Não Documentado | Status Code: 400 <br> "password": "password não pode ficar em branco" |
+|  <p style="color:red;">POST - Email Inválido</p>   | Status Code: 400 <br> "message": "Email e/ou senha inválidos" | Status Code: 401 <br> "message": "Email e/ou senha inválidos" |
+|  <p style="color:red;">POST - Senha Inválida</p>   | Status Code: 400 <br> "message": "Email e/ou senha inválidos" | Status Code: 401 <br> "message": "Email e/ou senha inválidos" |
 
-Outro bug que encontrei no endpoint /login foi que o erro 400 não está documentado, porém se tentarmos realizar um login com um usuário sem email ou sem senha, esse erro é retornado acompanhado da mensagem "email/password não pode ficar em branco", então criei casos de testes para ambos os casos.
+* /usuarios
 
-Na requisição POST do endpoint /usuarios acontece a mesma coisa, então criei os testes para esses erros apesar deles não serem referenciados na documentação.
+| Objetivo do Teste | Resultado Esperado | Resultado Obtido |
+|       :---:       |        :---:       |       :---:      |
+| <p style="color:green;">GET - Listar usuários cadastrados</p> | Status Code: 200 <br> Lista com todos os usuários | Status Code: 200 <br> Lista com todos os usuários |
+| <p style="color:green;">GET - Buscar usuário por ID</p> | Status Code: 200 <br> Cadastro do Usuário | Status Code: 200 <br> Cadastro do Usuário |
+| <p style="color:green;">GET - Buscar ID de usuário que não existe</p> | Status Code: 400 <br> "message": "Usuário não encontrado" | Status Code: 400 <br> "message": "Usuário não encontrado" |
+| <p style="color:green;">POST - Cadastrar usuário</p> | Status Code: 201 <br> "message": "Cadastro realizado com sucesso" e ID gerada para o usuário | Status Code: 201 <br> "message": "Cadastro realizado com sucesso" e ID gerada para o usuário |
+| <p style="color:green;">POST - Cadastrar usuário com Email já cadastrado</p> | Status Code: 400 <br> "message": "Este email já está sendo usado" | Status Code: 400 <br> "message": "Este email já está sendo usado" |
+| <p style="color:red;">POST - Cadastrar usuário sem email </p> | Não Documentado | Status Code: 400 <br> "email": "email não pode ficar em branco" |
+| <p style="color:red;">POST - Cadastrar usuário sem senha </p> | Não Documentado | Status Code: 400 <br> "password": "password não pode ficar em branco" |
+| <p style="color:green;">PUT - Editar usuário </p> | Status Code: 200 <br> "message": "Registro alterado com sucesso" | Status Code: 200 <br> "message": "Registro alterado com sucesso" |
+| <p style="color:green;">PUT - Criar um usuário </p> | Status Code: 201 <br> "message": "Cadastro realizado com sucesso" e ID do novo usuário | Status Code: 201 <br> "message": "Cadastro realizado com sucesso" e ID do novo usuário |
+| <p style="color:green;"> PUT - Editar para um Email já cadastrado</p> | Status Code: 400 <br> "message": "Este email já está sendo usado" | Status Code: 400 <br> "message": "Este email já está sendo usado" |
+| <p style="color:green;">DELETE - Excluir usuário</p> | Status Code: 200 <br> "message": "Registro excluído com sucesso" | Status Code: 200 <br> "message": "Registro excluído com sucesso" |
+| <p style="color:green;">DELETE - Excluir usuário que não existe</p> | Status Code: 200 <br> "message": "Nenhum registro excluído" | Status Code: 200 <br> "message": "Nenhum registro excluído" |
+| <p style="color:green;">DELETE - Excluir usuário com carrinho cadastrado</p> | Status Code: 400 <br> "message": "Não é permitido excluir usuário com carrinho cadastrado" e ID do Carrinho | Status Code: 400 <br> "message": "Não é permitido excluir usuário com carrinho cadastrado" e ID do Carrinho |
 
-Mesma coisa no POST do /produtos
 
-Na requisição DELETE de /carrinhos/cancelar-compra a documentação mostra as mensagens "Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário" como possibilidades de retorno, porém quando testamos excluir um carrinho que existe o retorno é "Registro excluído com sucesso. Estoque dos produtos reabastecido"
+* /produtos
 
+| Objetivo do Teste | Resultado Esperado | Resultado Obtido |
+|       :---:       |        :---:       |       :---:      |
+| <p style="color:green;">GET - Listar produtos cadastrados</p> | Status Code: 200 <br> Lista com todos os produtos | Status Code: 200 <br> Lista com todos os produtos |
+| <p style="color:green;">GET - Buscar produto por ID</p> | Status Code: 200 <br> Cadastro do Produto | Status Code: 200 <br> Cadastro do Produto |
+| <p style="color:green;">GET - Buscar ID de produto que não existe</p> | Status Code: 400 <br> "message": "Produto não encontrado" | Status Code: 400 <br> "message": "Produto não encontrado" |
+| <p style="color:green;">POST - Cadastrar produto</p> | Status Code: 201 <br> "message": "Cadastro realizado com sucesso" e ID gerada para o produto | Status Code: 201 <br> "message": "Cadastro realizado com sucesso" e ID gerada para o produto |
+| <p style="color:green;">POST - Cadastrar produto com nome que já existe</p> | Stauts Code: 400 <br> "message": "Já existe produto com esse nome" | Stauts Code: 400 <br> "message": "Já existe produto com esse nome" |
+| <p style="color:red;">POST - Cadastrar produto sem nome</p> | Não Documentado | Status Code: 400 <br> "nome": "nome não pode ficar em branco" |
+| <p style="color:red;">POST - Cadastrar produto com preço inválido</p> | Não Documentado | Status Code: 400 <br> "preco": "preco deve ser um número" |
+| <p style="color:green;">POST - Token Ausente</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">POST - Token Inválido</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">POST - Token Expirado</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">POST - Token de usuário que não existe mais</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">POST - Rota exclusiva para administradores</p> | Status Code: 403 <br> "message": "Rota exclusiva para administradores" | Status Code: 403 <br> "message": "Rota exclusiva para administradores" |
+| <p style="color:green;">PUT - Editar produto</p> | Status Code: 200 <br> "message": "Registro alterado com sucesso" | Status Code: 200 <br> "message": "Registro alterado com sucesso" |
+| <p style="color:green;">PUT - Criar um produto</p> | Status Code: 201 <br> "message": "Cadastro realizado com sucesso" e a ID do novo produto | Status Code: 201 <br> "message": "Cadastro realizado com sucesso" e a ID do novo produto |
+| <p style="color:green;">PUT - Editar para um nome já cadastrado</p> | Status Code: 400 <br> "message": "Já existe produto com esse nome" | Status Code: 400 <br> "message": "Já existe produto com esse nome" |
+| <p style="color:green;">PUT - Token Ausente</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">PUT - Token Inválido</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">PUT - Token Expirado</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">PUT - Token de usuário que não existe mais</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">PUT - Rota exclusiva para administradores</p> | Status Code: 403 <br> "message": "Rota exclusiva para administradores" | Status Code: 403 <br> "message": "Rota exclusiva para administradores" |
+| <p style="color:green;">DELETE - Excluir produto</p> | Status Code: 200 <br> "message": "Registro excluído com sucesso" | Status Code: 200 <br> "message": "Registro excluído com sucesso" |
+| <p style="color:green;">DELETE - Excluir produto que não existe</p> | Status Code: 200 <br> "message": "Nenhum registro excluído" | Status Code: 200 <br> "message": "Nenhum registro excluído" |
+| <p style="color:green;">DELETE - Excluir produto que faz parte de carrinho</p> | Status Code: 400 <br> "message": "Não é permitido excluir produto que faz parte de carrinho" e a ID do carrinho | Status Code: 400 <br> "message": "Não é permitido excluir produto que faz parte de carrinho" e a ID do carrinho |
+| <p style="color:green;">DELETE - Token Ausente</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">DELETE - Token Inválido</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">DELETE - Token Expirado</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">DELETE - Token de usuário que não existe mais</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">DELETE - Rota exclusiva para administradores</p> | Status Code: 403 <br> "message": "Rota exclusiva para administradores" | Status Code: 403 <br> "message": "Rota exclusiva para administradores" |
+
+* /carrinhos 
+
+| Objetivo do Teste | Resultado Esperado | Resultado Obtido |
+|       :---:       |        :---:       |       :---:      |
+| <p style="color:green;">GET - Listar carrinhos cadastrados</p> | Status Code: 200 <br> Lista com todos os carrinhos | Status Code: 200 <br> Lista com todos os carrinhos |
+| <p style="color:green;">GET - Buscar carrinho por ID</p> | Status Code: 200 <br> Cadastro do carrinho | Status Code: 200 <br> Cadastro do carrinho |
+| <p style="color:green;">GET - Buscar ID de carrinho que não existe</p> | Status Code: 400 <br> "message": "Carrinho não encontrado" | Status Code: 400 <br> "message": "Carrinho não encontrado" |
+| <p style="color:green;">POST - Cadastrar carrinho</p> | Status Code: 201 <br> "message": "Cadastro realizado com sucesso" e a ID gerada para o carrinho | Status Code: 201 <br> "message": "Cadastro realizado com sucesso" e a ID gerada para o carrinho |
+| <p style="color:red;">POST - Cadastrar um carrinho vazio</p> | Não Documentado | Status Code: 400 <br> "produtos": "produtos não contém 1 valor obrigatório" |
+| <p style="color:green;">POST - Cadastrar produto duplicado no carrinho</p> | Status Code: 400 <br> "message": "Não é permitido possuir produto duplicado" | Status Code: 400 <br> "message": "Não é permitido possuir produto duplicado" |
+| <p style="color:green;">POST - Cadastrar mais de 1 carrinho para o mesmo usuário</p> | Status Code: 400 <br> "message": "Não é permitido ter mais de 1 carrinho" | Status Code: 400 <br> "message": "Não é permitido ter mais de 1 carrinho" |
+| <p style="color:green;">POST - Cadastrar produto inexistente no carrinho</p> | Status Code: 400 <br> "message": "Produto não encontrado" | Status Code: 400 <br> "message": "Produto não encontrado |
+| <p style="color:green;">POST - Cadastrar mais produtos no carrinho do que a quantidade do estoque</p> | Status Code: 400 <br> "message": "Produto não possui quantidade suficiente" | Status Code: 400 <br> "message": "Produto não possui quantidade suficiente" |
+| <p style="color:green;">POST - Token Ausente</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">POST - Token Inválido</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">POST - Token Expirado</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">POST - Token de usuário que não existe mais</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">DELETE - Concluir compra</p> | Status Code: 200 <br> "message": "Registro excluído com sucesso" | Status Code: 200 <br> "message": "Registro excluído com sucesso" |
+| <p style="color:green;">DELETE - Concluir compra de um carrinho que não existe</p> | Status Code: 200 <br> "message" : "Não foi encontrado carrinho para esse usuário" | Status Code: 200 <br> "message" : "Não foi encontrado carrinho para esse usuário" |
+| <p style="color:green;">DELETE - Concluir compra com token ausente</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">DELETE - Concluir compra com token inválido</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">DELETE - Concluir compra com token expirado</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">DELETE - Concluir compra com token de usuário que não existe mais</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:red;">DELETE - Cancelar compra</p> | Status Code: 200 <br> "message": "Registro excluído com sucesso" | Status Code: 200 <br> "message": "Registro excluído com sucesso. Estoque dos produtos reabastecido" |
+| <p style="color:green;">DELETE - Cancelar compra de um carrinho que não existe</p> | Status Code: 200 <br> "message" : "Não foi encontrado carrinho para esse usuário" | Status Code: 200 <br> "message" : "Não foi encontrado carrinho para esse usuário" |
+| <p style="color:green;">DELETE - Cancelar compra com token ausente</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">DELETE - Cancelar compra com token inválido</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">DELETE - Cancelar compra com token expirado</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
+| <p style="color:green;">DELETE - Cancelar compra com token de usuário que não existe mais</p> | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" | Status Code: 401 <br> "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais" |
 
 ## Considerações Finais  
 

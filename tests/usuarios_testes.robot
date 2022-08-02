@@ -15,7 +15,6 @@ Cenário: GET Todos os Usuários 200                   ############### USANDO LI
     ${usuarios}         Usuarios Sem Carrinhos
     Log To Console      Usuários que não têm carrinho cadastrado: ${usuarios}
 
-# usa dados estáticos
 Cenário: GET Usuário Específico 200
     [tags]      GET200.2
     GET Endpoint /usuarios id "0uxuPY0cbmQhpEz1"
@@ -38,23 +37,23 @@ Cenário: POST Cadastrar Novo Usuario 201
     Validar Status Code "201"
     DELETE Usuario id "${response.json()["_id"]}"
 
-Cenário: POST Cadastrar Novo Usuário com Email Já Cadastrado 400
+Cenário: POST Cadastrar Usuário com Email Já Cadastrado 400
     [tags]      POST400.1
-    Pega Usuario Estatico   invalido
+    Pega Usuario Estatico           invalido
     POST Endpoint /usuarios
     Validar message: "Este email já está sendo usado"
     Validar Status Code "400"
 
 Cenário: POST Cadastrar Novo Usuário sem Email 400
     [tags]      POST400.2
-    Pega Usuario Estatico   sem_email
+    Pega Usuario Estatico           sem_email
     POST Endpoint /usuarios
     Validar email: "email não pode ficar em branco"
     Validar Status Code "400"
 
 Cenário: POST Cadastrar Novo Usuário sem Senha 400
     [tags]      POST400.3
-    Pega Usuario Estatico   sem_senha
+    Pega Usuario Estatico           sem_senha
     POST Endpoint /usuarios
     Validar password: "password não pode ficar em branco"
     Validar Status Code "400"
@@ -67,7 +66,7 @@ Cenário: PUT Editar Usuario Existente 200
     PUT Editar id "0uxuPY0cbmQhpEz1"
     Validar message: "Registro alterado com sucesso"
     Validar Status Code "200"
-    Pega Usuario Estatico   default
+    Pega Usuario Estatico           default
     PUT Editar id "0uxuPY0cbmQhpEz1"
 
 Cenário: PUT Cadastrar novo Usuario 201
@@ -80,7 +79,7 @@ Cenário: PUT Cadastrar novo Usuario 201
 
 Cenário: PUT Mudar Email de um Usuário para um Existente 400
     [tags]      PUT400
-    Pega Usuario Estatico   invalido
+    Pega Usuario Estatico           invalido
     PUT Editar com Email Existente
     Validar message: "Este email já está sendo usado"
     Validar Status Code "400"

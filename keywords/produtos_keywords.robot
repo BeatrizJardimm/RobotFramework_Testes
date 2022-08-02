@@ -14,11 +14,13 @@ Pega Produto Estatico
 
 # ----------------------- GET -----------------------
 GET Endpoint /produtos
-    ${response}                  GET On Session     serverest       /produtos
+    ${response}                  GET On Session             serverest       /produtos
+    Log To Console               \n\n${response.content}
     Set Global Variable          ${response}
 
 GET Endpoint /produtos id "${id}"
-    ${response}                  GET On Session     serverest       /produtos/${id}      expected_status=anything
+    ${response}                  GET On Session             serverest       /produtos/${id}      expected_status=anything
+    Log To Console               \n\n${response.content}
     Set Global Variable          ${response}
 
 
@@ -70,20 +72,20 @@ PUT Token Expirado
 
 # ----------------------- DELETE -----------------------
 DELETE id "${id}"
-    ${header}                   Create Dictionary     Authorization=${token_auth}
-    ${response}                 DELETE On Session     serverest       /produtos/${id}      expected_status=anything    headers=${header}
+    ${header}                   Create Dictionary           Authorization=${token_auth}
+    ${response}                 DELETE On Session           serverest       /produtos/${id}      expected_status=anything    headers=${header}
     Set Global Variable         ${response}
 
 DELETE Sem Token
-    ${response}                 DELETE On Session     serverest       /produtos/0uxuPY0cbmQhpEz1      expected_status=anything
+    ${response}                 DELETE On Session           serverest       /produtos/0uxuPY0cbmQhpEz1      expected_status=anything
     Set Global Variable         ${response}
 
 DELETE Token Invalido
-    ${header}                   Create Dictionary     Authorization=Invalido
-    ${response}                 DELETE On Session     serverest       /produtos/0uxuPY0cbmQhpEz1      expected_status=anything    headers=${header}
+    ${header}                   Create Dictionary           Authorization=Invalido
+    ${response}                 DELETE On Session           serverest       /produtos/0uxuPY0cbmQhpEz1      expected_status=anything    headers=${header}
     Set Global Variable         ${response}
 
 DELETE Token Expirado
-    ${header}                   Create Dictionary     Authorization=${token_expirado}
-    ${response}                 DELETE On Session     serverest       /produtos/0uxuPY0cbmQhpEz1      expected_status=anything    headers=${header}
+    ${header}                   Create Dictionary           Authorization=${token_expirado}
+    ${response}                 DELETE On Session           serverest       /produtos/0uxuPY0cbmQhpEz1      expected_status=anything    headers=${header}
     Set Global Variable         ${response}
