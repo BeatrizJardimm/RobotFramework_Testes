@@ -166,7 +166,7 @@ Nessa seção, criei uma tabela para cada endpoint que lista todos os casos de t
 
 | Objetivo do Teste | Resultado Esperado | Resultado Obtido |
 |       :---:       |        :---:       |       :---:      |
-| <p style="color:green;"> POST - Sucesso no login </p>  | Status Code: 200 <br> "message": "Login realizado com sucesso" e Token de Acesso | Status Code: 200 <br> "message": "Login realizado com sucesso" e Token de Acesso |
+| ![#c5f015](https://via.placeholder.com/15/c5f015/c5f015.png) POST - Sucesso no login | Status Code: 200 <br> "message": "Login realizado com sucesso" e Token de Acesso | Status Code: 200 <br> "message": "Login realizado com sucesso" e Token de Acesso |
 | <p style="color:red;">POST - Realizar login sem email | Não Documentado | Status Code: 400 <br> "email": "email não pode ficar em branco" |
 | <p style="color:red;">POST - Realizar login sem senha | Não Documentado | Status Code: 400 <br> "password": "password não pode ficar em branco" |
 |  <p style="color:red;">POST - Email Inválido</p>   | Status Code: 400 <br> "message": "Email e/ou senha inválidos" | Status Code: 401 <br> "message": "Email e/ou senha inválidos" |
