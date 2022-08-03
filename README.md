@@ -263,12 +263,14 @@ Com base nas informações desse documento, agora você é capaz de acessar, mod
     <img src="./midia/comemorando.gif" alt="Personagens comemorando">
 </div>
 
-Gostaria de agradecer ao Demétrio Webber, pois eu não teria conseguido concluir (nem começar) esse projeto sem as orientações e aulas dele.
+Gostaria de agradecer ao Demétrio Webber, pois eu não teria conseguido concluir (nem começar) esse projeto sem as orientações e aulas dele e o Matheus Locatelli, o Scrum Master durante toda minha trajetória na Compass. 
 <br>
 Também quero dar os devidos créditos aos meus colegas Amanda Bressam e Ney Backes que, além de desenvolverem os seus próprios projetos, me ajudaram com algumas ideias de casos de testes e refinamento de código.
 Muito obrigada a todos vocês! :)
 
 * [Perfil da Amanda](https://github.com/abressam)
+* [Perfil do Demétrio](https://github.com/DemetrioWebber)
+* [Perfil do Matheus](https://github.com/matheuslocatelli)
 * [Perfil do Ney](https://github.com/neybackes)
 
 <br>
