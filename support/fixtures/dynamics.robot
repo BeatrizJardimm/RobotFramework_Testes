@@ -31,5 +31,5 @@ Editar Dados Produto Valido
     ${preco}                FakerLibrary.RandomInt      max=9999
     ${desc}                 FakerLibrary.Text           max_nb_chars=25
     ${qnt}                  FakerLibrary.RandomInt      max=999
-    ${payload}              Create Dictionary       nome=${nome}    preco=${preco}  descricao=${desc}   quantidade=${qnt}
+    ${payload}              Create Dictionary           nome=${nome}    preco=${preco}  descricao=${desc}   quantidade=${qnt}
     Set Global Variable     ${payload}
