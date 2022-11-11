@@ -1,8 +1,8 @@
 
 <div align = "center">
-<img src="./midia/compasslogo.png">
+<img src="./midia/Robot-Framework.png">
 
-# Trilha RoboTron - Projeto Final
+# Testes desenvolvidos em Robot Framework para ServeRest API
 
 [![NPM](https://img.shields.io/npm/l/react)](./LICENSE) [![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-yellow)](https://github.com/ServeRest/ServeRest/)
   
@@ -58,7 +58,7 @@ Para obter uma cópia desse projeto em sua máquina local, siga os passos abaixo
 4. Depois de [configurar o Git](https://www.youtube.com/watch?v=UBAX-13g8OM) em sua máquina, rode o seguinte código:
 
 <code>
-$ git clone https://github.com/BeatrizJardimm/RoboTron_Beatriz_Jardim_Projeto_Final.git
+$ git clone https://github.com/BeatrizJardimm/RobotFramework_Testes.git
 
 </code>
 
@@ -263,7 +263,7 @@ Com base nas informações desse documento, agora você é capaz de acessar, mod
     <img src="./midia/comemorando.gif" alt="Personagens comemorando">
 </div>
 
-Gostaria de agradecer ao Demétrio Webber, pois eu não teria conseguido concluir (nem começar) esse projeto sem as orientações e aulas dele e o Matheus Locatelli, o Scrum Master durante toda minha trajetória na Compass. 
+Gostaria de agradecer ao Demétrio Webber, pois eu não teria conseguido concluir (nem começar) esse projeto sem as aulas dele e orientações do Matheus Locatelli.
 <br>
 Também quero dar os devidos créditos aos meus colegas Amanda Bressam e Ney Backes que, além de desenvolverem os seus próprios projetos, me ajudaram com algumas ideias de casos de testes e refinamento de código.
 Muito obrigada a todos vocês! :)
