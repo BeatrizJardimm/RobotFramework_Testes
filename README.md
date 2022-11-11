@@ -2,7 +2,7 @@
 <div align = "center">
 <img src="./midia/Robot-Framework.png">
 
-# Testes desenvolvidos em Robot Framework para ServeRest API
+# Testes desenvolvidos para a ServeRest API
 
 [![NPM](https://img.shields.io/npm/l/react)](./LICENSE) [![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-yellow)](https://github.com/ServeRest/ServeRest/)
   
